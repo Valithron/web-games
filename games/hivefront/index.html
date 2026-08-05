@@ -37,6 +37,21 @@
     </div>
     <div id="hint" class="hint hidden"></div>
   </main>
+  <script>
+    window.EscapeeGame = {
+      restart() { location.reload(); },
+      getStatus() {
+        const hud = document.querySelector('#hud');
+        const result = document.querySelector('#result');
+        if (hud && !hud.classList.contains('hidden')) return 'playing';
+        if (result && !result.classList.contains('hidden')) return 'ended';
+        return 'menu';
+      },
+      pause() {},
+      resume() {},
+      setMuted() {}
+    };
+  </script>
   <script type="module" src="./game.js"></script>
 </body>
 </html>
