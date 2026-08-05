@@ -14,17 +14,24 @@ Use this checklist when designing or reviewing every game in this project.
 ## Signed high scores
 
 - Every scored run must submit its final score once after entering the game-over or results state.
+- The game is identified by its lowercase URL slug, and every score row must store that slug.
 - Show an arcade-style prompt asking the player to sign the score with exactly 3 characters.
 - Signatures may contain uppercase letters A-Z and numbers 0-9.
-- Remember the player's last signature across games so repeat entry is fast, while keeping it editable.
-- Keep a local top-10 leaderboard for each game and make it available from the pause menu.
-- Sort numeric scores from highest to lowest. Games with unusual scoring may provide a separate numeric sort value and a human-readable display value.
+- The player may edit the signature only before pressing Save Score.
+- Once saved, the game, signature, score, display text, record ID, and server timestamp are permanent.
+- Never provide edit, correction, overwrite, or delete controls. Mistaken submissions must remain as entered.
+- Store scores in the Cloudflare D1 database `web-games-scores`, not in browser local storage.
+- Use `WEB_GAMES_SCORES` as the recommended Pages binding name.
+- Keep a global top-10 leaderboard separately for each game and make it available from the pause menu.
+- Sort numeric scores from highest to lowest. Earlier server timestamps win ties.
+- Games with unusual scoring may provide a separate numeric sort value and human-readable display value.
 - The prompt must work with a physical keyboard and a mobile software keyboard.
 - The player may skip signing. Score entry must never trap the player or prevent replaying.
-- Storage failure may prevent persistence, but it must not block the results screen or the next run.
+- Network or D1 failure may prevent persistence, but it must not block the results screen or next run.
+- A failed save must say that nothing was recorded. Do not silently queue it for later.
 - Prevent duplicate submissions when an end function fires more than once.
 
-Games should submit scores through the shared runtime:
+Games submit scores through the shared runtime:
 
 ```js
 window.EscapeeScores?.submit(finalScore, {
@@ -43,6 +50,15 @@ window.EscapeeScores?.submit(displayedValue, {
 });
 ```
 
+The shared API is insert-only:
+
+- `GET /api/scores?game=<slug>` reads one game's top ten.
+- `POST /api/scores` inserts one permanent record.
+- No `PUT`, `PATCH`, or `DELETE` endpoint is permitted.
+- The server creates the D1 table and index automatically.
+
+Browser storage may remember the last signature as a typing convenience, but it must not store authoritative scores or leaderboards.
+
 ## Responsive mobile rules
 
 - Include `viewport-fit=cover`.
@@ -57,6 +73,7 @@ window.EscapeeScores?.submit(displayedValue, {
 
 - Audio failure must never block gameplay.
 - Storage failure must never block gameplay.
+- Network or D1 failure must never block gameplay.
 - Pause when hidden, backgrounded, or interrupted.
 - Do not resume automatically when the player returns.
 - Clear keyboard, joystick, and action-button state after interruption.
@@ -76,6 +93,7 @@ window.EscapeeScores?.submit(displayedValue, {
 - Label icon-only buttons.
 - Keep pause and score-entry menus keyboard usable.
 - Give the three-character signature field an explicit accessible label and instructions.
+- Communicate loading, save failure, and success without relying only on color.
 - Maintain readable contrast.
 - Respect reduced-motion settings for nonessential animation.
 
@@ -84,6 +102,7 @@ window.EscapeeScores?.submit(displayedValue, {
 - Start with Web Audio unavailable.
 - Start with local storage unavailable.
 - Pause and resume.
+- Open High Scores and verify it shows only the current game.
 - Cancel and accept Home confirmation.
 - Restart repeatedly and verify only one loop runs.
 - Interrupt a held touch control and verify it releases.
@@ -94,6 +113,7 @@ window.EscapeeScores?.submit(displayedValue, {
 - Finish a run and verify the signature prompt appears once.
 - Verify lowercase and symbols are normalized or rejected correctly.
 - Verify Save remains disabled until exactly 3 valid characters are present.
-- Verify the saved score appears in the correct leaderboard order.
-- Verify the remembered signature is editable on the next game.
-- Verify Skip and storage failure both leave the game usable.
+- Verify the submitted score appears in the correct game's leaderboard order.
+- Verify no UI or API can edit or delete a submitted row.
+- Verify Skip works.
+- Disconnect the score service and verify the player is told nothing was recorded while the game remains usable.
