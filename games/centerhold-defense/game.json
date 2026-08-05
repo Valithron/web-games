@@ -1,0 +1,26 @@
+{
+  "slug": "centerhold-defense",
+  "title": "Centerhold Defense",
+  "description": "Circle the central base while your weapon fires automatically and hold off increasingly dangerous waves.",
+  "category": "Strategy",
+  "tags": [
+    "tower defense",
+    "waves",
+    "upgrades"
+  ],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": [
+    "WASD",
+    "Arrow keys",
+    "P to pause"
+  ],
+  "mobileControls": [
+    "Touch joystick",
+    "Pause button"
+  ],
+  "orientation": "landscape",
+  "sessionMinutes": "5–10 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}

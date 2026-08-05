@@ -6,6 +6,10 @@ const GAMES_DIR = path.join(ROOT, 'games');
 const REQUIRED = ['slug', 'title', 'description', 'category', 'thumbnail', 'desktopControls', 'mobileControls', 'orientation', 'status'];
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+async function hasFile(filePath) {
+  return access(filePath).then(() => true).catch(() => false);
+}
+
 export async function loadGames() {
   const entries = await readdir(GAMES_DIR, { withFileTypes: true });
   const games = [];
@@ -37,10 +41,15 @@ export async function loadGames() {
     if (!Array.isArray(game.desktopControls) || game.desktopControls.length === 0) throw new Error(`${entry.name}: desktopControls must not be empty`);
     if (!Array.isArray(game.mobileControls) || game.mobileControls.length === 0) throw new Error(`${entry.name}: mobileControls must not be empty`);
 
-    await access(path.join(dir, 'index.html'));
+    const hasHtml = await hasFile(path.join(dir, 'index.html'));
+    const hasGzipHtml = await hasFile(path.join(dir, 'index.html.gz'));
+    if (!hasHtml && !hasGzipHtml) {
+      throw new Error(`${entry.name}: missing index.html or index.html.gz`);
+    }
+
     await access(path.join(dir, game.thumbnail));
     seen.add(game.slug);
-    games.push({ ...game, sourceDir: dir });
+    games.push({ ...game, sourceDir: dir, compressedEntry: !hasHtml && hasGzipHtml });
   }
 
   return games;

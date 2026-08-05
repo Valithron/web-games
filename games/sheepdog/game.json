@@ -1,0 +1,26 @@
+{
+  "slug": "sheepdog",
+  "title": "Sheepdog",
+  "description": "Herd wandering sheep into the pen before time runs out while barking wolves away from the flock.",
+  "category": "Arcade",
+  "tags": [
+    "herding",
+    "animals",
+    "time attack"
+  ],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": [
+    "WASD",
+    "Arrow keys",
+    "Space to bark"
+  ],
+  "mobileControls": [
+    "Touch joystick",
+    "Bark button"
+  ],
+  "orientation": "any",
+  "sessionMinutes": "1 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}

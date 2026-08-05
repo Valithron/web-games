@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs><radialGradient id="l"><stop stop-color="#ffe2a2"/><stop offset=".25" stop-color="#ffbd59" stop-opacity=".7"/><stop offset="1" stop-color="#080704" stop-opacity="0"/></radialGradient></defs>
+<rect width="800" height="600" fill="#060605"/><circle cx="400" cy="330" r="270" fill="url(#l)"/>
+<g transform="translate(400 330)"><circle r="28" fill="#fff7e8"/><rect x="-20" y="20" width="40" height="52" rx="10" fill="#6f5438"/><path d="M-18 20V-30h36v50M-12-30q12-26 24 0" fill="none" stroke="#ffbd59" stroke-width="10"/></g>
+<g fill="#312720" opacity=".8"><circle cx="140" cy="350" r="32"/><circle cx="680" cy="260" r="38"/><circle cx="620" cy="500" r="28"/><circle cx="190" cy="510" r="35"/></g>
+<text x="44" y="87" fill="#fff7e8" font-family="system-ui,sans-serif" font-weight="900" font-size="68">LAST LANTERN</text>
+<text x="48" y="552" fill="#ffbd59" font-family="system-ui,sans-serif" font-weight="800" font-size="27">KEEP THE LIGHT ALIVE</text>
+</svg>

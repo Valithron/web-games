@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs><radialGradient id="g"><stop stop-color="#18334b"/><stop offset="1" stop-color="#080d15"/></radialGradient></defs>
+<rect width="800" height="600" fill="url(#g)"/>
+<g stroke="#ffffff" stroke-opacity=".05"><path d="M0 100h800M0 200h800M0 300h800M0 400h800M0 500h800"/><path d="M100 0v600M200 0v600M300 0v600M400 0v600M500 0v600M600 0v600M700 0v600"/></g>
+<circle cx="400" cy="330" r="70" fill="#142a2a" stroke="#78e6ad" stroke-width="12"/><rect x="375" y="305" width="50" height="50" transform="rotate(45 400 330)" fill="#78e6ad"/>
+<g fill="#ff657a"><circle cx="110" cy="250" r="29"/><circle cx="700" cy="430" r="34"/></g><g fill="#ff9f43"><path d="M180 470l24-48 24 48-48-30h48z"/></g><rect x="650" y="150" width="56" height="56" fill="#b88cff"/>
+<path d="M400 425l42 20-36 27z" fill="#f4f7fb"/>
+<text x="42" y="83" fill="#f4f7fb" font-family="system-ui,sans-serif" font-weight="900" font-size="58">CENTERHOLD DEFENSE</text>
+<text x="48" y="552" fill="#78e6ad" font-family="system-ui,sans-serif" font-weight="800" font-size="26">MOVE • AUTO-FIRE • SURVIVE</text>
+</svg>

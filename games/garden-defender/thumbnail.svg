@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<rect width="800" height="600" fill="#24341f"/><path d="M0 160h800v440H0z" fill="#4a3923"/>
+<g stroke="#725438" stroke-width="5" opacity=".6"><path d="M0 270h800M0 380h800M0 490h800"/><path d="M130 160v440M260 160v440M390 160v440M520 160v440M650 160v440"/></g>
+<g fill="#76b95a"><circle cx="210" cy="300" r="38"/><circle cx="265" cy="340" r="34"/><circle cx="340" cy="290" r="42"/><circle cx="420" cy="360" r="39"/><circle cx="505" cy="305" r="35"/></g>
+<g fill="#e3cf75"><circle cx="340" cy="290" r="10"/><circle cx="505" cy="305" r="9"/></g>
+<g transform="translate(580 390)"><circle r="34" fill="#6f8c4d"/><circle cy="-36" r="22" fill="#d8b37d"/><path d="M15 4l72-26" stroke="#b8d4df" stroke-width="15" stroke-linecap="round"/></g>
+<text x="44" y="88" fill="#f5efcf" font-family="system-ui,sans-serif" font-weight="900" font-size="62">GARDEN DEFENDER</text>
+<text x="48" y="548" fill="#d9c66d" font-family="system-ui,sans-serif" font-weight="700" font-size="27">GROW • WATER • DEFEND</text>
+</svg>

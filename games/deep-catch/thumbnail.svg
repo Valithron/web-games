@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#184f5d"/><stop offset="1" stop-color="#04121c"/></linearGradient></defs>
+<rect width="800" height="600" fill="url(#g)"/><circle cx="115" cy="120" r="92" fill="#e8cf76" opacity=".13"/>
+<path d="M400 0v310c0 82 112 88 112 5 0-35-26-58-58-58" fill="none" stroke="#f4ead2" stroke-width="12" stroke-linecap="round"/>
+<g fill="#71c1c8"><ellipse cx="220" cy="250" rx="72" ry="34"/><path d="M155 250l-54-43v86z"/></g>
+<g fill="#e89a7e"><ellipse cx="620" cy="390" rx="88" ry="40"/><path d="M540 390l-64-48v96z"/></g>
+<g fill="#f2c96d"><ellipse cx="310" cy="470" rx="55" ry="25"/><path d="M260 470l-42-32v64z"/></g>
+<text x="44" y="84" fill="#f4ead2" font-family="system-ui,sans-serif" font-weight="900" font-size="68">DEEP CATCH</text>
+<text x="48" y="548" fill="#9fb5bd" font-family="system-ui,sans-serif" font-weight="700" font-size="27">CAST • CATCH • UPGRADE</text>
+</svg>
