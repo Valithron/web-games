@@ -1,0 +1,15 @@
+{
+  "slug": "new-game",
+  "title": "New Game",
+  "description": "Replace this with a one-sentence description.",
+  "category": "Arcade",
+  "tags": ["quick", "mobile"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["WASD", "Arrow keys"],
+  "mobileControls": ["Virtual joystick", "Touch button"],
+  "orientation": "any",
+  "sessionMinutes": "1–3 min",
+  "published": "2026-08-05",
+  "featured": false,
+  "status": "draft"
+}
