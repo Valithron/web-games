@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#171a20">
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Hivefront | Escapee Games</title>
+</head>
+<body>
+  <main class="escapee-game-stage" id="game">
+    <canvas id="canvas" aria-label="Hivefront strategy board"></canvas>
+    <section id="menu" class="panel menu-panel" aria-label="Hivefront campaign">
+      <p class="eyebrow">YELLOW COLONY COMMAND</p>
+      <h1>HIVEFRONT</h1>
+      <p class="lede">Drag from one owned structure to a connected destination. Every order commits half its defenders.</p>
+      <div id="stageTabs" class="stage-tabs" aria-label="Campaign stages"></div>
+      <div id="levelGrid" class="level-grid" aria-label="Campaign levels"></div>
+      <button id="continueButton" class="primary-button">Begin Campaign</button>
+    </section>
+    <section id="result" class="panel result-panel hidden" aria-live="polite">
+      <p id="resultEyebrow" class="eyebrow"></p>
+      <h2 id="resultTitle"></h2>
+      <p id="resultDetail"></p>
+      <div id="resultSeals" class="result-seals"></div>
+      <div class="result-actions">
+        <button id="retryButton">Retry</button>
+        <button id="nextButton" class="primary-button">Next Level</button>
+        <button id="levelsButton">Level Select</button>
+      </div>
+    </section>
+    <div id="hud" class="hud hidden">
+      <div><span id="levelLabel">1-1</span><small id="levelTitle">First Crossing</small></div>
+      <div class="hud-time"><span id="timer">0:00</span><small id="sealTarget">★★ 1:30</small></div>
+    </div>
+    <div id="hint" class="hint hidden"></div>
+  </main>
+  <script>
+    window.EscapeeGame = {
+      restart() { location.reload(); },
+      getStatus() {
+        const hud = document.querySelector('#hud');
+        const result = document.querySelector('#result');
+        if (hud && !hud.classList.contains('hidden')) return 'playing';
+        if (result && !result.classList.contains('hidden')) return 'ended';
+        return 'menu';
+      },
+      pause() {},
+      resume() {},
+      setMuted() {}
+    };
+  </script>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>

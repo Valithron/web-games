@@ -1,0 +1,15 @@
+{
+  "slug": "hivefront",
+  "title": "Hivefront",
+  "description": "Command streaming insect armies across a minimalist network of hives and guard towers.",
+  "category": "Strategy",
+  "tags": ["strategy", "territory", "campaign", "touch"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["Mouse drag", "WASD / Arrow keys", "Enter"],
+  "mobileControls": ["Drag between connected structures", "Tap source then destination"],
+  "orientation": "any",
+  "sessionMinutes": "2–6 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}
