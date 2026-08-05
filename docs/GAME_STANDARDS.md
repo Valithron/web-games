@@ -8,9 +8,53 @@ These standards apply to every published game and to every new game created for 
 - Support desktop keyboard controls and mobile touch controls.
 - Remain playable in both portrait and landscape orientation.
 - Show one small floating pause button during play.
-- The pause menu must include Resume, Restart, Sound, Full screen, and Home.
+- The pause menu must include Resume, Restart, Sound, High Scores, Full screen, and Home.
 - Home must ask for confirmation while a run is active.
 - Returning from another tab or app must leave the game paused.
+
+## Signed high scores
+
+Every game with a numeric score must use the shared signed-score system.
+
+- Submit the final score exactly once after the game enters its game-over or results state.
+- Prompt for exactly three uppercase alphanumeric characters: A-Z and 0-9.
+- Remember the last valid signature across the arcade, but keep it editable.
+- Maintain a local top-10 leaderboard per game.
+- Rank higher numeric values first.
+- Allow a separate numeric `sortValue` when the displayed result is based on waves, time, kills, or another compound result.
+- The prompt must be keyboard accessible and work with mobile software keyboards.
+- The player may skip signing.
+- A storage error may prevent persistence but must never block results, replay, navigation, or the next run.
+- Guard against duplicate score submission from repeated end-state calls.
+
+Submit a standard score with:
+
+```js
+window.EscapeeScores?.submit(finalScore, {
+  label: 'Final score',
+  display: `${finalScore.toLocaleString()} points`
+});
+```
+
+Submit a compound result with a numeric ranking value:
+
+```js
+window.EscapeeScores?.submit(displayedValue, {
+  sortValue: numericRankingValue,
+  label: 'Defense score',
+  display: `Wave ${wave} · ${kills} kills`
+});
+```
+
+The runtime exposes:
+
+```js
+window.EscapeeScores.submit(score, options);
+window.EscapeeScores.getLeaderboard();
+window.EscapeeScores.show();
+```
+
+Leaderboards are local to the current browser and device. A global leaderboard requires a separate server-backed design.
 
 ## Mobile layout
 
@@ -52,7 +96,8 @@ Handle `pointerup`, `pointercancel`, `lostpointercapture`, blur, page hiding, an
 ## Accessibility
 
 - Icon-only controls require accessible labels.
-- Pause menus must be keyboard usable.
+- Pause and score-entry menus must be keyboard usable.
+- The signature field requires an explicit label and instructions.
 - Maintain readable contrast.
 - Respect reduced-motion preferences for nonessential effects.
 
@@ -87,6 +132,7 @@ Recommended status values are `menu`, `playing`, `paused`, `between-rounds`, and
 - Start works when Web Audio is unavailable.
 - Start works when storage is unavailable.
 - Pause and Resume work.
+- High Scores opens from the pause menu.
 - Home confirmation can be cancelled and accepted.
 - Restart does not duplicate the animation loop.
 - Touch controls release after interruption.
@@ -96,3 +142,10 @@ Recommended status values are `menu`, `playing`, `paused`, `between-rounds`, and
 - Backgrounding pauses the run.
 - Fullscreen denial does not break the menu.
 - No uncaught error blocks the main game loop.
+- A completed run opens score entry exactly once.
+- The signature accepts exactly three letters or numbers and normalizes to uppercase.
+- The Save button remains disabled until the signature is valid.
+- Scores are ordered correctly and limited to ten entries.
+- The previous signature is remembered but editable.
+- Skip works.
+- Storage failure does not trap the player or hide the original results screen.
