@@ -1,14 +1,13 @@
-import { mountGameShell } from '/shared/game-shell.js';
 import { createEscapeeInput } from '/shared/input.js';
 import { createEscapeeStorage } from '/shared/storage.js';
 
-mountGameShell({ title: 'New Game' });
 const canvas = document.querySelector('#canvas');
 const context = canvas.getContext('2d');
 const input = createEscapeeInput({ surface: canvas, joystick: document.querySelector('#joystick'), primary: document.querySelector('#primary') });
 const storage = createEscapeeStorage('new-game');
 let player = { x: 0, y: 0, radius: 18 };
 let paused = false;
+let status = 'playing';
 let last = performance.now();
 
 function resize() {
@@ -24,11 +23,19 @@ function restart() {
   const rect = canvas.getBoundingClientRect();
   player.x = rect.width / 2;
   player.y = rect.height / 2;
+  status = 'playing';
   storage.set('lastPlayed', new Date().toISOString());
 }
 
-window.EscapeeGame = { restart, pause: () => paused = true, resume: () => { paused = false; last = performance.now(); }, setMuted() {} };
+window.EscapeeGame = {
+  restart,
+  pause: () => { paused = true; status = 'paused'; },
+  resume: () => { paused = false; status = 'playing'; last = performance.now(); },
+  setMuted() {},
+  getStatus: () => status
+};
 addEventListener('resize', resize);
+window.visualViewport?.addEventListener('resize', resize);
 resize();
 
 function frame(now) {
