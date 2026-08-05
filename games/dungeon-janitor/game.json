@@ -1,0 +1,26 @@
+{
+  "slug": "dungeon-janitor",
+  "title": "Dungeon Janitor",
+  "description": "Clean bones, slime, broken weapons, and suspicious treasure before the next adventuring party arrives.",
+  "category": "Arcade",
+  "tags": [
+    "cleaning",
+    "dungeon",
+    "time attack"
+  ],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": [
+    "WASD",
+    "Arrow keys",
+    "Hold Space to clean"
+  ],
+  "mobileControls": [
+    "Touch joystick",
+    "Hold Clean button"
+  ],
+  "orientation": "any",
+  "sessionMinutes": "5–8 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}
