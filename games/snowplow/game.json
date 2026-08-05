@@ -1,0 +1,15 @@
+{
+  "slug": "snowplow",
+  "title": "Snowplow",
+  "description": "Keep a storm-buried town connected by clearing roads, managing fuel, and upgrading the municipal plow.",
+  "category": "Arcade",
+  "tags": ["driving", "management", "upgrades"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["WASD", "Arrow keys", "Space"],
+  "mobileControls": ["Virtual joystick", "Blower button"],
+  "orientation": "any",
+  "sessionMinutes": "3–6 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}
