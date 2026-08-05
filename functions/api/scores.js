@@ -28,7 +28,7 @@ async function ensureSchema(db) {
       id TEXT PRIMARY KEY,
       game_slug TEXT NOT NULL,
       signature TEXT NOT NULL CHECK (length(signature) = 3),
-      score INTEGER NOT NULL,
+      score INTEGER NOT NULL CHECK (score >= 0),
       display TEXT NOT NULL,
       label TEXT NOT NULL,
       created_at INTEGER NOT NULL
@@ -43,6 +43,10 @@ function cleanText(value, fallback, maxLength) {
   return (text || fallback).slice(0, maxLength);
 }
 
+function validGame(game) {
+  return GAME_SLUG.test(game) && game.length <= 64;
+}
+
 function sameOrigin(request) {
   const origin = request.headers.get('origin');
   if (!origin) return true;
@@ -55,14 +59,7 @@ function sameOrigin(request) {
 
 async function readLeaderboard(db, game) {
   const result = await db.prepare(`
-    SELECT
-      id,
-      game_slug AS game,
-      signature,
-      score,
-      display,
-      label,
-      created_at AS createdAt
+    SELECT id, game_slug AS game, signature, score, display, label, created_at AS createdAt
     FROM arcade_scores
     WHERE game_slug = ?1
     ORDER BY score DESC, created_at ASC
@@ -71,11 +68,44 @@ async function readLeaderboard(db, game) {
   return result.results || [];
 }
 
+async function qualification(db, game, score) {
+  const entries = await readLeaderboard(db, game);
+  const entryCount = entries.length;
+  const cutoffScore = entryCount < SCORE_LIMIT ? null : Number(entries[SCORE_LIMIT - 1].score);
+  const qualifies = entryCount < SCORE_LIMIT || score > cutoffScore;
+  const rank = qualifies ? entries.filter(entry => Number(entry.score) >= score).length + 1 : null;
+  return { game, score, qualifies, rank, entryCount, cutoffScore };
+}
+
 async function handleGet(request, db) {
-  const game = new URL(request.url).searchParams.get('game') || '';
-  if (!GAME_SLUG.test(game) || game.length > 64) {
-    return json({ error: 'A valid game slug is required.' }, 400);
+  const url = new URL(request.url);
+  const action = url.searchParams.get('action') || 'leaderboard';
+
+  if (action === 'all') {
+    const result = await db.prepare(`
+      SELECT id, game_slug AS game, signature, score, display, label, created_at AS createdAt
+      FROM arcade_scores
+      ORDER BY game_slug ASC, score DESC, created_at ASC
+    `).all();
+    const boards = {};
+    for (const entry of result.results || []) {
+      if (!boards[entry.game]) boards[entry.game] = [];
+      if (boards[entry.game].length < SCORE_LIMIT) boards[entry.game].push(entry);
+    }
+    return json({ boards });
   }
+
+  const game = url.searchParams.get('game') || '';
+  if (!validGame(game)) return json({ error: 'A valid game slug is required.' }, 400);
+
+  if (action === 'qualify') {
+    const score = Number(url.searchParams.get('score'));
+    if (!Number.isSafeInteger(score) || score < 0) {
+      return json({ error: 'Score must be a non-negative safe integer.' }, 400);
+    }
+    return json(await qualification(db, game, score));
+  }
+
   return json({ game, entries: await readLeaderboard(db, game) });
 }
 
@@ -93,14 +123,13 @@ async function handlePost(request, db) {
   const signature = String(body?.signature || '').toUpperCase();
   const score = Number(body?.score);
 
-  if (!GAME_SLUG.test(game) || game.length > 64) {
-    return json({ error: 'A valid game slug is required.' }, 400);
-  }
-  if (!SIGNATURE.test(signature)) {
-    return json({ error: 'Signature must be exactly three letters or numbers.' }, 400);
-  }
-  if (!Number.isSafeInteger(score) || score < 0) {
-    return json({ error: 'Score must be a non-negative safe integer.' }, 400);
+  if (!validGame(game)) return json({ error: 'A valid game slug is required.' }, 400);
+  if (!SIGNATURE.test(signature)) return json({ error: 'Signature must be exactly three letters or numbers.' }, 400);
+  if (!Number.isSafeInteger(score) || score < 0) return json({ error: 'Score must be a non-negative safe integer.' }, 400);
+
+  const check = await qualification(db, game, score);
+  if (!check.qualifies) {
+    return json({ error: 'This score no longer qualifies for the top ten.', code: 'SCORE_NO_LONGER_QUALIFIES', ...check, entries: await readLeaderboard(db, game) }, 409);
   }
 
   const entry = {
@@ -116,35 +145,30 @@ async function handlePost(request, db) {
   await db.prepare(`
     INSERT INTO arcade_scores (id, game_slug, signature, score, display, label, created_at)
     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)
-  `).bind(
-    entry.id,
-    entry.game,
-    entry.signature,
-    entry.score,
-    entry.display,
-    entry.label,
-    entry.createdAt
-  ).run();
+  `).bind(entry.id, entry.game, entry.signature, entry.score, entry.display, entry.label, entry.createdAt).run();
+
+  await db.prepare(`
+    DELETE FROM arcade_scores
+    WHERE game_slug = ?1 AND id NOT IN (
+      SELECT id FROM arcade_scores
+      WHERE game_slug = ?1
+      ORDER BY score DESC, created_at ASC
+      LIMIT ?2
+    )
+  `).bind(game, SCORE_LIMIT).run();
 
   return json({ entry, entries: await readLeaderboard(db, game) }, 201);
 }
 
 export async function onRequest({ request, env }) {
   const db = getDatabase(env);
-  if (!db) {
-    return json({
-      error: 'Score database binding is unavailable.',
-      expectedBinding: 'WEB_GAMES_SCORES'
-    }, 503);
-  }
+  if (!db) return json({ error: 'Score database binding is unavailable.', expectedBinding: 'WEB_GAMES_SCORES' }, 503);
 
   try {
     await ensureSchema(db);
     if (request.method === 'GET') return await handleGet(request, db);
     if (request.method === 'POST') return await handlePost(request, db);
-    return json({ error: 'Scores are insert-only and cannot be edited or deleted.' }, 405, {
-      allow: 'GET, POST'
-    });
+    return json({ error: 'Scores are insert-only and cannot be edited or deleted.' }, 405, { allow: 'GET, POST' });
   } catch (error) {
     console.error('Score API failure', error);
     return json({ error: 'The score service is temporarily unavailable.' }, 500);

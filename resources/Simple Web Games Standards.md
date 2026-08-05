@@ -4,60 +4,66 @@ Use this checklist when designing or reviewing every game in this project.
 
 ## Universal behavior
 
-- Full usable browser viewport, with no permanent navigation bar.
-- One small floating pause button.
+- Fill the usable browser viewport without a permanent navigation bar.
+- Show one small floating pause button.
 - Pause menu: Resume, Restart, Sound, High Scores, Full screen, Home.
 - Home asks for confirmation during an active run.
 - Both portrait and landscape must remain playable.
 - Desktop keyboard and mobile touch controls are both required.
 
-## Signed high scores
+## D1 high scores
 
-- Every scored run must submit its final score once after entering the game-over or results state.
-- The game is identified by its lowercase URL slug, and every score row must store that slug.
-- Show an arcade-style prompt asking the player to sign the score with exactly 3 characters.
-- Signatures may contain uppercase letters A-Z and numbers 0-9.
-- The player may edit the signature only before pressing Save Score.
-- Once saved, the game, signature, score, display text, record ID, and server timestamp are permanent.
-- Never provide edit, correction, overwrite, or delete controls. Mistaken submissions must remain as entered.
-- Store scores in the Cloudflare D1 database `web-games-scores`, not in browser local storage.
-- Use `WEB_GAMES_SCORES` as the recommended Pages binding name.
-- Keep a global top-10 leaderboard separately for each game and make it available from the pause menu.
-- Sort numeric scores from highest to lowest. Earlier server timestamps win ties.
-- Games with unusual scoring may provide a separate numeric sort value and human-readable display value.
-- The prompt must work with a physical keyboard and a mobile software keyboard.
-- The player may skip signing. Score entry must never trap the player or prevent replaying.
-- Network or D1 failure may prevent persistence, but it must not block the results screen or next run.
-- A failed save must say that nothing was recorded. Do not silently queue it for later.
-- Prevent duplicate submissions when an end function fires more than once.
+- D1 is the only authoritative score store. Never store scores, leaderboards, initials, ranks, or personal-best values in local storage.
+- Remove recognized legacy local score keys when the shared score runtime loads.
+- Identify every score by the game’s lowercase URL slug.
+- Check D1 qualification before asking for initials.
+- Every valid score qualifies while fewer than ten scores exist for that game.
+- Once ten scores exist, only a score strictly higher than the current tenth-place score qualifies. Earlier records win ties.
+- Ask qualifying players for exactly three uppercase letters or numbers.
+- Do not remember or prefill initials between runs.
+- The player may edit initials only before Save Score.
+- Saved game, initials, score, display text, record ID, and server timestamp are permanent.
+- No public edit, overwrite, correction, or delete controls are permitted.
+- Recheck qualification during POST because the cutoff may change before saving.
+- Retain only the top ten rows per game.
+- A failed qualification or save must never fall back to local storage.
+- Prevent duplicate completion submissions.
 
-Games submit scores through the shared runtime:
+A scored game must submit its authoritative final numeric score once from its game-over function:
 
 ```js
-window.EscapeeScores?.submit(finalScore, {
+window.EscapeeScores.submit(finalScore, {
   label: 'Final score',
   display: `${finalScore.toLocaleString()} points`
 });
 ```
 
-For a nonstandard score, use `sortValue` for ranking:
+Games with compound results may pass `sortValue` for numeric ranking and a separate readable display.
 
-```js
-window.EscapeeScores?.submit(displayedValue, {
-  sortValue: numericRankingValue,
-  label: 'Defense score',
-  display: `Wave ${wave} · ${kills} kills`
-});
-```
+API behavior:
 
-The shared API is insert-only:
+- `GET /api/scores?game=<slug>` returns one game’s top ten.
+- `GET /api/scores?game=<slug>&action=qualify&score=<number>` checks whether initials should be requested.
+- `GET /api/scores?action=all` returns all game boards for the arcade page.
+- `POST /api/scores` rechecks qualification and inserts one permanent record.
+- `PUT`, `PATCH`, and public `DELETE` are forbidden.
 
-- `GET /api/scores?game=<slug>` reads one game's top ten.
-- `POST /api/scores` inserts one permanent record.
-- No `PUT`, `PATCH`, or `DELETE` endpoint is permitted.
-- The server creates the D1 table and index automatically.
+## End-of-run presentation
 
-Browser storage may remember the last signature as a typing convenience, but it must not store authoritative scores or leaderboards.
+- Do not prompt for initials when the score does not qualify.
+- A successful saved score must show the full top ten with the new row highlighted.
+- Keep the leaderboard visible until the player chooses Play Again or Home.
+- If a score loses qualification before saving, show the updated board and explain that the cutoff changed.
+- D1 errors must clearly state that nothing was recorded.
+- High Scores must be available from every game’s pause menu.
+- The arcade must also provide a site-wide `/high-scores/` page with one board per scored game.
+
+## Shared runtime and caching
+
+- Every published game must receive the universal runtime, D1 score client, and universal stylesheet.
+- Shared runtime asset URLs must be versioned or content-hashed whenever behavior changes.
+- Scored games must not silently omit their completion hook.
+- The build should fail when required score integration is missing.
 
 ## Responsive mobile rules
 
@@ -67,53 +73,26 @@ Browser storage may remember the last signature as a typing convenience, but it 
 - Reflow portrait and landscape layouts instead of shrinking the desktop layout.
 - Use touch targets of at least 48 by 48 pixels.
 - Prevent page scrolling and overscroll during play.
-- Test small portrait and short landscape screens.
 
-## Reliability rules
+## Reliability and accessibility
 
-- Audio failure must never block gameplay.
-- Storage failure must never block gameplay.
-- Network or D1 failure must never block gameplay.
-- Pause when hidden, backgrounded, or interrupted.
-- Do not resume automatically when the player returns.
+- Audio, storage, network, D1, and fullscreen failure must never block gameplay.
+- Pause when hidden, backgrounded, or interrupted and never auto-resume.
 - Clear keyboard, joystick, and action-button state after interruption.
-- Use one animation loop. Restart must not create another loop.
-- Cap frame delta after interruptions.
-- Catch rejected fullscreen and audio promises.
-
-## Canvas rules
-
-- Match backing resolution to displayed size.
-- Cap device pixel ratio at 2 unless testing proves otherwise.
-- Resize after browser-bar changes, rotation, fullscreen changes, and viewport changes.
-- Keep important game objects and controls visible in both orientations.
-
-## Accessibility
-
-- Label icon-only buttons.
-- Keep pause and score-entry menus keyboard usable.
-- Give the three-character signature field an explicit accessible label and instructions.
-- Communicate loading, save failure, and success without relying only on color.
-- Maintain readable contrast.
-- Respect reduced-motion settings for nonessential animation.
+- Restart must not create another animation loop.
+- Label icon-only controls and score fields.
+- Keep pause, qualification, and leaderboard interfaces keyboard usable.
+- Communicate loading, success, failure, and nonqualification without relying only on color.
 
 ## Pre-publish test
 
-- Start with Web Audio unavailable.
-- Start with local storage unavailable.
-- Pause and resume.
-- Open High Scores and verify it shows only the current game.
-- Cancel and accept Home confirmation.
-- Restart repeatedly and verify only one loop runs.
-- Interrupt a held touch control and verify it releases.
-- Rotate during play.
-- Test at 320 by 568, modern phone portrait, phone landscape, tablet, and desktop.
-- Verify no menu or HUD overflows.
-- Verify backgrounding pauses the game.
-- Finish a run and verify the signature prompt appears once.
-- Verify lowercase and symbols are normalized or rejected correctly.
-- Verify Save remains disabled until exactly 3 valid characters are present.
-- Verify the submitted score appears in the correct game's leaderboard order.
-- Verify no UI or API can edit or delete a submitted row.
-- Verify Skip works.
-- Disconnect the score service and verify the player is told nothing was recorded while the game remains usable.
+- Complete a run with zero through nine existing rows and confirm initials entry appears.
+- Confirm a score higher than tenth place prompts when ten rows exist.
+- Confirm a score equal to or below tenth place does not prompt.
+- Confirm initials begin blank and accept exactly three letters or numbers.
+- Confirm successful save shows the updated board until Play Again or Home.
+- Confirm one game’s scores never appear in another game.
+- Confirm old local score and initials keys are removed and cannot affect qualification.
+- Confirm failed D1 requests create no local fallback.
+- Confirm High Scores works from the pause menu and `/high-scores/`.
+- Test small portrait, phone landscape, tablet, and desktop.

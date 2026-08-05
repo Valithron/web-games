@@ -1,11 +1,14 @@
-import { access, readFile, writeFile } from 'node:fs/promises';
+import { access, cp, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { loadGames } from './validate-games.mjs';
 
-const DIST = path.join(process.cwd(), 'dist');
-const universalScript = '<script src="/shared/universal-game.js"></script>';
-const scoreScript = '<script src="/shared/d1-scores.js"></script>';
-const universalStyle = '<link rel="stylesheet" href="/shared/universal-game.css">';
+const ROOT = process.cwd();
+const DIST = path.join(ROOT, 'dist');
+const SITE = path.join(ROOT, 'site');
+const ASSET_VERSION = '20260805-2';
+const universalScript = `<script src="/shared/universal-game.js?v=${ASSET_VERSION}"></script>`;
+const scoreScript = `<script src="/shared/d1-scores.js?v=${ASSET_VERSION}"></script>`;
+const universalStyle = `<link rel="stylesheet" href="/shared/universal-game.css?v=${ASSET_VERSION}">`;
 
 const scoreHooks = {
   'deep-catch': {
@@ -31,6 +34,11 @@ const scoreHooks = {
 };
 
 function injectSharedRuntime(html) {
+  html = html
+    .replace(/\/shared\/universal-game\.js(?:\?v=[^"']*)?/g, `/shared/universal-game.js?v=${ASSET_VERSION}`)
+    .replace(/\/shared\/d1-scores\.js(?:\?v=[^"']*)?/g, `/shared/d1-scores.js?v=${ASSET_VERSION}`)
+    .replace(/\/shared\/universal-game\.css(?:\?v=[^"']*)?/g, `/shared/universal-game.css?v=${ASSET_VERSION}`);
+
   if (!html.includes('/shared/universal-game.css')) {
     html = html.replace(/<head([^>]*)>/i, `<head$1>${universalStyle}`);
   }
@@ -39,10 +47,8 @@ function injectSharedRuntime(html) {
     const scripts = `${universalScript}${html.includes('/shared/d1-scores.js') ? '' : scoreScript}`;
     html = html.replace(/<head([^>]*)>/i, `<head$1>${scripts}`);
   } else if (!html.includes('/shared/d1-scores.js')) {
-    const universalPattern = /<script\b[^>]*src=["']\/shared\/universal-game\.js["'][^>]*><\/script>/i;
-    if (!universalPattern.test(html)) {
-      throw new Error('Universal runtime script tag could not be located for D1 score injection.');
-    }
+    const universalPattern = /<script\b[^>]*src=["']\/shared\/universal-game\.js(?:\?v=[^"']*)?["'][^>]*><\/script>/i;
+    if (!universalPattern.test(html)) throw new Error('Universal runtime script tag could not be located for D1 score injection.');
     html = html.replace(universalPattern, match => `${match}${scoreScript}`);
   }
 
@@ -65,16 +71,13 @@ for (const game of (await loadGames()).filter(item => item.status === 'published
     html = html.replace(hook.needle, hook.replacement);
   }
 
-  if (!html.includes('/shared/universal-game.js') || !html.includes('/shared/universal-game.css')) {
-    throw new Error(`${game.slug}: universal runtime injection failed`);
-  }
-  if (!html.includes('/shared/d1-scores.js')) {
-    throw new Error(`${game.slug}: D1 score runtime injection failed`);
-  }
-  if (hook && !html.includes('window.EscapeeScores?.submit')) {
-    throw new Error(`${game.slug}: high-score submission hook failed`);
-  }
+  if (!html.includes('/shared/universal-game.js') || !html.includes('/shared/universal-game.css')) throw new Error(`${game.slug}: universal runtime injection failed`);
+  if (!html.includes('/shared/d1-scores.js')) throw new Error(`${game.slug}: D1 score runtime injection failed`);
+  if (hook && !html.includes('window.EscapeeScores?.submit')) throw new Error(`${game.slug}: high-score submission hook failed`);
   await writeFile(file, html);
 }
 
-console.log('Applied the universal pause, viewport, lifecycle, Home, and immutable D1 high-score baseline to all published games.');
+await mkdir(path.join(DIST, 'high-scores'), { recursive: true });
+await cp(path.join(SITE, 'high-scores'), path.join(DIST, 'high-scores'), { recursive: true });
+
+console.log('Applied the universal game baseline, versioned D1 scores, and site-wide leaderboards.');
