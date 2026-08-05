@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#173451">
+  <title>Snowplow | Escapee Games</title>
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="game" aria-label="Snowplow game">
+    <canvas id="canvas" aria-label="Snow-covered town map"></canvas>
+
+    <section class="hud" aria-label="Game status">
+      <div class="hud-card"><span class="hud-label">Storm</span><span class="hud-value" id="roundValue">1</span><div class="meter"><i id="roundFill"></i></div></div>
+      <div class="hud-card"><span class="hud-label">Town open</span><span class="hud-value" id="accessValue">100%</span><div class="meter"><i id="accessFill"></i></div></div>
+      <div class="hud-card"><span class="hud-label">Fuel</span><span class="hud-value" id="fuelValue">100%</span><div class="meter"><i id="fuelFill"></i></div></div>
+      <div class="hud-card"><span class="hud-label">Score</span><span class="hud-value" id="scoreValue">0</span><div class="meter"><i id="scoreFill"></i></div></div>
+    </section>
+
+    <div class="message" id="message" role="status" aria-live="polite"></div>
+    <div class="warning" id="warning" role="alert" hidden></div>
+
+    <div class="touch-controls" aria-label="Touch controls">
+      <button class="joystick" id="joystick" aria-label="Steer snowplow"></button>
+      <button class="action is-locked" id="blowerButton" aria-label="Use snow blower">Blower<small id="blowerCharges">Locked</small></button>
+    </div>
+
+    <section class="overlay" id="startOverlay">
+      <div class="panel">
+        <div class="eyebrow">Municipal storm shift</div>
+        <h1>Snowplow</h1>
+        <p>Clear the roads before four buildings are cut off. Return to the <strong>garage</strong> for fuel.</p>
+        <button class="primary-button" id="startButton" type="button">Start the plow</button>
+        <div class="controls-copy">WASD or arrows to drive. Space uses the blower after it is unlocked.</div>
+      </div>
+    </section>
+
+    <section class="overlay" id="upgradeOverlay" hidden>
+      <div class="panel">
+        <div class="eyebrow" id="roundComplete">Storm 1 cleared</div>
+        <h2>Choose an upgrade</h2>
+        <p>The garage crew refueled the truck. The next snowfall will be heavier.</p>
+        <div class="upgrade-grid" id="upgradeGrid"></div>
+      </div>
+    </section>
+
+    <section class="overlay" id="gameOverOverlay" hidden>
+      <div class="panel">
+        <div class="eyebrow">Town access failed</div>
+        <h2>Roads closed</h2>
+        <p>Too many buildings remained inaccessible. Upgrade the route that failed first and try another shift.</p>
+        <div class="score-row">
+          <div class="score-box"><small>Score</small><b id="finalScore">0</b></div>
+          <div class="score-box"><small>Best</small><b id="bestScore">0</b></div>
+        </div>
+        <button class="primary-button" id="restartButton" type="button">Try again</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>
