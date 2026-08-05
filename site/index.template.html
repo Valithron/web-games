@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#173568">
+  <meta name="description" content="Escapee Games is a free collection of small browser games built for desktop and mobile.">
+  <meta property="og:title" content="Escapee Games">
+  <meta property="og:description" content="Tiny games. Quick escapes. No accounts or downloads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fun.skpfam.com/">
+  <meta property="og:image" content="https://fun.skpfam.com/assets/social-card.svg">
+  <link rel="icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/site.css">
+  <script src="/site.js" defer></script>
+  <title>Escapee Games</title>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a class="brand" href="/" aria-label="Escapee Games home">
+        <span class="brand__badge">EG</span>
+        <span><strong>Escapee Games</strong><small>Tiny games. Quick escapes.</small></span>
+      </a>
+      <div class="arcade-status"><span class="status-light"></span>{{GAME_COUNT}} games online</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="kicker">Free browser arcade</p>
+        <h1 id="page-title">Pick a game and disappear for a minute.</h1>
+        <p>Fast, stripped-down games made to work equally well with a keyboard, mouse, or touchscreen.</p>
+      </div>
+      <div class="hero__panel" aria-hidden="true"><span>NO LOGIN</span><span>NO DOWNLOAD</span><span>MOBILE READY</span></div>
+    </section>
+
+    <section class="catalog" aria-label="Available games">
+      <div class="catalog__tools">
+        <label class="search"><span>Search</span><input id="game-search" type="search" placeholder="Find a game..." autocomplete="off"></label>
+        <div class="filters" id="filters" aria-label="Filter games"><!-- FILTERS --></div>
+      </div>
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div class="game-grid" id="game-grid"><!-- GAME_GRID --></div>
+      <div class="no-results" id="no-results" hidden>No games match that search.</div>
+    </section>
+  </main>
+
+  <footer><p>Free browser games. No accounts. No downloads.</p><a href="https://github.com/Valithron/web-games">Source on GitHub</a></footer>
+</body>
+</html>
