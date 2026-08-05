@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#17131d">
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <title>Dungeon Janitor | Escapee Games</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="game" aria-label="Dungeon Janitor game">
+    <canvas id="canvas" aria-label="Dungeon room"></canvas>
+    <div class="hud" aria-live="polite">
+      <div class="hud__room"><small id="roomLabel">Shift</small><strong id="roomName">Awaiting assignment</strong><div class="meter"><span id="cleanMeter"></span></div></div>
+      <div class="hud__stat" id="timeStat"><small>Party arrives</small><strong id="timeValue">--</strong></div>
+      <div class="hud__stat"><small>Score</small><strong id="scoreValue">0</strong></div>
+    </div>
+    <div class="prompt" id="prompt">Hold Space or CLEAN</div>
+    <div class="controls" aria-label="Touch controls">
+      <button class="joystick" id="joystick" type="button" aria-label="Move janitor"></button>
+      <button class="clean" id="cleanBtn" type="button" aria-label="Hold to clean">CLEAN</button>
+    </div>
+
+    <section class="screen" id="startScreen">
+      <div class="card">
+        <p class="eyebrow">Night shift assignment</p>
+        <h1>Dungeon<br>Janitor</h1>
+        <p>Move close to the mess and hold <strong>Space</strong> or <strong>CLEAN</strong>. Finish before the next adventuring party arrives.</p>
+        <button class="primary" id="startBtn" type="button">Clock In</button>
+        <div class="mini">WASD / arrow keys · Space · touch controls</div>
+      </div>
+    </section>
+
+    <section class="screen" id="upgradeScreen" hidden>
+      <div class="card">
+        <p class="eyebrow">Room sanitized</p>
+        <h2>Choose a Supply</h2>
+        <p id="roomSummary">Management is briefly satisfied.</p>
+        <div class="upgrades" id="upgradeChoices"></div>
+      </div>
+    </section>
+
+    <section class="screen" id="endScreen" hidden>
+      <div class="card">
+        <p class="eyebrow" id="endEyebrow">Shift ended</p>
+        <h2 id="endTitle">The heroes arrived.</h2>
+        <p id="endSummary"></p>
+        <button class="primary" id="againBtn" type="button">Work Another Shift</button>
+        <div class="mini" id="bestLine"></div>
+      </div>
+    </section>
+  </main>
+  <button id="soundBtn" type="button" aria-label="Toggle sound">Sound</button>
+
+<script src="./game.js"></script>
+</body>
+</html>
