@@ -1,0 +1,25 @@
+{
+  "slug": "deep-catch",
+  "title": "Deep Catch",
+  "description": "Steer an automatic fishing hook, catch valuable fish, dodge junk, and upgrade your rig to reach darker water.",
+  "category": "Arcade",
+  "tags": [
+    "fishing",
+    "upgrades",
+    "score attack"
+  ],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": [
+    "A/D",
+    "Arrow keys"
+  ],
+  "mobileControls": [
+    "Touch arrows",
+    "Drag on water"
+  ],
+  "orientation": "any",
+  "sessionMinutes": "1–2 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}

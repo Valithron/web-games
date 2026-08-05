@@ -1,5 +1,7 @@
-import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { access, cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { gunzip } from 'node:zlib';
+import { promisify } from 'node:util';
 import { loadGames } from './validate-games.mjs';
 
 const ROOT = process.cwd();
@@ -7,6 +9,7 @@ const DIST = path.join(ROOT, 'dist');
 const SITE = path.join(ROOT, 'site');
 const SHARED = path.join(ROOT, 'shared');
 const BASE_URL = 'https://fun.skpfam.com';
+const unzip = promisify(gunzip);
 
 const esc = (value = '') => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
 
@@ -45,10 +48,18 @@ async function build() {
   await cp(path.join(SITE, 'site.css'), path.join(DIST, 'site.css'));
   await cp(path.join(SITE, 'site.js'), path.join(DIST, 'site.js'));
   await cp(path.join(SITE, '404.html'), path.join(DIST, '404.html'));
-  await writeFile(path.join(DIST, 'games.json'), JSON.stringify(games.map(({ sourceDir, ...game }) => game), null, 2));
+  await writeFile(path.join(DIST, 'games.json'), JSON.stringify(games.map(({ sourceDir, compressedEntry, ...game }) => game), null, 2));
 
   for (const game of games) {
-    await cp(game.sourceDir, path.join(DIST, game.slug), { recursive: true });
+    const targetDir = path.join(DIST, game.slug);
+    await cp(game.sourceDir, targetDir, { recursive: true });
+
+    const compressed = path.join(targetDir, 'index.html.gz');
+    if (game.compressedEntry && await access(compressed).then(() => true).catch(() => false)) {
+      const html = await unzip(await readFile(compressed));
+      await writeFile(path.join(targetDir, 'index.html'), html);
+      await rm(compressed, { force: true });
+    }
   }
 
   const urls = ['', ...games.map(game => game.slug)].map(slug => `<url><loc>${BASE_URL}/${slug ? `${slug}/` : ''}</loc></url>`).join('');

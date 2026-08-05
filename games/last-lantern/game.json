@@ -1,0 +1,26 @@
+{
+  "slug": "last-lantern",
+  "title": "Last Lantern",
+  "description": "Carry a fading lantern through the dark, burn nearby creatures, collect fuel, and survive escalating waves.",
+  "category": "Survival",
+  "tags": [
+    "darkness",
+    "waves",
+    "upgrades"
+  ],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": [
+    "WASD",
+    "Arrow keys",
+    "P to pause"
+  ],
+  "mobileControls": [
+    "Touch joystick",
+    "Pause button"
+  ],
+  "orientation": "any",
+  "sessionMinutes": "5–10 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}

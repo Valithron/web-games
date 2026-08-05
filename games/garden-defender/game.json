@@ -1,0 +1,24 @@
+{
+  "slug": "garden-defender",
+  "title": "Garden Defender",
+  "description": "Water spreading plants and automatically spray pests while trying to finish with the healthiest garden possible.",
+  "category": "Strategy",
+  "tags": [
+    "garden",
+    "survival",
+    "coverage"
+  ],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": [
+    "WASD",
+    "Arrow keys"
+  ],
+  "mobileControls": [
+    "Touch joystick"
+  ],
+  "orientation": "any",
+  "sessionMinutes": "2–3 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}
