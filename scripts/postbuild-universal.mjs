@@ -3,7 +3,9 @@ import path from 'node:path';
 import { loadGames } from './validate-games.mjs';
 
 const DIST = path.join(process.cwd(), 'dist');
-const bootstrap = '<script src="/shared/universal-game.js"></script><script src="/shared/d1-scores.js"></script><link rel="stylesheet" href="/shared/universal-game.css">';
+const universalScript = '<script src="/shared/universal-game.js"></script>';
+const scoreScript = '<script src="/shared/d1-scores.js"></script>';
+const universalStyle = '<link rel="stylesheet" href="/shared/universal-game.css">';
 
 const scoreHooks = {
   'deep-catch': {
@@ -28,6 +30,25 @@ const scoreHooks = {
   }
 };
 
+function injectSharedRuntime(html) {
+  if (!html.includes('/shared/universal-game.css')) {
+    html = html.replace(/<head([^>]*)>/i, `<head$1>${universalStyle}`);
+  }
+
+  if (!html.includes('/shared/universal-game.js')) {
+    const scripts = `${universalScript}${html.includes('/shared/d1-scores.js') ? '' : scoreScript}`;
+    html = html.replace(/<head([^>]*)>/i, `<head$1>${scripts}`);
+  } else if (!html.includes('/shared/d1-scores.js')) {
+    const universalPattern = /<script\b[^>]*src=["']\/shared\/universal-game\.js["'][^>]*><\/script>/i;
+    if (!universalPattern.test(html)) {
+      throw new Error('Universal runtime script tag could not be located for D1 score injection.');
+    }
+    html = html.replace(universalPattern, match => `${match}${scoreScript}`);
+  }
+
+  return html;
+}
+
 for (const game of (await loadGames()).filter(item => item.status === 'published')) {
   const file = path.join(DIST, game.slug, 'index.html');
   await access(file);
@@ -35,7 +56,8 @@ for (const game of (await loadGames()).filter(item => item.status === 'published
   if (!/viewport-fit=cover/i.test(html)) {
     html = html.replace(/<meta\s+name=["']viewport["']\s+content=["']([^"']*)["']\s*\/?\s*>/i, (_, content) => `<meta name="viewport" content="${content},viewport-fit=cover">`);
   }
-  if (!html.includes('/shared/universal-game.js')) html = html.replace(/<head([^>]*)>/i, `<head$1>${bootstrap}`);
+
+  html = injectSharedRuntime(html);
 
   const hook = scoreHooks[game.slug];
   if (hook && !html.includes('window.EscapeeScores?.submit')) {
