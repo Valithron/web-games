@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Falling Kingdom game thumbnail</title>
+  <desc id="desc">A tiny castle platform catches villagers and supplies while rocks and fire fall from the sky.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#263955"/><stop offset=".65" stop-color="#596678"/><stop offset="1" stop-color="#9b7d5d"/></linearGradient>
+    <linearGradient id="ground" x2="0" y2="1"><stop stop-color="#8f714d"/><stop offset="1" stop-color="#594330"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="150" cy="120" r="70" fill="#f4d38b" opacity=".2"/>
+  <g opacity=".17" fill="#eef1f1"><ellipse cx="210" cy="175" rx="110" ry="24"/><ellipse cx="590" cy="115" rx="135" ry="30"/><ellipse cx="470" cy="235" rx="90" ry="19"/></g>
+  <g filter="url(#shadow)">
+    <path d="M155 438h490l-36 94H191z" fill="url(#ground)" stroke="#d2b078" stroke-width="8"/>
+    <rect x="330" y="328" width="140" height="110" fill="#8e765b"/>
+    <path d="M308 328l92-78 92 78z" fill="#5d493a"/>
+    <rect x="378" y="374" width="44" height="64" fill="#efc765"/>
+    <rect x="452" y="267" width="8" height="70" fill="#47372d"/>
+    <path d="M460 268l64 20-64 22z" fill="#c94f4d"/>
+    <g fill="#8fac68"><rect x="215" y="378" width="82" height="60"/><path d="M202 378l54-42 54 42z"/></g>
+    <g fill="#96725a"><rect x="510" y="372" width="70" height="66"/><path d="M497 372l48-44 48 44z"/></g>
+    <g fill="#e4bd91"><circle cx="275" cy="410" r="10"/><circle cx="319" cy="420" r="10"/><circle cx="485" cy="408" r="10"/></g>
+  </g>
+  <g filter="url(#shadow)">
+    <g transform="translate(180 240)"><circle cy="-12" r="13" fill="#e5c49c"/><rect x="-12" y="2" width="24" height="32" fill="#708a67"/></g>
+    <g transform="translate(350 170) rotate(-12)"><rect x="-28" y="-14" width="56" height="28" fill="#a87545" stroke="#6e482b" stroke-width="6"/></g>
+    <g transform="translate(555 205)"><path d="M0-30c30 25 32 58 0 70-32-12-30-45 0-70z" fill="#f07b47"/><path d="M0-8c14 14 13 30 0 36-13-6-14-22 0-36z" fill="#ffd15c"/></g>
+    <g transform="translate(675 280)"><path d="M0-28l27 18 4 32-28 17-30-16-4-29z" fill="#626871"/></g>
+    <circle cx="445" cy="150" r="20" fill="#edc95f" stroke="#fff0a7" stroke-width="6"/>
+  </g>
+  <path d="M125 445q275-175 550 0" fill="none" stroke="#c0abff" stroke-width="10" opacity=".55"/>
+  <text x="400" y="88" text-anchor="middle" fill="#fff4d6" font-family="Arial,sans-serif" font-size="66" font-weight="900" letter-spacing="3">FALLING KINGDOM</text>
+  <text x="400" y="565" text-anchor="middle" fill="#f0cf7d" font-family="Arial,sans-serif" font-size="25" font-weight="800">CATCH · BUILD · ENDURE</text>
+</svg>

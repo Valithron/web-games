@@ -1,0 +1,15 @@
+{
+  "slug": "falling-kingdom",
+  "title": "Falling Kingdom",
+  "description": "Catch villagers and supplies, dodge falling hazards, and grow a tiny living kingdom before the sky destroys it.",
+  "category": "Arcade",
+  "tags": ["kingdom", "catching", "upgrades"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["A/D", "Arrow keys", "Space for shield"],
+  "mobileControls": ["Drag or touch steering", "Shield button"],
+  "orientation": "any",
+  "sessionMinutes": "6–10 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}
