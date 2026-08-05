@@ -1,6 +1,6 @@
 import { access, cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { gunzip } from 'node:zlib';
+import { gunzip, inflateRaw } from 'node:zlib';
 import { promisify } from 'node:util';
 import { loadGames } from './validate-games.mjs';
 
@@ -10,6 +10,51 @@ const SITE = path.join(ROOT, 'site');
 const SHARED = path.join(ROOT, 'shared');
 const BASE_URL = 'https://fun.skpfam.com';
 const unzip = promisify(gunzip);
+const inflate = promisify(inflateRaw);
+
+function gzipPayloadOffset(buffer) {
+  if (buffer.length < 18 || buffer[0] !== 0x1f || buffer[1] !== 0x8b || buffer[2] !== 8) {
+    throw new Error('Invalid gzip header');
+  }
+
+  const flags = buffer[3];
+  let offset = 10;
+
+  if (flags & 0x04) {
+    if (offset + 2 > buffer.length) throw new Error('Invalid gzip extra field');
+    const length = buffer.readUInt16LE(offset);
+    offset += 2 + length;
+  }
+
+  for (const flag of [0x08, 0x10]) {
+    if (!(flags & flag)) continue;
+    while (offset < buffer.length && buffer[offset] !== 0) offset += 1;
+    offset += 1;
+  }
+
+  if (flags & 0x02) offset += 2;
+  if (offset >= buffer.length - 8) throw new Error('Invalid gzip payload');
+  return offset;
+}
+
+async function decodeGameHtml(compressed, slug) {
+  let html;
+
+  try {
+    html = await unzip(compressed);
+  } catch (error) {
+    if (error?.code !== 'Z_DATA_ERROR') throw error;
+    const payloadStart = gzipPayloadOffset(compressed);
+    html = await inflate(compressed.subarray(payloadStart, -8));
+    console.warn(`${slug}: recovered HTML from a gzip stream with an invalid checksum`);
+  }
+
+  const text = html.toString('utf8').trim();
+  if (!/^<!doctype html>/i.test(text) || !/<\/html>\s*$/i.test(text)) {
+    throw new Error(`${slug}: decoded game is not a complete HTML document`);
+  }
+  return text;
+}
 
 const esc = (value = '') => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
 
@@ -56,7 +101,7 @@ async function build() {
 
     const compressed = path.join(targetDir, 'index.html.gz');
     if (game.compressedEntry && await access(compressed).then(() => true).catch(() => false)) {
-      const html = await unzip(await readFile(compressed));
+      const html = await decodeGameHtml(await readFile(compressed), game.slug);
       await writeFile(path.join(targetDir, 'index.html'), html);
       await rm(compressed, { force: true });
     }
