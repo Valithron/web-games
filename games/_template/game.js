@@ -23,14 +23,27 @@ function restart() {
   const rect = canvas.getBoundingClientRect();
   player.x = rect.width / 2;
   player.y = rect.height / 2;
+  paused = false;
   status = 'playing';
+  last = performance.now();
   storage.set('lastPlayed', new Date().toISOString());
+}
+
+// Call this once after the game enters its results or game-over state.
+function finishGame(finalScore) {
+  if (status === 'game-over') return;
+  status = 'game-over';
+  paused = true;
+  window.EscapeeScores?.submit(finalScore, {
+    label: 'Final score',
+    display: `${finalScore.toLocaleString()} points`
+  });
 }
 
 window.EscapeeGame = {
   restart,
-  pause: () => { paused = true; status = 'paused'; },
-  resume: () => { paused = false; status = 'playing'; last = performance.now(); },
+  pause: () => { if (status === 'playing') status = 'paused'; paused = true; },
+  resume: () => { paused = false; if (status === 'paused') status = 'playing'; last = performance.now(); },
   setMuted() {},
   getStatus: () => status
 };
