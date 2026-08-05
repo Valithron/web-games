@@ -155,6 +155,13 @@
     ui.overlay.hidden = true;
     ui.entry.hidden = false;
     ui.board.hidden = true;
+    if (ui.returnToPause) {
+      ui.returnToPause = false;
+      ui.pauseOverlay.hidden = false;
+      ui.pauseButton.hidden = true;
+      ui.resumeButton.focus();
+      return;
+    }
     ui.pauseButton.hidden = false;
     ui.pauseButton.focus();
   };
@@ -163,17 +170,16 @@
     const score = Number(options.sortValue ?? rawScore);
     if (!Number.isFinite(score)) return false;
 
-    const now = Date.now();
-    if (runtime.lastScore === score && now - runtime.lastScoreAt < 1500) return false;
-    runtime.lastScore = score;
-    runtime.lastScoreAt = now;
-
     const ui = runtime.scoreUi;
     if (!ui) {
       addEventListener('DOMContentLoaded', () => submitScore(rawScore, options), { once: true });
       return true;
     }
 
+    const now = Date.now();
+    if (runtime.lastScore === score && now - runtime.lastScoreAt < 1500) return false;
+    runtime.lastScore = score;
+    runtime.lastScoreAt = now;
     runtime.active = false;
     clearInputs();
     ui.current = {
@@ -274,6 +280,9 @@
       save: scoreOverlay.querySelector('[data-score-action="save"]'),
       done: scoreOverlay.querySelector('[data-score-action="done"]'),
       rows: scoreOverlay.querySelector('.escapee-score-rows'),
+      pauseOverlay: overlay,
+      resumeButton: overlay.querySelector('[data-escapee-action="resume"]'),
+      returnToPause: false,
       current: null
     };
 
@@ -311,6 +320,7 @@
         return;
       }
       if (action === 'scores') {
+        runtime.scoreUi.returnToPause = true;
         overlay.hidden = true;
         showLeaderboard();
         return;
@@ -344,6 +354,12 @@
       const normalized = normalizeSignature(runtime.scoreUi.input.value);
       if (runtime.scoreUi.input.value !== normalized) runtime.scoreUi.input.value = normalized;
       runtime.scoreUi.save.disabled = normalized.length !== 3;
+    });
+    runtime.scoreUi.input.addEventListener('keydown', event => {
+      if (event.code === 'Enter' && !runtime.scoreUi.save.disabled) {
+        event.preventDefault();
+        runtime.scoreUi.save.click();
+      }
     });
 
     scoreOverlay.addEventListener('click', event => {
@@ -395,6 +411,7 @@
     });
 
     const markActive = event => {
+      if (event.target.closest?.('.escapee-pause-button,.escapee-pause-overlay,.escapee-confirm-overlay,.escapee-score-overlay')) return;
       if (event.target.closest?.('button,input,[role="button"]')) runtime.active = true;
     };
     document.addEventListener('pointerdown', markActive, true);
