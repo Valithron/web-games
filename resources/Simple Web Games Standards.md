@@ -6,10 +6,42 @@ Use this checklist when designing or reviewing every game in this project.
 
 - Full usable browser viewport, with no permanent navigation bar.
 - One small floating pause button.
-- Pause menu: Resume, Restart, Sound, Full screen, Home.
+- Pause menu: Resume, Restart, Sound, High Scores, Full screen, Home.
 - Home asks for confirmation during an active run.
 - Both portrait and landscape must remain playable.
 - Desktop keyboard and mobile touch controls are both required.
+
+## Signed high scores
+
+- Every scored run must submit its final score once after entering the game-over or results state.
+- Show an arcade-style prompt asking the player to sign the score with exactly 3 characters.
+- Signatures may contain uppercase letters A-Z and numbers 0-9.
+- Remember the player's last signature across games so repeat entry is fast, while keeping it editable.
+- Keep a local top-10 leaderboard for each game and make it available from the pause menu.
+- Sort numeric scores from highest to lowest. Games with unusual scoring may provide a separate numeric sort value and a human-readable display value.
+- The prompt must work with a physical keyboard and a mobile software keyboard.
+- The player may skip signing. Score entry must never trap the player or prevent replaying.
+- Storage failure may prevent persistence, but it must not block the results screen or the next run.
+- Prevent duplicate submissions when an end function fires more than once.
+
+Games should submit scores through the shared runtime:
+
+```js
+window.EscapeeScores?.submit(finalScore, {
+  label: 'Final score',
+  display: `${finalScore.toLocaleString()} points`
+});
+```
+
+For a nonstandard score, use `sortValue` for ranking:
+
+```js
+window.EscapeeScores?.submit(displayedValue, {
+  sortValue: numericRankingValue,
+  label: 'Defense score',
+  display: `Wave ${wave} · ${kills} kills`
+});
+```
 
 ## Responsive mobile rules
 
@@ -42,7 +74,8 @@ Use this checklist when designing or reviewing every game in this project.
 ## Accessibility
 
 - Label icon-only buttons.
-- Keep pause menus keyboard usable.
+- Keep pause and score-entry menus keyboard usable.
+- Give the three-character signature field an explicit accessible label and instructions.
 - Maintain readable contrast.
 - Respect reduced-motion settings for nonessential animation.
 
@@ -58,3 +91,9 @@ Use this checklist when designing or reviewing every game in this project.
 - Test at 320 by 568, modern phone portrait, phone landscape, tablet, and desktop.
 - Verify no menu or HUD overflows.
 - Verify backgrounding pauses the game.
+- Finish a run and verify the signature prompt appears once.
+- Verify lowercase and symbols are normalized or rejected correctly.
+- Verify Save remains disabled until exactly 3 valid characters are present.
+- Verify the saved score appears in the correct leaderboard order.
+- Verify the remembered signature is editable on the next game.
+- Verify Skip and storage failure both leave the game usable.
