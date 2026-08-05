@@ -3,7 +3,7 @@ import path from 'node:path';
 import { loadGames } from './validate-games.mjs';
 
 const DIST = path.join(process.cwd(), 'dist');
-const bootstrap = '<script src="/shared/universal-game.js"></script><link rel="stylesheet" href="/shared/universal-game.css">';
+const bootstrap = '<script src="/shared/universal-game.js"></script><script src="/shared/d1-scores.js"></script><link rel="stylesheet" href="/shared/universal-game.css">';
 
 const scoreHooks = {
   'deep-catch': {
@@ -46,10 +46,13 @@ for (const game of (await loadGames()).filter(item => item.status === 'published
   if (!html.includes('/shared/universal-game.js') || !html.includes('/shared/universal-game.css')) {
     throw new Error(`${game.slug}: universal runtime injection failed`);
   }
+  if (!html.includes('/shared/d1-scores.js')) {
+    throw new Error(`${game.slug}: D1 score runtime injection failed`);
+  }
   if (hook && !html.includes('window.EscapeeScores?.submit')) {
     throw new Error(`${game.slug}: high-score submission hook failed`);
   }
   await writeFile(file, html);
 }
 
-console.log('Applied the universal pause, viewport, lifecycle, Home, and signed high-score baseline to all published games.');
+console.log('Applied the universal pause, viewport, lifecycle, Home, and immutable D1 high-score baseline to all published games.');
