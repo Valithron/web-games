@@ -5,10 +5,11 @@ import { loadGames } from './validate-games.mjs';
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, 'dist');
 const SITE = path.join(ROOT, 'site');
-const ASSET_VERSION = '20260805-2';
+const ASSET_VERSION = '20260805-3';
 const universalScript = `<script src="/shared/universal-game.js?v=${ASSET_VERSION}"></script>`;
 const scoreScript = `<script src="/shared/d1-scores.js?v=${ASSET_VERSION}"></script>`;
 const universalStyle = `<link rel="stylesheet" href="/shared/universal-game.css?v=${ASSET_VERSION}">`;
+const UNSCORED_GAMES = new Set(['hivefront']);
 
 const scoreHooks = {
   'deep-catch': {
@@ -33,6 +34,22 @@ const scoreHooks = {
   }
 };
 
+const nativeScoreHooks = {
+  'dungeon-janitor': {
+    file: 'game.js',
+    needle: "    endScreen.hidden=false; tone(success?720:120,.28,success?'triangle':'sawtooth',.055);",
+    replacement: "    endScreen.hidden=false; window.EscapeeScores?.submit(final,{label:'Janitor score',display:`${final.toLocaleString()} pts · Room ${roomIndex+1}`}); tone(success?720:120,.28,success?'triangle':'sawtooth',.055);"
+  },
+  snowplow: {
+    file: 'game.js',
+    needle: "        gameOverOverlay.hidden = false;\n        document.querySelector('#restartButton').focus();",
+    replacement: "        gameOverOverlay.hidden = false;\n        window.EscapeeScores?.submit(final, { label: 'Plow score', display: `${final.toLocaleString()} pts · Storm ${round}` });\n        document.querySelector('#restartButton').focus();"
+  }
+};
+
+const fileExists = file => access(file).then(() => true).catch(() => false);
+const containsScoreSubmission = source => /window\.EscapeeScores\??\.submit\s*\(/.test(source);
+
 function injectSharedRuntime(html) {
   html = html
     .replace(/\/shared\/universal-game\.js(?:\?v=[^"']*)?/g, `/shared/universal-game.js?v=${ASSET_VERSION}`)
@@ -55,6 +72,22 @@ function injectSharedRuntime(html) {
   return html;
 }
 
+async function patchNativeScoreHook(game) {
+  const hook = nativeScoreHooks[game.slug];
+  if (!hook) return '';
+
+  const file = path.join(DIST, game.slug, hook.file);
+  if (!await fileExists(file)) throw new Error(`${game.slug}: native score source ${hook.file} was not found`);
+
+  let source = await readFile(file, 'utf8');
+  if (!containsScoreSubmission(source)) {
+    if (!source.includes(hook.needle)) throw new Error(`${game.slug}: native score hook target was not found`);
+    source = source.replace(hook.needle, hook.replacement);
+    await writeFile(file, source);
+  }
+  return source;
+}
+
 for (const game of (await loadGames()).filter(item => item.status === 'published')) {
   const file = path.join(DIST, game.slug, 'index.html');
   await access(file);
@@ -66,18 +99,27 @@ for (const game of (await loadGames()).filter(item => item.status === 'published
   html = injectSharedRuntime(html);
 
   const hook = scoreHooks[game.slug];
-  if (hook && !html.includes('window.EscapeeScores?.submit')) {
+  if (hook && !containsScoreSubmission(html)) {
     if (!html.includes(hook.needle)) throw new Error(`${game.slug}: score submission hook target was not found`);
     html = html.replace(hook.needle, hook.replacement);
   }
 
+  let externalScoreSource = await patchNativeScoreHook(game);
+  const gameScript = path.join(DIST, game.slug, 'game.js');
+  if (!externalScoreSource && await fileExists(gameScript)) externalScoreSource = await readFile(gameScript, 'utf8');
+
   if (!html.includes('/shared/universal-game.js') || !html.includes('/shared/universal-game.css')) throw new Error(`${game.slug}: universal runtime injection failed`);
   if (!html.includes('/shared/d1-scores.js')) throw new Error(`${game.slug}: D1 score runtime injection failed`);
-  if (hook && !html.includes('window.EscapeeScores?.submit')) throw new Error(`${game.slug}: high-score submission hook failed`);
+
+  const isScored = game.scoreMode !== 'none' && !UNSCORED_GAMES.has(game.slug);
+  if (isScored && !containsScoreSubmission(html) && !containsScoreSubmission(externalScoreSource)) {
+    throw new Error(`${game.slug}: published scored game has no high-score submission hook`);
+  }
+
   await writeFile(file, html);
 }
 
 await mkdir(path.join(DIST, 'high-scores'), { recursive: true });
 await cp(path.join(SITE, 'high-scores'), path.join(DIST, 'high-scores'), { recursive: true });
 
-console.log('Applied the universal game baseline, versioned D1 scores, and site-wide leaderboards.');
+console.log('Applied the universal game baseline, D1 score qualification, complete score-hook coverage, and site-wide leaderboards.');
