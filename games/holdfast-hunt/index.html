@@ -1,17 +1,53 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111a20"><script src="/shared/universal-game.js"></script><link rel="stylesheet" href="/shared/universal-game.css">
-<link rel="stylesheet" href="./styles.css"><title>Holdfast Hunt | Escapee Games</title></head>
-<body><main id="game" class="escapee-game-stage">
-<canvas id="canvas" aria-label="Holdfast Hunt game area"></canvas>
-<section id="start" class="panel start-panel"><p class="eyebrow">ASYMMETRIC STRATEGY</p><h1>Holdfast Hunt</h1>
-<p>Fortify a pocket with passive income and defenses, or become the hunter and break every holdfast.</p>
-<div class="role-buttons"><button data-role="builder">Play Builder</button><button data-role="hunter">Play Hunter</button></div>
-<p class="small">Builder: move, open Build, tap a grid cell. Hunter: move and auto-attack; return to the center shop for upgrades.</p></section>
-<div id="hud" class="hud hidden"><div id="roleLabel"></div><div id="resources"></div><div id="timer"></div><div id="remaining"></div></div>
-<button id="buildBtn" class="touch-action build-btn hidden">Build</button><button id="abilityBtn" class="touch-action ability-btn hidden">Dash</button>
-<div id="joystick" class="joystick hidden" aria-label="Move"></div>
-<section id="tray" class="tray hidden" aria-label="Build menu"></section>
-<section id="shop" class="shop hidden" aria-label="Hunter shop"></section>
-<section id="result" class="panel result hidden"><p id="resultEyebrow" class="eyebrow"></p><h2 id="resultTitle"></h2><p id="resultBody"></p><button id="again">Play Again</button></section>
-</main><script type="module" src="./game.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111a20">
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Holdfast Hunt | Escapee Games</title>
+</head>
+<body>
+  <main id="game" class="escapee-game-stage">
+    <canvas id="canvas" aria-label="Holdfast Hunt game area"></canvas>
+
+    <section id="start" class="panel start-panel">
+      <p class="eyebrow">ASYMMETRIC STRATEGY</p>
+      <h1>Holdfast Hunt</h1>
+      <p>Fortify a pocket with passive income and defenses, or become the Hunter and break every holdfast.</p>
+      <div class="role-buttons">
+        <button type="button" data-role="builder">Play Builder</button>
+        <button type="button" data-role="hunter">Play Hunter</button>
+      </div>
+      <p class="small"><strong>Builder:</strong> move with WASD, press B or Space to build, use 1–5 to select, then click a grid cell.</p>
+      <p class="small"><strong>Hunter:</strong> move with WASD, hold a direction and press Space to dash, then return to the center shop for upgrades.</p>
+    </section>
+
+    <div id="hud" class="hud hidden">
+      <div id="roleLabel"></div>
+      <div id="resources"></div>
+      <div id="timer"></div>
+      <div id="remaining"></div>
+      <div id="controlHint" class="control-hint"></div>
+    </div>
+
+    <button id="buildBtn" type="button" class="touch-action build-btn hidden" aria-label="Open build menu">Build</button>
+    <button id="abilityBtn" type="button" class="touch-action ability-btn hidden" aria-label="Dash">Dash</button>
+    <div id="joystick" class="joystick hidden" role="button" aria-label="Move"></div>
+
+    <section id="tray" class="tray hidden" aria-label="Build menu"></section>
+    <section id="shop" class="shop hidden" aria-label="Hunter shop"></section>
+    <div id="placementStatus" class="placement-status hidden" role="status" aria-live="polite"></div>
+
+    <section id="result" class="panel result hidden">
+      <p id="resultEyebrow" class="eyebrow"></p>
+      <h2 id="resultTitle"></h2>
+      <p id="resultBody"></p>
+      <button id="again" type="button">Play Again</button>
+    </section>
+  </main>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
