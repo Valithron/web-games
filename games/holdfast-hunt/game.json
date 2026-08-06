@@ -1,0 +1,16 @@
+{
+  "slug": "holdfast-hunt",
+  "title": "Holdfast Hunt",
+  "description": "Build an economy and fortified pocket, or hunt every builder before extraction.",
+  "category": "Strategy",
+  "tags": ["strategy", "asymmetric", "upgrades", "touch"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["WASD / Arrow keys", "Mouse", "Space"],
+  "mobileControls": ["Virtual joystick", "Build and ability buttons"],
+  "orientation": "any",
+  "sessionMinutes": "8–12 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "scoreMode": "none",
+  "status": "published"
+}
