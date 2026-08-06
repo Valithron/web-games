@@ -5,9 +5,10 @@ import { loadGames } from './validate-games.mjs';
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, 'dist');
 const SITE = path.join(ROOT, 'site');
-const ASSET_VERSION = '20260805-3';
+const ASSET_VERSION = '20260805-4';
 const universalScript = `<script src="/shared/universal-game.js?v=${ASSET_VERSION}"></script>`;
 const scoreScript = `<script src="/shared/d1-scores.js?v=${ASSET_VERSION}"></script>`;
+const inputLockScript = `<script src="/shared/score-input-lock.js?v=${ASSET_VERSION}"></script>`;
 const universalStyle = `<link rel="stylesheet" href="/shared/universal-game.css?v=${ASSET_VERSION}">`;
 const UNSCORED_GAMES = new Set(['hivefront']);
 
@@ -54,6 +55,7 @@ function injectSharedRuntime(html) {
   html = html
     .replace(/\/shared\/universal-game\.js(?:\?v=[^"']*)?/g, `/shared/universal-game.js?v=${ASSET_VERSION}`)
     .replace(/\/shared\/d1-scores\.js(?:\?v=[^"']*)?/g, `/shared/d1-scores.js?v=${ASSET_VERSION}`)
+    .replace(/\/shared\/score-input-lock\.js(?:\?v=[^"']*)?/g, `/shared/score-input-lock.js?v=${ASSET_VERSION}`)
     .replace(/\/shared\/universal-game\.css(?:\?v=[^"']*)?/g, `/shared/universal-game.css?v=${ASSET_VERSION}`);
 
   if (!html.includes('/shared/universal-game.css')) {
@@ -61,12 +63,19 @@ function injectSharedRuntime(html) {
   }
 
   if (!html.includes('/shared/universal-game.js')) {
-    const scripts = `${universalScript}${html.includes('/shared/d1-scores.js') ? '' : scoreScript}`;
-    html = html.replace(/<head([^>]*)>/i, `<head$1>${scripts}`);
-  } else if (!html.includes('/shared/d1-scores.js')) {
-    const universalPattern = /<script\b[^>]*src=["']\/shared\/universal-game\.js(?:\?v=[^"']*)?["'][^>]*><\/script>/i;
-    if (!universalPattern.test(html)) throw new Error('Universal runtime script tag could not be located for D1 score injection.');
-    html = html.replace(universalPattern, match => `${match}${scoreScript}`);
+    html = html.replace(/<head([^>]*)>/i, `<head$1>${universalScript}${scoreScript}${inputLockScript}`);
+  } else {
+    if (!html.includes('/shared/d1-scores.js')) {
+      const universalPattern = /<script\b[^>]*src=["']\/shared\/universal-game\.js(?:\?v=[^"']*)?["'][^>]*><\/script>/i;
+      if (!universalPattern.test(html)) throw new Error('Universal runtime script tag could not be located for D1 score injection.');
+      html = html.replace(universalPattern, match => `${match}${scoreScript}`);
+    }
+
+    if (!html.includes('/shared/score-input-lock.js')) {
+      const scorePattern = /<script\b[^>]*src=["']\/shared\/d1-scores\.js(?:\?v=[^"']*)?["'][^>]*><\/script>/i;
+      if (!scorePattern.test(html)) throw new Error('D1 score script tag could not be located for score input lock injection.');
+      html = html.replace(scorePattern, match => `${match}${inputLockScript}`);
+    }
   }
 
   return html;
@@ -110,6 +119,7 @@ for (const game of (await loadGames()).filter(item => item.status === 'published
 
   if (!html.includes('/shared/universal-game.js') || !html.includes('/shared/universal-game.css')) throw new Error(`${game.slug}: universal runtime injection failed`);
   if (!html.includes('/shared/d1-scores.js')) throw new Error(`${game.slug}: D1 score runtime injection failed`);
+  if (!html.includes('/shared/score-input-lock.js')) throw new Error(`${game.slug}: score input lock injection failed`);
 
   const isScored = game.scoreMode !== 'none' && !UNSCORED_GAMES.has(game.slug);
   if (isScored && !containsScoreSubmission(html) && !containsScoreSubmission(externalScoreSource)) {
@@ -122,4 +132,4 @@ for (const game of (await loadGames()).filter(item => item.status === 'published
 await mkdir(path.join(DIST, 'high-scores'), { recursive: true });
 await cp(path.join(SITE, 'high-scores'), path.join(DIST, 'high-scores'), { recursive: true });
 
-console.log('Applied the universal game baseline, D1 score qualification, complete score-hook coverage, and site-wide leaderboards.');
+console.log('Applied the universal game baseline, D1 score qualification, score input lock, complete score-hook coverage, and site-wide leaderboards.');
