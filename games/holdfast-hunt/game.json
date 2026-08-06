@@ -5,7 +5,7 @@
   "category": "Strategy",
   "tags": ["strategy", "asymmetric", "upgrades", "touch"],
   "thumbnail": "thumbnail.svg",
-  "desktopControls": ["WASD / Arrow keys", "Mouse", "Space"],
+  "desktopControls": ["WASD / Arrow keys", "B or Space", "1–5 and Mouse"],
   "mobileControls": ["Virtual joystick", "Build and ability buttons"],
   "orientation": "any",
   "sessionMinutes": "8–12 min",
