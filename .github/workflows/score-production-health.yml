@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -47,3 +48,13 @@ jobs:
           echo "$response"
           printf '%s' "$response" | grep -Eq '"game"[[:space:]]*:[[:space:]]*"centerhold-defense"'
           printf '%s' "$response" | grep -Eq '"entries"[[:space:]]*:'
+
+      - name: Verify Centerhold score qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          response="$(curl --fail --silent --show-error --location --max-time 15 'https://fun.skpfam.com/api/scores?game=centerhold-defense&action=qualify&score=1')"
+          echo "$response"
+          printf '%s' "$response" | grep -Eq '"game"[[:space:]]*:[[:space:]]*"centerhold-defense"'
+          printf '%s' "$response" | grep -Eq '"qualifies"[[:space:]]*:[[:space:]]*true'
+          printf '%s' "$response" | grep -Eq '"entryCount"[[:space:]]*:[[:space:]]*0'
