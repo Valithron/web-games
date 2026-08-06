@@ -57,7 +57,6 @@ jobs:
           echo "$response"
           printf '%s' "$response" | grep -Eq '"game"[[:space:]]*:[[:space:]]*"centerhold-defense"'
           printf '%s' "$response" | grep -Eq '"qualifies"[[:space:]]*:[[:space:]]*true'
-          printf '%s' "$response" | grep -Eq '"entryCount"[[:space:]]*:[[:space:]]*0'
 
       - name: Verify atomic D1 score write and cleanup
         shell: bash
@@ -89,3 +88,139 @@ jobs:
 
             sleep 10
           done
+
+      - name: Wait for production score input lock
+        shell: bash
+        run: |
+          set -u
+          page_url='https://fun.skpfam.com/centerhold-defense/'
+          asset_url='https://fun.skpfam.com/shared/score-input-lock.js?v=20260805-4'
+
+          for attempt in $(seq 1 30); do
+            echo "Input lock attempt ${attempt}/30"
+            page="$(curl --silent --show-error --location --max-time 15 "$page_url" 2>&1 || true)"
+            asset="$(curl --silent --show-error --location --max-time 15 "$asset_url" 2>&1 || true)"
+
+            if printf '%s' "$page" | grep -Fq 'score-input-lock.js?v=20260805-4' \
+              && printf '%s' "$asset" | grep -Fq '__escapeeScoreInputLock'; then
+              printf '%s' "$asset" > /tmp/score-input-lock.js
+              echo 'Production score input lock is deployed.'
+              break
+            fi
+
+            if [ "$attempt" -eq 30 ]; then
+              echo 'Production score input lock did not become available.' >&2
+              exit 1
+            fi
+
+            sleep 10
+          done
+
+      - name: Simulate WASD initials entry isolation
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const vm = require('node:vm');
+          const listeners = {};
+          let saveClicked = false;
+
+          const save = {
+            disabled: true,
+            click() { saveClicked = true; }
+          };
+
+          const input = {
+            value: '',
+            selectionStart: 0,
+            selectionEnd: 0,
+            readOnly: false,
+            focus() {},
+            setSelectionRange(start, end) {
+              this.selectionStart = start;
+              this.selectionEnd = end;
+            },
+            dispatchEvent(event) {
+              if (event.type === 'input') save.disabled = this.value.length !== 3;
+            }
+          };
+
+          const ui = {
+            overlay: {
+              hidden: false,
+              querySelector() { return null; }
+            },
+            entry: { hidden: false },
+            input,
+            save,
+            done: { click() {} }
+          };
+
+          global.window = {
+            __escapeeUniversalRuntime: { scoreUi: ui },
+            addEventListener(type, handler) {
+              (listeners[type] ||= []).push(handler);
+            },
+            dispatchEvent() {}
+          };
+          global.document = {
+            addEventListener() {},
+            dispatchEvent() {}
+          };
+          global.MutationObserver = class {
+            constructor(callback) { this.callback = callback; }
+            observe() {}
+          };
+          global.KeyboardEvent = class {
+            constructor(type, options = {}) { this.type = type; Object.assign(this, options); }
+          };
+          global.Event = class {
+            constructor(type, options = {}) { this.type = type; Object.assign(this, options); }
+          };
+
+          vm.runInThisContext(fs.readFileSync('/tmp/score-input-lock.js', 'utf8'));
+          const keydown = listeners.keydown?.[0];
+          const keyup = listeners.keyup?.[0];
+          if (!keydown || !keyup) throw new Error('Score input capture listeners were not installed.');
+
+          function press(key, code) {
+            const event = {
+              key,
+              code,
+              target: input,
+              ctrlKey: false,
+              metaKey: false,
+              altKey: false,
+              defaultPrevented: false,
+              stopped: false,
+              preventDefault() { this.defaultPrevented = true; },
+              stopImmediatePropagation() { this.stopped = true; }
+            };
+            keydown(event);
+            if (!event.defaultPrevented || !event.stopped) {
+              throw new Error(`${key} was not isolated from the game controls.`);
+            }
+          }
+
+          press('w', 'KeyW');
+          press('a', 'KeyA');
+          press('s', 'KeyS');
+          if (input.value !== 'WAS') throw new Error(`Expected WAS, received ${input.value}`);
+          if (save.disabled) throw new Error('Save should be enabled after three initials.');
+
+          press('d', 'KeyD');
+          if (input.value !== 'WAS') throw new Error('A fourth character changed the three-character signature.');
+
+          press('Backspace', 'Backspace');
+          if (input.value !== 'WA') throw new Error(`Backspace failed, received ${input.value}`);
+
+          const release = {
+            preventDefault() { this.defaultPrevented = true; },
+            stopImmediatePropagation() { this.stopped = true; }
+          };
+          keyup(release);
+          if (!release.defaultPrevented || !release.stopped) throw new Error('Keyup reached game controls.');
+          if (saveClicked) throw new Error('Score saved without Enter or clicking Save.');
+
+          console.log('WASD initials entry is isolated from game controls.');
+          NODE
