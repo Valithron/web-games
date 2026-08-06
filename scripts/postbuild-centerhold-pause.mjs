@@ -4,22 +4,13 @@ import path from 'node:path';
 const file = process.argv[2] || path.join(process.cwd(), 'dist', 'centerhold-defense', 'index.html');
 let html = await readFile(file, 'utf8');
 
-function patch(needle, replacement, label) {
-  if (!html.includes(needle)) throw new Error(`Centerhold pause patch target missing: ${label}`);
-  html = html.replace(needle, replacement);
+function replaceRequired(pattern, replacement, label) {
+  if (!pattern.test(html)) throw new Error(`Centerhold pause patch target missing: ${label}`);
+  html = html.replace(pattern, replacement);
 }
 
-patch(
-`      function togglePause(forceResume = false) {
-        if (state === 'playing') {
-          state = 'paused';
-          els.pause.classList.remove('hidden');
-        } else if (state === 'paused' || forceResume) {
-          state = 'playing';
-          els.pause.classList.add('hidden');
-          lastTime = performance.now();
-        }
-      }`,
+replaceRequired(
+  /      function togglePause\(forceResume = false\) \{[\s\S]*?\n      \}\n\n      function endGame\(\) \{/,
 `      function clearTransientPauseState() {
         keys.clear();
         flash = 0;
@@ -29,44 +20,40 @@ patch(
         touchPointerId = null;
         els.touchStick.style.transform = 'translate(0px, 0px)';
         els.pause.classList.add('hidden');
-      }`,
-'native pause state machine'
+      }
+
+      function endGame() {`,
+  'native pause state machine'
 );
 
-patch(
-`        if (key.startsWith('Arrow') || ['w','a','s','d','p','1','2','3','r',' '].includes(key)) event.preventDefault();
-        keys.add(key);
-
-        if (key === 'p' && (state === 'playing' || state === 'paused')) togglePause();`,
-`        if (key.startsWith('Arrow') || ['w','a','s','d','1','2','3','r',' '].includes(key)) event.preventDefault();
-        keys.add(key);`,
-'duplicate P-key pause handler'
+replaceRequired(
+  /        if \(key\.startsWith\('Arrow'\) \|\| \[[^\n]*'p'[^\n]*\]\.includes\(key\)\) event\.preventDefault\(\);/,
+  `        if (key.startsWith('Arrow') || ['w','a','s','d','1','2','3','r',' '].includes(key)) event.preventDefault();`,
+  'P-key prevent-default list'
 );
 
-patch(
-`      window.addEventListener('blur', () => {
-        keys.clear();
-        if (state === 'playing') togglePause();
-      });`,
+html = html.replace(/\n        if \(key === 'p' && \(state === 'playing' \|\| state === 'paused'\)\) togglePause\(\);/, '');
+
+replaceRequired(
+  /      window\.addEventListener\('blur', \(\) => \{\n        keys\.clear\(\);\n        if \(state === 'playing'\) togglePause\(\);\n      \}\);/,
 `      window.addEventListener('blur', () => {
         clearTransientPauseState();
         draw();
       });`,
-'blur auto-pause handler'
+  'blur auto-pause handler'
 );
 
-patch(
-`      els.resumeButton.addEventListener('click', () => togglePause(true));`,
+replaceRequired(
+  /      els\.resumeButton\.addEventListener\('click', \(\) => togglePause\(true\)\);/,
 `      els.resumeButton.addEventListener('click', () => {
         clearTransientPauseState();
         lastTime = performance.now();
       });`,
-'native resume button'
+  'native resume button'
 );
 
-patch(
-`      resetGame();
-      requestAnimationFrame(gameLoop);`,
+replaceRequired(
+  /      resetGame\(\);\n      requestAnimationFrame\(gameLoop\);/,
 `      window.EscapeeGame = {
         restart: startGame,
         pause() {
@@ -88,8 +75,12 @@ patch(
 
       resetGame();
       requestAnimationFrame(gameLoop);`,
-'universal pause API'
+  'universal pause API'
 );
+
+if (/function togglePause\b/.test(html)) throw new Error('Centerhold pause patch invariant failed: native togglePause remains');
+if (/key === 'p'.*togglePause/.test(html)) throw new Error('Centerhold pause patch invariant failed: duplicate P pause remains');
+if (!html.includes('window.EscapeeGame = {')) throw new Error('Centerhold pause patch invariant failed: EscapeeGame bridge missing');
 
 await writeFile(file, html);
 console.log('Applied Centerhold single-authority pause fix.');
