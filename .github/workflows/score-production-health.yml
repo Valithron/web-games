@@ -1,0 +1,49 @@
+name: Production Score API Health
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  score-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Wait for the production score API
+        shell: bash
+        run: |
+          set -u
+          health_url='https://fun.skpfam.com/api/scores?action=health'
+          last_body=''
+
+          for attempt in $(seq 1 30); do
+            echo "Health attempt ${attempt}/30"
+            last_body="$(curl --silent --show-error --location --max-time 15 "$health_url" 2>&1 || true)"
+            echo "$last_body"
+
+            if printf '%s' "$last_body" | grep -Eq '"ok"[[:space:]]*:[[:space:]]*true'; then
+              echo 'Production score API is healthy.'
+              break
+            fi
+
+            if [ "$attempt" -eq 30 ]; then
+              echo 'Production score API did not become healthy.' >&2
+              exit 1
+            fi
+
+            sleep 10
+          done
+
+      - name: Verify Centerhold leaderboard read
+        shell: bash
+        run: |
+          set -euo pipefail
+          response="$(curl --fail --silent --show-error --location --max-time 15 'https://fun.skpfam.com/api/scores?game=centerhold-defense')"
+          echo "$response"
+          printf '%s' "$response" | grep -Eq '"game"[[:space:]]*:[[:space:]]*"centerhold-defense"'
+          printf '%s' "$response" | grep -Eq '"entries"[[:space:]]*:'
