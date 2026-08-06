@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#1b2b35">
+  <title>Tiny Traffic Controller | Escapee Games</title>
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="game" aria-label="Tiny Traffic Controller game">
+    <canvas id="canvas" aria-label="A four-way intersection with moving traffic"></canvas>
+
+    <section class="hud" aria-label="Game status">
+      <div><small>Score</small><strong id="score">0</strong></div>
+      <div><small>Time</small><strong id="time">0:00</strong></div>
+      <div><small>Cleared</small><strong id="cleared">0</strong></div>
+      <div><small>Crashes</small><strong id="lives">● ● ●</strong></div>
+    </section>
+
+    <div id="status" class="status" aria-live="polite">North–South Green</div>
+    <div id="warning" class="warning" aria-live="assertive"></div>
+
+    <div class="controls">
+      <button id="switchButton" class="switch-button" type="button">Switch to East–West</button>
+      <button id="repairButton" class="repair-button" type="button" hidden>Repair Lights <span id="repairCount">3</span></button>
+    </div>
+
+    <section id="startOverlay" class="overlay">
+      <div class="panel">
+        <p class="eyebrow">One intersection. Three crashes.</p>
+        <h1>Tiny Traffic Controller</h1>
+        <p>Switch the lights, clear traffic, and survive three crashes.</p>
+        <button id="startButton" class="primary" type="button">Start Shift</button>
+        <small>Space, Enter, arrows, or tap the roads. Press R to repair.</small>
+      </div>
+    </section>
+
+    <section id="endOverlay" class="overlay" hidden>
+      <div class="panel">
+        <p class="eyebrow">Shift over</p>
+        <h2>Intersection Closed</h2>
+        <p id="summary"></p>
+        <div class="results"><div><small>Score</small><strong id="finalScore">0</strong></div><div><small>Best</small><strong id="bestScore">0</strong></div></div>
+        <button id="restartButton" class="primary" type="button">Try Again</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
