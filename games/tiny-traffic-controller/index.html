@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-  <meta name="theme-color" content="#1b2b35">
+  <meta name="theme-color" content="#17262d">
   <title>Tiny Traffic Controller | Escapee Games</title>
   <script src="/shared/universal-game.js"></script>
   <link rel="stylesheet" href="/shared/universal-game.css">
@@ -21,9 +21,9 @@
     </section>
 
     <div id="status" class="status" aria-live="polite">North–South Green</div>
-    <div id="warning" class="warning" aria-live="assertive"></div>
+    <div id="warning" class="warning" role="status" aria-live="assertive"></div>
 
-    <div class="controls">
+    <div class="controls" aria-label="Traffic controls">
       <button id="switchButton" class="switch-button" type="button">Switch to East–West</button>
       <button id="repairButton" class="repair-button" type="button" hidden>Repair Lights <span id="repairCount">3</span></button>
     </div>
@@ -43,11 +43,14 @@
         <p class="eyebrow">Shift over</p>
         <h2>Intersection Closed</h2>
         <p id="summary"></p>
-        <div class="results"><div><small>Score</small><strong id="finalScore">0</strong></div><div><small>Best</small><strong id="bestScore">0</strong></div></div>
+        <div class="results">
+          <div><small>Score</small><strong id="finalScore">0</strong></div>
+          <div><small>Best</small><strong id="bestScore">0</strong></div>
+        </div>
         <button id="restartButton" class="primary" type="button">Try Again</button>
       </div>
     </section>
   </main>
-  <script type="module" src="./game.js"></script>
+  <script src="./game.js"></script>
 </body>
 </html>
