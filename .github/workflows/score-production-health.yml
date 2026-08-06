@@ -58,3 +58,34 @@ jobs:
           printf '%s' "$response" | grep -Eq '"game"[[:space:]]*:[[:space:]]*"centerhold-defense"'
           printf '%s' "$response" | grep -Eq '"qualifies"[[:space:]]*:[[:space:]]*true'
           printf '%s' "$response" | grep -Eq '"entryCount"[[:space:]]*:[[:space:]]*0'
+
+      - name: Verify atomic D1 score write and cleanup
+        shell: bash
+        run: |
+          set -u
+          probe_url='https://fun.skpfam.com/api/score-write-health'
+          last_body=''
+
+          for attempt in $(seq 1 30); do
+            echo "Write probe attempt ${attempt}/30"
+            last_body="$(curl --silent --show-error --location --max-time 15 \
+              --request POST \
+              --header 'x-score-health-probe: escapee-production-smoke' \
+              "$probe_url" 2>&1 || true)"
+            echo "$last_body"
+
+            if printf '%s' "$last_body" | grep -Eq '"ok"[[:space:]]*:[[:space:]]*true' \
+              && printf '%s' "$last_body" | grep -Eq '"inserted"[[:space:]]*:[[:space:]]*true' \
+              && printf '%s' "$last_body" | grep -Eq '"deleted"[[:space:]]*:[[:space:]]*true' \
+              && printf '%s' "$last_body" | grep -Eq '"remaining"[[:space:]]*:[[:space:]]*0'; then
+              echo 'Production score write and cleanup succeeded.'
+              break
+            fi
+
+            if [ "$attempt" -eq 30 ]; then
+              echo 'Production score write probe did not become healthy.' >&2
+              exit 1
+            fi
+
+            sleep 10
+          done
