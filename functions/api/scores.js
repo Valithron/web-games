@@ -15,11 +15,7 @@ function json(data, status = 200, extraHeaders = {}) {
 }
 
 function isDatabaseBinding(candidate) {
-  return Boolean(
-    candidate &&
-    typeof candidate.prepare === 'function' &&
-    (typeof candidate.batch === 'function' || typeof candidate.exec === 'function')
-  );
+  return Boolean(candidate && typeof candidate.prepare === 'function');
 }
 
 function getDatabase(env) {
@@ -35,8 +31,14 @@ function getDatabase(env) {
   return { db: null, bindingName: null };
 }
 
+function diagnostic(error) {
+  return String(error?.message || error || 'Unknown D1 error')
+    .replace(/[\u0000-\u001f\u007f]/g, ' ')
+    .slice(0, 180);
+}
+
 async function ensureSchema(db) {
-  const tableSql = `
+  await db.prepare(`
     CREATE TABLE IF NOT EXISTS arcade_scores (
       id TEXT PRIMARY KEY,
       game_slug TEXT NOT NULL,
@@ -46,19 +48,16 @@ async function ensureSchema(db) {
       label TEXT NOT NULL,
       created_at INTEGER NOT NULL
     )
-  `;
-  const indexSql = `
-    CREATE INDEX IF NOT EXISTS idx_arcade_scores_game_rank
+  `).run();
+
+  try {
+    await db.prepare(`
+      CREATE INDEX IF NOT EXISTS idx_arcade_scores_game_rank
       ON arcade_scores (game_slug, score DESC, created_at ASC, id ASC)
-  `;
-
-  if (typeof db.exec === 'function') {
-    await db.exec(`${tableSql};${indexSql};`);
-    return;
+    `).run();
+  } catch (error) {
+    console.warn('Score index creation failed; continuing without the optional index.', error);
   }
-
-  await db.prepare(tableSql).run();
-  await db.prepare(indexSql).run();
 }
 
 function cleanText(value, fallback, maxLength) {
@@ -86,8 +85,8 @@ async function readLeaderboard(db, game) {
     FROM arcade_scores
     WHERE game_slug = ?1
     ORDER BY score DESC, created_at ASC, id ASC
-    LIMIT ?2
-  `).bind(game, SCORE_LIMIT).all();
+    LIMIT 10
+  `).bind(game).all();
   return result.results || [];
 }
 
@@ -154,9 +153,9 @@ async function runInsertAndTrim(db, entry) {
       SELECT id FROM arcade_scores
       WHERE game_slug = ?1
       ORDER BY score DESC, created_at ASC, id ASC
-      LIMIT ?2
+      LIMIT 10
     )
-  `).bind(entry.game, SCORE_LIMIT);
+  `).bind(entry.game);
 
   if (typeof db.batch === 'function') {
     await db.batch([insert, trim]);
@@ -234,41 +233,33 @@ export async function onRequest({ request, env }) {
   const action = url.searchParams.get('action') || '';
   const { db, bindingName } = getDatabase(env);
 
-  if (request.method === 'GET' && action === 'health') {
-    if (!db) {
-      return json({
-        ok: false,
-        error: 'Score database binding is unavailable.',
-        code: 'D1_BINDING_MISSING',
-        expectedBinding: 'WEB_GAMES_SCORES'
-      }, 503);
-    }
-
-    try {
-      await ensureSchema(db);
-      await db.prepare('SELECT 1 AS ok').first();
-      return json({ ok: true, bindingName });
-    } catch (error) {
-      console.error('Score health check failed', error);
-      return json({
-        ok: false,
-        error: 'The score database could not be queried.',
-        code: 'D1_QUERY_FAILED',
-        bindingName
-      }, 500);
-    }
-  }
-
   if (!db) {
     return json({
+      ok: false,
       error: 'Score database binding is unavailable.',
       code: 'D1_BINDING_MISSING',
       expectedBinding: 'WEB_GAMES_SCORES'
     }, 503);
   }
 
+  let stage = 'schema';
+
   try {
     await ensureSchema(db);
+
+    if (request.method === 'GET' && action === 'health') {
+      stage = 'health-query';
+      const count = await db.prepare('SELECT COUNT(*) AS count FROM arcade_scores').first('count');
+      const columns = await db.prepare('PRAGMA table_info(arcade_scores)').all();
+      return json({
+        ok: true,
+        bindingName,
+        scoreCount: Number(count || 0),
+        columns: (columns.results || []).map(column => column.name)
+      });
+    }
+
+    stage = request.method === 'POST' ? 'score-write' : 'score-read';
     if (request.method === 'GET') return await handleGet(request, db);
     if (request.method === 'POST') return await handlePost(request, db);
     return json({
@@ -276,10 +267,14 @@ export async function onRequest({ request, env }) {
       code: 'METHOD_NOT_ALLOWED'
     }, 405, { allow: 'GET, POST' });
   } catch (error) {
-    console.error('Score API failure', error);
+    console.error(`Score API failure during ${stage}`, error);
     return json({
+      ok: false,
       error: 'The score service is temporarily unavailable.',
-      code: 'SCORE_SERVICE_FAILURE'
+      code: 'SCORE_SERVICE_FAILURE',
+      stage,
+      diagnostic: diagnostic(error),
+      bindingName
     }, 500);
   }
 }
