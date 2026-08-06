@@ -1,0 +1,15 @@
+{
+  "slug": "tiny-traffic-controller",
+  "title": "Tiny Traffic Controller",
+  "description": "Switch the lights, clear traffic, and survive three crashes.",
+  "category": "Arcade",
+  "tags": ["traffic", "management", "endless"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["Space / Enter", "Arrow keys", "R to repair"],
+  "mobileControls": ["Tap roads", "Touch buttons"],
+  "orientation": "any",
+  "sessionMinutes": "5–10 min",
+  "published": "2026-08-05",
+  "featured": true,
+  "status": "published"
+}
