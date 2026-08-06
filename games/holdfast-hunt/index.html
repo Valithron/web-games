@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#111a20">
   <script src="/shared/universal-game.js"></script>
   <link rel="stylesheet" href="/shared/universal-game.css">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=20260805-2045">
   <title>Holdfast Hunt | Escapee Games</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
         <button type="button" data-role="builder">Play Builder</button>
         <button type="button" data-role="hunter">Play Hunter</button>
       </div>
-      <p class="small"><strong>Builder:</strong> move with WASD, press B or Space to build, use 1–5 to select, then click a grid cell.</p>
+      <p class="small"><strong>Builder:</strong> move with WASD, choose a structure from the visible build tray, then click a grid cell.</p>
       <p class="small"><strong>Hunter:</strong> move with WASD, hold a direction and press Space to dash, then return to the center shop for upgrades.</p>
     </section>
 
@@ -33,7 +33,7 @@
       <div id="controlHint" class="control-hint"></div>
     </div>
 
-    <button id="buildBtn" type="button" class="touch-action build-btn hidden" aria-label="Open build menu">Build</button>
+    <button id="buildBtn" type="button" class="touch-action build-btn hidden" aria-label="Toggle build menu" aria-controls="tray" aria-expanded="false">Build</button>
     <button id="abilityBtn" type="button" class="touch-action ability-btn hidden" aria-label="Dash">Dash</button>
     <div id="joystick" class="joystick hidden" role="button" aria-label="Move"></div>
 
@@ -48,6 +48,6 @@
       <button id="again" type="button">Play Again</button>
     </section>
   </main>
-  <script type="module" src="./game.js"></script>
+  <script type="module" src="./game.js?v=20260805-2045"></script>
 </body>
 </html>
