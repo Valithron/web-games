@@ -5,7 +5,7 @@ import { loadGames } from './validate-games.mjs';
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, 'dist');
 const SITE = path.join(ROOT, 'site');
-const ASSET_VERSION = '20260805-4';
+const ASSET_VERSION = '20260807-1';
 const universalScript = `<script src="/shared/universal-game.js?v=${ASSET_VERSION}"></script>`;
 const scoreScript = `<script src="/shared/d1-scores.js?v=${ASSET_VERSION}"></script>`;
 const inputLockScript = `<script src="/shared/score-input-lock.js?v=${ASSET_VERSION}"></script>`;
