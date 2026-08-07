@@ -13,7 +13,8 @@
     nativeCancelRaf: window.cancelAnimationFrame.bind(window),
     scoreUi: null,
     lastScore: null,
-    lastScoreAt: 0
+    lastScoreAt: 0,
+    muted: false
   };
 
   const nativePerformanceNow = performance.now.bind(performance);
@@ -290,8 +291,14 @@
       }
 
       if (action === 'sound') {
-        window.EscapeeGame?.setMuted?.(false);
-        trySoundToggle();
+        if (typeof window.EscapeeGame?.setMuted === 'function') {
+          runtime.muted = !runtime.muted;
+          try {
+            window.EscapeeGame.setMuted(runtime.muted);
+          } catch {}
+        } else {
+          trySoundToggle();
+        }
         return;
       }
 
