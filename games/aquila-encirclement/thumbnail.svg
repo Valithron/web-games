@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#725a39"/>
+  <path d="M0 110L800 60V600H0Z" fill="#8b7048" opacity=".55"/>
+  <g fill="#2f3942" opacity=".95">
+    <circle cx="350" cy="160" r="18"/><circle cx="400" cy="140" r="18"/><circle cx="450" cy="160" r="18"/>
+    <circle cx="325" cy="205" r="18"/><circle cx="375" cy="190" r="18"/><circle cx="425" cy="190" r="18"/><circle cx="475" cy="205" r="18"/>
+    <circle cx="350" cy="245" r="18"/><circle cx="400" cy="235" r="18"/><circle cx="450" cy="245" r="18"/>
+  </g>
+  <g fill="#9b342e">
+    <rect x="130" y="300" width="42" height="42" rx="7"/><rect x="178" y="292" width="42" height="42" rx="7"/><rect x="226" y="285" width="42" height="42" rx="7"/>
+    <rect x="532" y="285" width="42" height="42" rx="7"/><rect x="580" y="292" width="42" height="42" rx="7"/><rect x="628" y="300" width="42" height="42" rx="7"/>
+    <rect x="275" y="350" width="42" height="42" rx="7"/><rect x="323" y="372" width="42" height="42" rx="7"/><rect x="435" y="372" width="42" height="42" rx="7"/><rect x="483" y="350" width="42" height="42" rx="7"/>
+  </g>
+  <g stroke="#efc95f" stroke-width="7" fill="none"><path d="M151 300Q210 245 314 230"/><path d="M649 300Q590 245 486 230"/></g>
+  <g transform="translate(400 395)">
+    <circle r="28" fill="#d6a640"/><path d="M0-56v70M-22-34L0-52l22 18M-27-23L0-8l27-15" stroke="#f8e09a" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="400" y="505" text-anchor="middle" font-family="Georgia,serif" font-size="66" font-weight="900" fill="#f6ead0">AQUILA</text>
+  <text x="400" y="553" text-anchor="middle" font-family="Arial,sans-serif" font-size="31" font-weight="900" letter-spacing="7" fill="#e4bf65">ENCIRCLEMENT</text>
+</svg>

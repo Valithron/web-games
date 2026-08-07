@@ -1,0 +1,15 @@
+{
+  "slug": "aquila-encirclement",
+  "title": "Aquila: Encirclement",
+  "description": "Yield the Roman center, close the wings, and keep the Eagle from falling.",
+  "category": "Strategy",
+  "tags": ["rome", "formation", "strategy", "survival", "touch"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["WASD / Arrow keys", "Hold and release Space"],
+  "mobileControls": ["Virtual joystick", "Hold and release Yield button"],
+  "orientation": "any",
+  "sessionMinutes": "5–10 min",
+  "published": "2026-08-06",
+  "featured": true,
+  "status": "published"
+}
