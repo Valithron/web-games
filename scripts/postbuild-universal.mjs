@@ -28,10 +28,6 @@ const scoreHooks = {
   'centerhold-defense': {
     needle: "        els.gameOver.classList.remove('hidden');",
     replacement: "        els.gameOver.classList.remove('hidden');\n        const arcadeScore = wave * 1000 + kills * 25;\n        window.EscapeeScores?.submit(arcadeScore, { label: 'Defense score', display: `${arcadeScore.toLocaleString()} pts · Wave ${wave}` });"
-  },
-  'last-lantern': {
-    needle: "        els.gameOver.classList.remove('hidden');",
-    replacement: "        els.gameOver.classList.remove('hidden');\n        window.EscapeeScores?.submit(score, { label: 'Lantern score', display: `${score.toLocaleString()} points` });"
   }
 };
 
