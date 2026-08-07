@@ -44,7 +44,7 @@
       position: relative;
       width: min(100vw - 28px, 1100px);
       aspect-ratio: 16 / 10;
-      max-height: calc(100vh - 28px);
+      max-height: calc(100dvh - 28px);
       border: 1px solid var(--line);
       border-radius: 18px;
       overflow: hidden;
@@ -357,7 +357,22 @@
       .chip { min-width: 76px; padding: 7px 9px; }
       .chip strong { font-size: 15px; }
     }
-  </style>
+  
+
+    @media (orientation: portrait) {
+      body { padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left)); }
+      #game-shell {
+        width: min(calc(100vw - 20px), 680px);
+        height: min(calc(100dvh - 20px), 900px);
+        aspect-ratio: 3 / 5;
+        max-height: calc(100dvh - 20px);
+      }
+      #hud { inset: 10px 10px auto 10px; flex-wrap: wrap; }
+      .hud-cluster { max-width: 100%; }
+      #touch-joystick { left: 14px; bottom: 14px; }
+      #touch-pause { right: 14px; bottom: 14px; }
+    }
+</style>
 </head>
 <body>
   <main id="game-shell" aria-label="Centerhold Defense game">
