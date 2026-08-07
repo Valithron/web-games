@@ -82,7 +82,7 @@ const UPGRADE_DEFS = [
   },
   {
     key: 'auxilia', title: 'Auxilia Archers', desc: 'Add an automatic arrow volley; upgrades increase its size.', base: 17, growth: 12,
-    apply(s) { s.levels.auxilia *= 1; }
+    apply(s) { s.levels.auxilia += 1; }
   },
   {
     key: 'march', title: 'Forced March', desc: 'The Aquila and formation move 8% faster.', base: 11, growth: 9,
@@ -126,7 +126,7 @@ function initAudio() {
 
 function tone(from, to = from, duration = .07, volume = .035, type = 'triangle') {
   if (muted) return;
-  const ac = initAudio();
+  const ac = audio;
   if (!ac) return;
   try {
     const osc = ac.createOscillator();
@@ -211,7 +211,6 @@ function startGame() {
   for (let i = 0; i < 12; i += 1) addSoldier(state.eagle.x + rand(-25, 25), state.eagle.y + rand(-25, 25));
   state.peakLegion = soldiers.length;
   lastFrame = performance.now();
-  initAudio();
   call('Keep the Eagle moving. The legion will form around it.', 2.6);
   beginWave();
 }
@@ -220,7 +219,10 @@ function addSoldier(x, y) {
   soldiers.push({
     id: nextEntityId++, x, y, vx: 0, vy: 0,
     hp: state.soldierMaxHp, maxHp: state.soldierMaxHp,
-    attack: rand(0, state.attackRate), flash: 0
+    attack: rand(0, state.attackRate), flash: 0,
+    walkPhase: rand(0, TAU),
+    strideRate: rand(6.2, 8.4),
+    swayAmount: rand(.45, 1.15)
   });
 }
 
@@ -298,13 +300,17 @@ function beginWave() {
 
 function formationSlot(index, total) {
   if (index === 0) return { x: 0, y: 24 };
-  const golden = 2.399963229728653;
-  const radius = 23 + Math.sqrt(index) * 13.5;
-  const angle = index * golden;
-  const crowd = clamp(total / 90, 0, 1);
+  const columns = clamp(Math.ceil(Math.sqrt(Math.max(1, total) * 1.35)), 4, 11);
+  const row = Math.floor(index / columns);
+  const rowStart = row * columns;
+  const rowCount = Math.min(columns, total - rowStart);
+  const col = index - rowStart;
+  const rank = row % 2 === 0 ? -(Math.floor(row / 2) + 1) : Math.floor(row / 2) + 1;
+  const spacingX = total > 80 ? 15 : 17;
+  const spacingY = total > 80 ? 14 : 16;
   return {
-    x: Math.cos(angle) * radius * (1 + crowd * .12),
-    y: Math.sin(angle) * radius * .78
+    x: (col - (rowCount - 1) / 2) * spacingX + (Math.abs(rank) % 2 === 0 ? spacingX * .12 : 0),
+    y: rank * spacingY
   };
 }
 
@@ -337,8 +343,11 @@ function updateSoldiers(dt) {
     soldier.maxHp = state.soldierMaxHp;
 
     const slot = formationSlot(i, total);
-    const tx = state.eagle.x + slot.x;
-    const ty = state.eagle.y + slot.y;
+    soldier.walkPhase += dt * soldier.strideRate * (Math.hypot(input.axisX, input.axisY) > .08 ? 1 : .18);
+    const sway = Math.cos(soldier.walkPhase * .52 + soldier.id * .37) * soldier.swayAmount;
+    const gait = Math.sin(soldier.walkPhase) * .55;
+    const tx = state.eagle.x + slot.x + sway;
+    const ty = state.eagle.y + slot.y + gait;
     const dx = tx - soldier.x;
     const dy = ty - soldier.y;
     const dist = Math.hypot(dx, dy) || 1;
@@ -696,8 +705,14 @@ function drawGround() {
 
 function drawSoldier(soldier) {
   const flash = soldier.flash > 0;
+  const marching = status === 'playing' && Math.hypot(input.axisX, input.axisY) > .06;
+  const bob = Math.sin(soldier.walkPhase) * (marching ? 1.1 : .2);
+  const step = Math.sin(soldier.walkPhase) * (marching ? 2.1 : .25);
   ctx.save();
-  ctx.translate(soldier.x, soldier.y);
+  ctx.translate(soldier.x, soldier.y + bob);
+  ctx.fillStyle = '#4a2b22';
+  ctx.fillRect(-3 + step * .34, 4, 2, 3);
+  ctx.fillRect(1 - step * .34, 4, 2, 3);
   ctx.fillStyle = flash ? '#fff1d0' : '#a43830';
   ctx.fillRect(-4.5, -4, 9, 9);
   ctx.fillStyle = '#d9c59c';
@@ -764,9 +779,15 @@ function drawReinforcement(group) {
   const visible = Math.max(1, Math.min(8, group.count));
   ctx.save();
   ctx.translate(group.x, group.y);
+  const marchTime = performance.now() * .007;
   for (let i = 0; i < visible; i += 1) {
     const col = i % 3 - 1;
     const row = Math.floor(i / 3);
+    const bob = Math.sin(marchTime + group.id * .31 + i * .82) * 1.05;
+    const step = Math.sin(marchTime + group.id * .31 + i * .82) * 1.5;
+    ctx.fillStyle = '#4a2b22';
+    ctx.fillRect(col * 10 - 2.5 + step * .25, row * 9 - 2 + bob, 1.5, 2.5);
+    ctx.fillRect(col * 10 + .8 - step * .25, row * 9 - 2 + bob, 1.5, 2.5);
     ctx.fillStyle = group.flash > 0 ? '#fff0c9' : '#b24a3c';
     ctx.fillRect(col * 10 - 3.5, row * 9 - 9, 7, 7);
     ctx.fillStyle = '#d5c194';
@@ -825,6 +846,13 @@ function frame(now) {
 ui.startButton.addEventListener('click', startGame);
 ui.restartButton.addEventListener('click', startGame);
 ui.nextWaveButton.addEventListener('click', nextWave);
+
+const primeAudioAfterStart = () => {
+  if (status !== 'playing' || muted || audio) return;
+  initAudio();
+};
+addEventListener('pointerdown', primeAudioAfterStart, { capture: true, passive: true });
+addEventListener('keydown', primeAudioAfterStart, { capture: true });
 
 window.EscapeeGame = {
   restart: startGame,

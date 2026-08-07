@@ -167,13 +167,12 @@
       }
 
       function setMuted(value) {
-        muted = typeof value === 'boolean' ? !muted : !muted;
+        muted = Boolean(value);
         if (!muted) {
-          createAudio();
-          audio?.context.resume?.().catch?.(() => {});
-          showMessage('Sound on');
-        } else {
-          showMessage('Sound off');
+          try {
+            createAudio();
+            audio?.context.resume?.().catch?.(() => {});
+          } catch {}
         }
       }
 
@@ -323,6 +322,7 @@
         document.querySelector('#finalScore').textContent = final.toLocaleString();
         document.querySelector('#bestScore').textContent = best.toLocaleString();
         gameOverOverlay.hidden = false;
+        window.EscapeeScores?.submit(final, { label: 'Plow score', display: `${final.toLocaleString()} pts · Storm ${round}` });
         document.querySelector('#restartButton').focus();
       }
 

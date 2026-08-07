@@ -154,7 +154,7 @@
     document.querySelector('#endTitle').textContent=success?'The dungeon is presentable.':'The heroes arrived.';
     document.querySelector('#endSummary').textContent=success?`Six rooms cleared. Final sanitation score: ${final.toLocaleString()}.`:`They found ${messes.length} obvious mess${messes.length===1?'':'es'}. Final score: ${final.toLocaleString()}.`;
     document.querySelector('#bestLine').textContent=`Best shift: ${best.toLocaleString()}`;
-    endScreen.hidden=false; tone(success?720:120,.28,success?'triangle':'sawtooth',.055);
+    endScreen.hidden=false; window.EscapeeScores?.submit(final,{label:'Janitor score',display:`${final.toLocaleString()} pts · Room ${roomIndex+1}`}); tone(success?720:120,.28,success?'triangle':'sawtooth',.055);
   }
 
   function axes(){

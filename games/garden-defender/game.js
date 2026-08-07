@@ -274,7 +274,10 @@ function finishGame() {
   scoreSubmitted = true;
   tone(523, .12, .045, 'triangle');
   setTimeout(() => tone(659, .16, .04, 'triangle'), 90);
-  window.submitGardenScore?.(score, `${score.toLocaleString()} pts · ${stats.healthyCoverage.toFixed(1)}% healthy`);
+  window.EscapeeScores?.submit(score, {
+    label: 'Garden score',
+    display: `${score.toLocaleString()} pts · ${stats.healthyCoverage.toFixed(1)}% healthy`
+  });
 }
 
 function sourceCanSpread(cell) {
@@ -1027,6 +1030,12 @@ window.EscapeeGame = {
     last = performance.now();
   },
   restart: restartGame,
+  setMuted(value) {
+    muted = Boolean(value);
+    if (!muted) {
+      try { ensureAudio(); } catch {}
+    }
+  },
   getStatus: () => status
 };
 

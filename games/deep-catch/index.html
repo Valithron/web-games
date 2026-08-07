@@ -81,12 +81,7 @@
   </section>
 </div>
 
-<!-- Legacy postbuild compatibility target. Deep Catch no longer executes this code; it only lets the older shared compatibility pass finish while Centerhold still uses that script.
-  function ensureAudio() {
-    if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-    if(audioCtx.state==='suspended') audioCtx.resume();
-  }
--->
+
 <script>
 try {
   if (!localStorage.getItem('deepCatchRig_v2')) {

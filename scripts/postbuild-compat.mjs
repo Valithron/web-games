@@ -3,42 +3,6 @@ import path from 'node:path';
 
 const ROOT = process.cwd();
 
-const deepCatchPath = path.join(ROOT, 'dist', 'deep-catch', 'index.html');
-const unsafeAudioFunction = `  function ensureAudio() {
-    if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-    if(audioCtx.state==='suspended') audioCtx.resume();
-  }`;
-const safeAudioFunction = `  function ensureAudio() {
-    if (!soundOn) return false;
-    const AudioCtor = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtor) {
-      soundOn = false;
-      soundBtn.textContent = '×';
-      soundBtn.setAttribute('aria-label', 'Sound unavailable');
-      return false;
-    }
-    try {
-      if (!audioCtx) audioCtx = new AudioCtor();
-      if (audioCtx.state === 'suspended') {
-        const resumeResult = audioCtx.resume();
-        if (resumeResult && typeof resumeResult.catch === 'function') resumeResult.catch(() => {});
-      }
-      return true;
-    } catch {
-      soundOn = false;
-      soundBtn.textContent = '×';
-      soundBtn.setAttribute('aria-label', 'Sound unavailable');
-      return false;
-    }
-  }`;
-
-const deepCatchHtml = await readFile(deepCatchPath, 'utf8');
-if (!deepCatchHtml.includes(unsafeAudioFunction)) {
-  throw new Error('Deep Catch compatibility patch target was not found.');
-}
-await writeFile(deepCatchPath, deepCatchHtml.replace(unsafeAudioFunction, safeAudioFunction));
-console.log('Applied Deep Catch Web Audio compatibility patch.');
-
 function replaceOnce(source, needle, replacement, label) {
   if (!source.includes(needle)) throw new Error(`Centerhold progression patch target was not found: ${label}`);
   return source.replace(needle, replacement);
