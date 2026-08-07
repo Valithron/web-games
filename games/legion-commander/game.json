@@ -1,0 +1,15 @@
+{
+  "slug": "legion-commander",
+  "title": "Legion Commander",
+  "description": "Carry the Aquila, gather reinforcement cohorts, crush enemy warbands, and spend denarii to grow an unstoppable legion.",
+  "category": "Action",
+  "tags": ["roman", "survival", "army", "upgrades", "touch"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["WASD / Arrow keys", "Automatic combat"],
+  "mobileControls": ["Virtual joystick", "Automatic combat"],
+  "orientation": "any",
+  "sessionMinutes": "6–12 min",
+  "published": "2026-08-06",
+  "featured": true,
+  "status": "published"
+}
