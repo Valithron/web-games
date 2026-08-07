@@ -13,14 +13,8 @@ const universalStyle = `<link rel="stylesheet" href="/shared/universal-game.css?
 const UNSCORED_GAMES = new Set(['hivefront']);
 
 const scoreHooks = {
-  'deep-catch': {
-    needle: "    summaryScreen.classList.remove('hidden');",
-    replacement: "    summaryScreen.classList.remove('hidden');\n    window.EscapeeScores?.submit(runScore, { label: 'Final catch', display: `${runScore.toLocaleString()} coins` });"
-  },
-  'garden-defender': {
-    needle: '    ui.end.hidden = false;',
-    replacement: "    ui.end.hidden = false;\n    window.EscapeeScores?.submit(score, { label: 'Garden score', display: `${score.toLocaleString()} points` });"
-  },
+
+
   sheepdog: {
     needle: "    overlay.style.display='grid';",
     replacement: "    overlay.style.display='grid';\n    window.EscapeeScores?.submit(score, { label: 'Herding score', display: `${score.toLocaleString()} points` });"
@@ -31,18 +25,7 @@ const scoreHooks = {
   }
 };
 
-const nativeScoreHooks = {
-  'dungeon-janitor': {
-    file: 'game.js',
-    needle: "    endScreen.hidden=false; tone(success?720:120,.28,success?'triangle':'sawtooth',.055);",
-    replacement: "    endScreen.hidden=false; window.EscapeeScores?.submit(final,{label:'Janitor score',display:`${final.toLocaleString()} pts · Room ${roomIndex+1}`}); tone(success?720:120,.28,success?'triangle':'sawtooth',.055);"
-  },
-  snowplow: {
-    file: 'game.js',
-    needle: "        gameOverOverlay.hidden = false;\n        document.querySelector('#restartButton').focus();",
-    replacement: "        gameOverOverlay.hidden = false;\n        window.EscapeeScores?.submit(final, { label: 'Plow score', display: `${final.toLocaleString()} pts · Storm ${round}` });\n        document.querySelector('#restartButton').focus();"
-  }
-};
+const nativeScoreHooks = {};
 
 const fileExists = file => access(file).then(() => true).catch(() => false);
 const containsScoreSubmission = source => /window\.EscapeeScores\??\.submit\s*\(/.test(source);
