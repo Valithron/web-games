@@ -1,20 +1,23 @@
 {
   "slug": "garden-defender",
   "title": "Garden Defender",
-  "description": "Water spreading plants and automatically spray pests while trying to finish with the healthiest garden possible.",
+  "description": "Grow a healthy garden, fight inward-moving pests, and choose two upgrades that shape each season.",
   "category": "Strategy",
   "tags": [
     "garden",
-    "survival",
-    "coverage"
+    "roguelite",
+    "coverage",
+    "survival"
   ],
   "thumbnail": "thumbnail.svg",
   "desktopControls": [
     "WASD",
-    "Arrow keys"
+    "Arrow keys",
+    "1-3 upgrade choices"
   ],
   "mobileControls": [
-    "Touch joystick"
+    "Touch joystick",
+    "Touch upgrade choices"
   ],
   "orientation": "any",
   "sessionMinutes": "2–3 min",

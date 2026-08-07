@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#15291b">
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Garden Defender | Escapee Games</title>
+</head>
+<body class="status-menu">
+  <main class="escapee-game-stage" id="gameStage">
+    <canvas id="canvas" aria-label="Garden Defender game area"></canvas>
+
+    <section id="hud" aria-label="Garden status">
+      <div class="stat"><span>Coverage</span><strong id="coverage">0%</strong></div>
+      <div class="stat"><span>Health</span><strong id="health">100%</strong></div>
+      <div class="stat"><span>Season</span><strong id="time">2:30</strong></div>
+      <div class="stat"><span>Pests stopped</span><strong id="pests">0</strong></div>
+    </section>
+
+    <div id="upgradeStrip" aria-label="Chosen upgrades"></div>
+
+    <div class="touch-controls" aria-label="Touch controls">
+      <button id="joystick" class="joystick" type="button" aria-label="Move gardener">
+        <span class="joystick-knob" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <section class="game-overlay" id="startOverlay" role="dialog" aria-modal="true" aria-labelledby="startTitle">
+      <div class="card start-card">
+        <p class="eyebrow">A tiny garden roguelite</p>
+        <h1 id="startTitle">Garden<br>Defender</h1>
+        <p class="subtitle">Move through the beds. You automatically water nearby plants and spray nearby pests. Grow the healthiest garden you can before the season ends.</p>
+        <button class="primary" id="startButton" type="button">Start gardening</button>
+        <p class="mini">WASD / arrow keys · touch joystick · watering and spraying are automatic</p>
+      </div>
+    </section>
+
+    <section class="game-overlay upgrade-overlay" id="upgradeOverlay" role="dialog" aria-modal="true" aria-labelledby="upgradeTitle" hidden>
+      <div class="card upgrade-card">
+        <p class="eyebrow" id="upgradeKicker">Garden improvement</p>
+        <h2 id="upgradeTitle">Choose one</h2>
+        <p class="subtitle compact">Pick one improvement for the rest of this season.</p>
+        <div id="upgradeOptions" class="upgrade-options"></div>
+        <p class="mini">Press 1, 2, or 3 on desktop.</p>
+      </div>
+    </section>
+
+    <section class="game-overlay" id="endOverlay" role="dialog" aria-modal="true" aria-labelledby="endTitle" hidden>
+      <div class="card end-card">
+        <p class="eyebrow">Season complete</p>
+        <h2 id="endTitle">Garden Report</h2>
+        <div id="resultText" class="result"></div>
+        <button class="primary" id="againButton" type="button">Plant again</button>
+        <p class="mini">Global high scores are saved through Escapee Games.</p>
+      </div>
+    </section>
+
+    <button id="soundBtn" class="runtime-sound-bridge" type="button" tabindex="-1" aria-hidden="true">Sound</button>
+  </main>
+
+  <script>
+    window.submitGardenScore = (score, display) => window.EscapeeScores?.submit(score, {
+      label: 'Garden score',
+      display
+    });
+  </script>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
