@@ -54,8 +54,8 @@ centerhold = replaceOnce(
 
 centerhold = replaceOnce(
   centerhold,
-  "        pause: document.getElementById('pause-screen'),",
-  `        pause: document.getElementById('pause-screen'),
+  "        upgradeCards: document.getElementById('upgrade-cards'),",
+  `        upgradeCards: document.getElementById('upgrade-cards'),
         endless: document.getElementById('endless-screen'),
         endlessButton: document.getElementById('endless-button'),`,
   'endless element references'
@@ -108,9 +108,11 @@ centerhold = replaceOnce(
 
 centerhold = replaceOnce(
   centerhold,
-  "        els.pause.classList.add('hidden');",
-  `        els.pause.classList.add('hidden');
-        els.endless.classList.add('hidden');`,
+  "        els.upgrades.classList.add('hidden');
+        els.hud.classList.remove('hidden');",
+  `        els.upgrades.classList.add('hidden');
+        els.endless.classList.add('hidden');
+        els.hud.classList.remove('hidden');`,
   'start game overlay reset'
 );
 
