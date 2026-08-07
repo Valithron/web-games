@@ -222,6 +222,7 @@ patch('      function resetGame() {', `      const sfx = (() => {
 
         return { unlock, toggle, setPaused, shot, hit, kill, baseHit, waveStart, upgradeReady, upgradeSelect, endless, gameOver };
       })();
+      window.__centerholdSfx = sfx;
 
       function syncSoundLabel(muted) {
         const button = document.querySelector('[data-escapee-action="sound"]');
