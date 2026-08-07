@@ -322,6 +322,7 @@
         document.querySelector('#finalScore').textContent = final.toLocaleString();
         document.querySelector('#bestScore').textContent = best.toLocaleString();
         gameOverOverlay.hidden = false;
+        window.EscapeeScores?.submit(final, { label: 'Plow score', display: `${final.toLocaleString()} pts · Storm ${round}` });
         document.querySelector('#restartButton').focus();
       }
 
