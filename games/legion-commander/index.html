@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#6a4c2f">
+  <title>Legion Commander | Escapee Games</title>
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css?v=20260806-1">
+  <style>[hidden]{display:none!important}</style>
+</head>
+<body>
+  <main id="game" class="escapee-game-stage" aria-label="Legion Commander game">
+    <canvas id="canvas" aria-label="Command a Roman eagle standard while your legion forms and fights around it"></canvas>
+
+    <section class="hud" aria-label="Battle status">
+      <div><small>Wave</small><strong id="waveValue">1</strong></div>
+      <div><small>Legion</small><strong id="legionValue">12</strong></div>
+      <div><small>Eagle</small><strong id="eagleValue">100</strong></div>
+      <div><small>Denarii</small><strong id="denariiValue">0</strong></div>
+      <div><small>Kills</small><strong id="killsValue">0</strong></div>
+      <div><small>Score</small><strong id="scoreValue">0</strong></div>
+    </section>
+
+    <div id="battleCall" class="battle-call" role="status" aria-live="polite"></div>
+
+    <div class="touch-controls">
+      <button id="joystick" class="joystick" type="button" aria-label="Move the Aquila"></button>
+    </div>
+
+    <section id="startOverlay" class="overlay">
+      <div class="panel start-panel">
+        <p class="eyebrow">ROME MARCHES WITH THE EAGLE</p>
+        <h1>Legion Commander</h1>
+        <p>Move the Aquila and your legion forms around it. Reinforcement cohorts march in from the edges, enemies attack from every side, and every kill earns denarii for stronger arms, armor, recruits, and support troops.</p>
+        <button id="startButton" class="primary" type="button">Raise the Eagle</button>
+        <small>WASD / arrows · mobile joystick · combat is automatic</small>
+      </div>
+    </section>
+
+    <section id="shopOverlay" class="overlay" hidden>
+      <div class="panel shop-panel">
+        <p class="eyebrow" id="waveComplete">WAVE HELD</p>
+        <h2>Spend the Denarii</h2>
+        <p id="shopSummary"></p>
+        <div id="shopGrid" class="shop-grid"></div>
+        <button id="nextWaveButton" class="primary" type="button">March On</button>
+      </div>
+    </section>
+
+    <section id="endOverlay" class="overlay" hidden>
+      <div class="panel">
+        <p class="eyebrow">THE AQUILA HAS FALLEN</p>
+        <h2>The Legion Broke</h2>
+        <p id="endSummary"></p>
+        <div class="results">
+          <div><small>Score</small><strong id="finalScore">0</strong></div>
+          <div><small>Peak Legion</small><strong id="peakValue">0</strong></div>
+          <div><small>Kills</small><strong id="finalKills">0</strong></div>
+        </div>
+        <button id="restartButton" class="primary" type="button">Raise Another Eagle</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./game.js?v=20260806-1"></script>
+</body>
+</html>
