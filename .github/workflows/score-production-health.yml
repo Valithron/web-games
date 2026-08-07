@@ -94,15 +94,15 @@ jobs:
         run: |
           set -u
           page_url='https://fun.skpfam.com/centerhold-defense/'
-          asset_url='https://fun.skpfam.com/shared/score-input-lock.js?v=20260805-4'
+          asset_url='https://fun.skpfam.com/shared/score-input-lock.js?v=20260807-1'
 
           for attempt in $(seq 1 30); do
             echo "Input lock attempt ${attempt}/30"
             page="$(curl --silent --show-error --location --max-time 15 "$page_url" 2>&1 || true)"
             asset="$(curl --silent --show-error --location --max-time 15 "$asset_url" 2>&1 || true)"
 
-            if printf '%s' "$page" | grep -Fq 'score-input-lock.js?v=20260805-4' \
-              && printf '%s' "$asset" | grep -Fq '__escapeeScoreInputLock'; then
+            if [[ "$page" == *"score-input-lock.js?v=20260807-1"* ]] \
+              && [[ "$asset" == *"__escapeeScoreInputLock"* ]]; then
               printf '%s' "$asset" > /tmp/score-input-lock.js
               echo 'Production score input lock is deployed.'
               break
