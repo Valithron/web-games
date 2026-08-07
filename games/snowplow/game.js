@@ -167,13 +167,12 @@
       }
 
       function setMuted(value) {
-        muted = typeof value === 'boolean' ? !muted : !muted;
+        muted = Boolean(value);
         if (!muted) {
-          createAudio();
-          audio?.context.resume?.().catch?.(() => {});
-          showMessage('Sound on');
-        } else {
-          showMessage('Sound off');
+          try {
+            createAudio();
+            audio?.context.resume?.().catch?.(() => {});
+          } catch {}
         }
       }
 
