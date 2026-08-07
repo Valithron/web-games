@@ -758,6 +758,12 @@
       if (state === 'game-over') resetSession({ start:true });
       else startRun();
     },
+    setMuted(value) {
+      soundOn = !Boolean(value);
+      if (soundOn) {
+        try { ensureAudio(); } catch {}
+      }
+    },
     getStatus() {
       if (state === 'summary') return 'between-rounds';
       if (state === 'game-over') return 'game-over';
