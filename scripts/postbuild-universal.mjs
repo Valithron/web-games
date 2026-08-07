@@ -12,18 +12,7 @@ const inputLockScript = `<script src="/shared/score-input-lock.js?v=${ASSET_VERS
 const universalStyle = `<link rel="stylesheet" href="/shared/universal-game.css?v=${ASSET_VERSION}">`;
 const UNSCORED_GAMES = new Set(['hivefront']);
 
-const scoreHooks = {
-
-
-  sheepdog: {
-    needle: "    overlay.style.display='grid';",
-    replacement: "    overlay.style.display='grid';\n    window.EscapeeScores?.submit(score, { label: 'Herding score', display: `${score.toLocaleString()} points` });"
-  },
-  'centerhold-defense': {
-    needle: "        els.gameOver.classList.remove('hidden');",
-    replacement: "        els.gameOver.classList.remove('hidden');\n        const arcadeScore = wave * 1000 + kills * 25;\n        window.EscapeeScores?.submit(arcadeScore, { label: 'Defense score', display: `${arcadeScore.toLocaleString()} pts · Wave ${wave}` });"
-  }
-};
+const scoreHooks = {};
 
 const nativeScoreHooks = {};
 
