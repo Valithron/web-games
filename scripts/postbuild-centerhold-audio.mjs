@@ -64,6 +64,10 @@ patch('      function resetGame() {', `      const sfx = (() => {
           return muted;
         }
 
+        function getMuted() {
+          return muted;
+        }
+
         function toggle() {
           const value = setMuted(!muted);
           if (!value) unlock();
@@ -220,7 +224,7 @@ patch('      function resetGame() {', `      const sfx = (() => {
           note(130.81, 0.58, 0.03, 0.34, 'sine');
         }
 
-        return { unlock, toggle, setPaused, shot, hit, kill, baseHit, waveStart, upgradeReady, upgradeSelect, endless, gameOver };
+        return { unlock, toggle, setMuted, getMuted, setPaused, shot, hit, kill, baseHit, waveStart, upgradeReady, upgradeSelect, endless, gameOver };
       })();
       window.__centerholdSfx = sfx;
 

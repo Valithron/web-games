@@ -261,7 +261,12 @@
     restart,
     pause(){if(state==='playing'||state==='between-rounds'){previousState=state;paused=true;state='paused';clearInput();}},
     resume(){if(state==='paused'){state=previousState==='between-rounds'?'between-rounds':'playing';paused=false;last=performance.now();}},
-    setMuted(){},
+    setMuted(value){
+      muted = Boolean(value);
+      if (!muted) {
+        try { initAudio(); audio?.resume?.().catch?.(() => {}); } catch {}
+      }
+    },
     getStatus(){return state;}
   };
   addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);addEventListener('orientationchange',()=>setTimeout(resize,80));

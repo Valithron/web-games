@@ -97,11 +97,6 @@
   <div class="pill"><small>Time</small><strong id="time">60</strong></div>
   <div class="pill"><small>Score</small><strong id="score">0</strong></div>
 </div>
-<div class="top-buttons">
-  <button id="sound" aria-label="Toggle sound">♪</button>
-  <button id="restart" aria-label="Restart">↻</button>
-</div>
-
 <div id="joystick"><div id="stick"></div></div>
 <button id="dash">BARK</button>
 
@@ -190,8 +185,8 @@
     status = 'game-over';
     keys = {};
     joyState.active = false; joyState.id = null; joyState.x = joyState.y = 0;
-    const best = Math.max(Number(localStorage.sheepdogBest||0), score);
-    localStorage.sheepdogBest = best;
+    const best = Math.max(readLocalBest(), score);
+    writeLocalBest(best);
     resultEl.textContent = win ? `All sheep safe! Score ${score}` : `Time's up. ${saved} of ${SHEEP_COUNT} safe.`;
     document.getElementById('subtitle').textContent = `Best score: ${best}. Herd tightly, bark carefully, and keep wolves away from the pen.`;
     startBtn.textContent = 'Play Again';
@@ -204,6 +199,14 @@
       });
     }
     tone(win?650:170,.25,win?'triangle':'sawtooth',.05);
+  }
+
+  function readLocalBest(){
+    try { return Math.max(0, Number(localStorage.getItem('sheepdogBest')) || 0); } catch { return 0; }
+  }
+
+  function writeLocalBest(value){
+    try { localStorage.setItem('sheepdogBest', String(value)); } catch {}
   }
 
   function updateHUD(){
@@ -412,8 +415,8 @@
   joy.addEventListener('pointerup',endJoy);joy.addEventListener('pointercancel',endJoy);
   dashBtn.addEventListener('pointerdown',e=>{e.preventDefault();bark();});
   startBtn.addEventListener('click',start);
-  restartBtn.addEventListener('click',start);
-  soundBtn.addEventListener('click',()=>{audioOn=!audioOn;soundBtn.textContent=audioOn?'♪':'×';if(audioOn)tone(440,.05);});
+  restartBtn?.addEventListener('click',start);
+  soundBtn?.addEventListener('click',()=>{audioOn=!audioOn;if(soundBtn) soundBtn.textContent=audioOn?'♪':'×';if(audioOn)tone(440,.05);});
 
   window.EscapeeGame = {
     restart: start,
@@ -433,7 +436,7 @@
     },
     setMuted(value) {
       audioOn = !Boolean(value);
-      soundBtn.textContent = audioOn ? '♪' : '×';
+      if (soundBtn) soundBtn.textContent = audioOn ? '♪' : '×';
       if (audioOn) {
         try { tone(440, .05); } catch {}
       }
