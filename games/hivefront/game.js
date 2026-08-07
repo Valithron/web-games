@@ -96,4 +96,30 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&state&&!st
 continueButton.onclick=()=>startLevel(selectedLevel);retryButton.onclick=()=>startLevel(selectedLevel);nextButton.onclick=()=>startLevel(Math.min(59,selectedLevel+1));levelsButton.onclick=()=>{result.classList.add('hidden');menu.classList.remove('hidden');renderMenu()};
 function formatTime(s){const m=Math.floor(s/60),sec=Math.floor(s%60);return `${m}:${String(sec).padStart(2,'0')}`}
 function frame(now){const dt=Math.min(.05,(now-lastTime)/1000);lastTime=now;update(dt);draw();raf=requestAnimationFrame(frame)}
+
+window.EscapeeGame = {
+  restart() {
+    startLevel(selectedLevel);
+  },
+  pause() {
+    if (!state || state.ended || paused) return;
+    paused = true;
+    pointer = null;
+    lastTime = performance.now();
+  },
+  resume() {
+    if (!state || state.ended || !paused) return;
+    paused = false;
+    pointer = null;
+    lastTime = performance.now();
+  },
+  setMuted(value) {
+    sound = !Boolean(value);
+  },
+  getStatus() {
+    if (paused && state && !state.ended) return 'paused';
+    if (state?.ended) return 'game-over';
+    return state ? 'playing' : 'menu';
+  }
+};
 renderMenu();frame(performance.now());
