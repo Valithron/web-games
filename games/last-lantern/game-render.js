@@ -429,6 +429,14 @@ window.EscapeeGame = {
   pause: pauseGame,
   resume: resumeGame,
   restart: restartGame,
+  setMuted(value) {
+    audio.enabled = !Boolean(value);
+    writePreference('last-lantern-sound', audio.enabled ? 'on' : 'off');
+    updateSoundButton();
+    if (audio.enabled) {
+      try { audio.ensure(); } catch {}
+    }
+  },
   getStatus() {
     if (state === 'start') return 'menu';
     if (state === 'upgrade') return 'between-rounds';
