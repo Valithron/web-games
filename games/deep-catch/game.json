@@ -1,7 +1,7 @@
 {
   "slug": "deep-catch",
   "title": "Deep Catch",
-  "description": "Steer an automatic fishing hook, catch valuable fish, dodge junk, and upgrade your rig to reach darker water.",
+  "description": "Fish 40-second trips, spend each haul on upgrades, and keep casting until you choose to lock in your fishing score.",
   "category": "Arcade",
   "tags": [
     "fishing",
@@ -19,7 +19,7 @@
     "Pause button"
   ],
   "orientation": "any",
-  "sessionMinutes": "1–2 min",
+  "sessionMinutes": "40 sec trips",
   "published": "2026-08-05",
   "featured": true,
   "status": "published"
