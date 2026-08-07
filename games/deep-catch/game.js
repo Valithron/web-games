@@ -8,6 +8,7 @@
   const touchControls = document.querySelector('#touchControls');
   const menuScreen = document.querySelector('#menuScreen');
   const summaryScreen = document.querySelector('#summaryScreen');
+  const finalScreen = document.querySelector('#finalScreen');
   const upgradeList = document.querySelector('#upgradeList');
   const timeValue = document.querySelector('#timeValue');
   const scoreValue = document.querySelector('#scoreValue');
@@ -15,13 +16,15 @@
   const bankValue = document.querySelector('#bankValue');
   const rigValue = document.querySelector('#rigValue');
   const menuDepthValue = document.querySelector('#menuDepthValue');
+  const sessionValue = document.querySelector('#sessionValue');
+  const doneBtn = document.querySelector('#doneBtn');
   const toast = document.querySelector('#toast');
   const leftBtn = document.querySelector('#leftBtn');
   const rightBtn = document.querySelector('#rightBtn');
   const soundBtn = document.querySelector('#soundBtn');
 
   const SAVE_KEY = 'deepCatchRig_v2';
-  const RUN_SECONDS = 90;
+  const RUN_SECONDS = 40;
   const SURFACE_Y = 145;
   const EDGE = 28;
 
@@ -47,6 +50,9 @@
   let last = performance.now();
   let gameTime = RUN_SECONDS;
   let runScore = 0;
+  let sessionScore = 0;
+  let tripCount = 0;
+  let sessionFishCount = 0;
   let deepest = 0;
   let fishCount = 0;
   let cameraY = 0;
@@ -153,6 +159,8 @@
     bankValue.textContent = `${save.bank.toLocaleString()} ¢`;
     rigValue.textContent = `${rigLevel()} / 25`;
     menuDepthValue.textContent = `${maxDepthFeet()} ft`;
+    sessionValue.textContent = `${sessionScore.toLocaleString()} ¢`;
+    doneBtn.hidden = tripCount === 0;
   }
 
   function buyUpgrade(def) {
@@ -204,6 +212,7 @@
     populateWater();
     menuScreen.hidden = true;
     summaryScreen.hidden = true;
+    finalScreen.hidden = true;
     hud.hidden = false;
     touchControls.hidden = false;
     updateHud();
@@ -215,6 +224,9 @@
     state = 'summary';
     if (hook.caught.length) bankCatch();
     save.bank += runScore;
+    sessionScore += runScore;
+    tripCount += 1;
+    sessionFishCount += fishCount;
     persist();
     resetInput();
     document.body.classList.remove('deep-catch-running');
@@ -224,8 +236,8 @@
     document.querySelector('#runValue').textContent = `${runScore.toLocaleString()} ¢`;
     document.querySelector('#fishValue').textContent = String(fishCount);
     document.querySelector('#deepestValue').textContent = `${Math.round(deepest / depthRange() * maxDepthFeet())} ft`;
-    document.querySelector('#summaryTitle').textContent = runScore >= 220 ? 'A legendary haul.' : runScore >= 110 ? 'A strong catch.' : runScore > 0 ? 'Not bad.' : 'The sea won this one.';
-    document.querySelector('#summaryText').textContent = `${runScore.toLocaleString()} coins were added to your upgrade bank.`;
+    document.querySelector('#summaryTitle').textContent = runScore >= 160 ? 'A legendary haul.' : runScore >= 80 ? 'A strong catch.' : runScore > 0 ? 'Not bad.' : 'The sea won this one.';
+    document.querySelector('#summaryText').textContent = `${runScore.toLocaleString()} coins were added to your upgrade bank. Fishing score: ${sessionScore.toLocaleString()}.`;
 
     const holder = document.querySelector('#summaryCatch');
     holder.textContent = '';
@@ -233,7 +245,6 @@
     if (!catches.length) addCatchChip(holder, 'No catch landed');
     catches.forEach(([name, count]) => addCatchChip(holder, `${name} ×${count}`));
     summaryScreen.hidden = false;
-    window.DeepCatchSubmitScore?.(runScore);
     tone(392, .12, 'triangle', .035);
     setTimeout(() => tone(523, .18, 'triangle', .03), 120);
   }
@@ -250,8 +261,38 @@
     resetInput();
     document.body.classList.remove('deep-catch-running');
     summaryScreen.hidden = true;
+    finalScreen.hidden = true;
     menuScreen.hidden = false;
     renderUpgrades();
+  }
+
+  function finishSession() {
+    if (tripCount === 0 || !['menu', 'summary'].includes(state)) return;
+    state = 'game-over';
+    resetInput();
+    document.body.classList.remove('deep-catch-running');
+    menuScreen.hidden = true;
+    summaryScreen.hidden = true;
+    finalScreen.hidden = false;
+    document.querySelector('#finalScoreValue').textContent = `${sessionScore.toLocaleString()} ¢`;
+    document.querySelector('#finalTripsValue').textContent = String(tripCount);
+    document.querySelector('#finalFishValue').textContent = String(sessionFishCount);
+    document.querySelector('#finalText').textContent = `You finished ${tripCount} ${tripCount === 1 ? 'trip' : 'trips'} with ${sessionScore.toLocaleString()} coins of catch. That score is now locked for this session.`;
+    window.DeepCatchSubmitScore?.(sessionScore, tripCount);
+  }
+
+  function resetSession({ start = false } = {}) {
+    sessionScore = 0;
+    tripCount = 0;
+    sessionFishCount = 0;
+    resetInput();
+    state = 'menu';
+    document.body.classList.remove('deep-catch-running');
+    finalScreen.hidden = true;
+    summaryScreen.hidden = true;
+    menuScreen.hidden = false;
+    renderUpgrades();
+    if (start) startRun();
   }
 
   function weightedFish(depthNormal) {
@@ -665,7 +706,7 @@
     if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement || event.target?.isContentEditable) return;
     if (state === 'playing' && ['ArrowLeft','a','A'].includes(event.key)) { event.preventDefault(); setDirection('left', true); }
     if (state === 'playing' && ['ArrowRight','d','D'].includes(event.key)) { event.preventDefault(); setDirection('right', true); }
-    if (state === 'menu' && (event.key === ' ' || event.key === 'Enter')) { event.preventDefault(); startRun(); }
+    if (state === 'menu' && !event.target.closest?.('button,input') && (event.key === ' ' || event.key === 'Enter')) { event.preventDefault(); startRun(); }
   });
 
   addEventListener('keyup', event => {
@@ -695,8 +736,12 @@
 
   document.querySelector('#playBtn').addEventListener('click', startRun);
   document.querySelector('#returnBtn').addEventListener('click', returnToMenu);
+  document.querySelector('#doneBtn').addEventListener('click', finishSession);
+  document.querySelector('#summaryDoneBtn').addEventListener('click', finishSession);
+  document.querySelector('#newSessionBtn').addEventListener('click', () => resetSession());
   document.querySelector('#menuScoresBtn').addEventListener('click', () => window.EscapeeScores?.show());
   document.querySelector('#summaryScoresBtn').addEventListener('click', () => window.EscapeeScores?.show());
+  document.querySelector('#finalScoresBtn').addEventListener('click', () => window.EscapeeScores?.show());
   soundBtn.addEventListener('click', () => { soundOn = !soundOn; if (soundOn) tone(520, .05); });
 
   window.EscapeeGame = {
@@ -710,10 +755,12 @@
       if (state === 'paused') state = 'playing';
     },
     restart() {
-      startRun();
+      if (state === 'game-over') resetSession({ start:true });
+      else startRun();
     },
     getStatus() {
-      if (state === 'summary') return 'game-over';
+      if (state === 'summary') return 'between-rounds';
+      if (state === 'game-over') return 'game-over';
       return state;
     }
   };
