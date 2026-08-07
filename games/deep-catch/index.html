@@ -70,10 +70,28 @@
   }
 -->
 <script>
+try {
+  if (!localStorage.getItem('deepCatchRig_v2')) {
+    const legacy = JSON.parse(localStorage.getItem('deepCatchSave_v1') || 'null');
+    if (legacy && typeof legacy === 'object') {
+      localStorage.setItem('deepCatchRig_v2', JSON.stringify({ bank: legacy.bank || 0, upgrades: legacy.upgrades || {} }));
+    }
+  }
+} catch {}
+
 window.DeepCatchSubmitScore = score => window.EscapeeScores?.submit(score, {
   label: 'Final catch',
   display: `${score.toLocaleString()} coins`
 });
+
+addEventListener('keydown', event => {
+  const scoreOverlay = document.querySelector('.escapee-score-overlay');
+  const scoreOpen = scoreOverlay && !scoreOverlay.hidden;
+  if (!document.body.classList.contains('deep-catch-running') && !scoreOpen && (event.code === 'KeyP' || event.code === 'Escape')) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+}, true);
 </script>
 <script src="game.js"></script>
 </body>
