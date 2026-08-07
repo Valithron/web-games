@@ -583,9 +583,6 @@
       }
 
       function startGame() {
-        clearInputState();
-        pausedFromState = null;
-        window.__centerholdSfx?.setPaused?.(false);
         resetGame();
         state = 'playing';
         els.start.classList.add('hidden');
