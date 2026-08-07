@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#20170f">
+  <style>[hidden]{display:none!important}</style>
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Aquila: Encirclement | Escapee Games</title>
+</head>
+<body>
+  <main id="game" class="escapee-game-stage" aria-label="Aquila Encirclement game">
+    <canvas id="canvas" aria-label="Roman formation fighting an advancing enemy army"></canvas>
+
+    <section class="hud" aria-label="Battle status">
+      <div><small>Wave</small><strong id="waveValue">1</strong></div>
+      <div><small>Aquila</small><strong id="centerValue">42</strong></div>
+      <div><small>Left</small><strong id="leftValue">28</strong></div>
+      <div><small>Right</small><strong id="rightValue">28</strong></div>
+      <div><small>Cohesion</small><strong id="cohesionValue">100%</strong></div>
+      <div class="wide"><small>Score</small><strong id="scoreValue">0</strong></div>
+    </section>
+
+    <div id="battleCall" class="battle-call" role="status" aria-live="polite"></div>
+
+    <div class="touch-controls" aria-label="Battle controls">
+      <button id="joystick" class="joystick" type="button" aria-label="Move formation"></button>
+      <button id="maneuverButton" class="maneuver" type="button" aria-label="Hold to yield the center, release to close the wings">
+        <span id="maneuverLabel">YIELD</span>
+        <small id="maneuverHint">hold</small>
+      </button>
+    </div>
+
+    <section id="startOverlay" class="overlay">
+      <div class="panel intro-panel">
+        <p class="eyebrow">ROMAN FORMATION TACTICS</p>
+        <h1>Aquila:<br>Encirclement</h1>
+        <p class="lead">Protect the Eagle. Draw the enemy into a bowed center, then close both wings around them.</p>
+        <div class="formation-demo" aria-hidden="true">
+          <span class="wing">████</span><span class="center">██♛██</span><span class="wing">████</span>
+        </div>
+        <button id="startButton" class="primary" type="button">Sound the Cornu</button>
+        <p class="controls-copy"><strong>Move:</strong> WASD / arrows or joystick<br><strong>Maneuver:</strong> hold Space to yield the center, then release to close the wings.</p>
+      </div>
+    </section>
+
+    <section id="upgradeOverlay" class="overlay" hidden>
+      <div class="panel upgrade-panel">
+        <p class="eyebrow" id="waveComplete">THE LINE HOLDS</p>
+        <h2>Reform the Legion</h2>
+        <p id="waveSummary"></p>
+        <div id="upgradeGrid" class="upgrade-grid"></div>
+      </div>
+    </section>
+
+    <section id="endOverlay" class="overlay" hidden>
+      <div class="panel results-panel">
+        <p class="eyebrow">THE EAGLE HAS FALLEN</p>
+        <h2>Last Stand</h2>
+        <p id="endSummary"></p>
+        <div class="results-grid">
+          <div><small>Score</small><strong id="finalScore">0</strong></div>
+          <div><small>Routed</small><strong id="routedValue">0</strong></div>
+          <div><small>Encirclements</small><strong id="encirclementValue">0</strong></div>
+        </div>
+        <button id="restartButton" class="primary" type="button">Raise Another Eagle</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
