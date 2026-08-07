@@ -185,6 +185,9 @@
 
   const mount = () => {
     updateViewport();
+    try {
+      if (typeof window.EscapeeGame?.getMuted === 'function') runtime.muted = Boolean(window.EscapeeGame.getMuted());
+    } catch {}
     document.documentElement.classList.add('escapee-universal-game');
     document.body.classList.add('escapee-universal-game-body');
 
@@ -292,6 +295,9 @@
 
       if (action === 'sound') {
         if (typeof window.EscapeeGame?.setMuted === 'function') {
+          try {
+            if (typeof window.EscapeeGame?.getMuted === 'function') runtime.muted = Boolean(window.EscapeeGame.getMuted());
+          } catch {}
           runtime.muted = !runtime.muted;
           try {
             window.EscapeeGame.setMuted(runtime.muted);
