@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#080704" />
+  <title>Last Lantern</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main id="game-shell" aria-label="Last Lantern browser game">
+    <canvas id="game" aria-label="Game field"></canvas>
+
+    <section id="hud" class="hidden" aria-live="polite">
+      <div class="hud-cluster">
+        <div class="chip">Wave<strong id="wave-readout">1</strong></div>
+        <div class="chip">Score<strong id="score-readout">0</strong></div>
+      </div>
+    </section>
+
+    <section id="status-bars" class="hidden" aria-label="Player status">
+      <div class="bar-row">
+        <div class="bar-label"><span>Health</span><strong id="health-text">100 / 100</strong></div>
+        <div class="bar-track"><div id="health-fill" class="bar-fill"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>Fuel</span><strong id="fuel-text">100 / 100</strong></div>
+        <div class="bar-track"><div id="fuel-fill" class="bar-fill"></div></div>
+      </div>
+    </section>
+
+    <div id="touch-stick" aria-label="Movement joystick"><div id="touch-knob"></div></div>
+    <button id="sound-button" class="hidden" type="button" tabindex="-1" aria-hidden="true">Sound</button>
+    <div id="toast">Wave 1</div>
+
+    <section id="start-screen" class="overlay">
+      <div class="panel">
+        <h1>Last Lantern</h1>
+        <p class="subtext instruction-line">Move through the dark, burn what enters the light, and keep the lantern fueled.</p>
+        <div class="controls-row" aria-label="Controls">
+          <span class="key">WASD</span><span class="key">↑ ↓ ← →</span><span class="key">Touch joystick</span>
+        </div>
+        <div class="button-row">
+          <button id="start-button" class="button primary" type="button">Light the lantern</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="upgrade-screen" class="overlay hidden">
+      <div class="panel">
+        <h2>The dark recoils</h2>
+        <p class="subtext">Choose one improvement. Press 1, 2, or 3, or tap a card.</p>
+        <div id="upgrade-cards"></div>
+      </div>
+    </section>
+
+    <section id="game-over-screen" class="overlay hidden">
+      <div class="panel">
+        <h2>The lantern went out</h2>
+        <p id="game-over-copy" class="subtext">You reached wave 1.</p>
+        <div class="button-row">
+          <button id="restart-button" class="button primary" type="button">Light it again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./game-core.js"></script>
+  <script src="./game-systems.js"></script>
+  <script src="./game-render.js"></script>
+</body>
+</html>
