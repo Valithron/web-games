@@ -10,7 +10,7 @@
   "orientation": "any",
   "sessionMinutes": "8–12 min",
   "published": "2026-08-05",
-  "featured": true,
+  "featured": false,
   "scoreMode": "none",
-  "status": "published"
+  "status": "draft"
 }
