@@ -1211,7 +1211,7 @@
             lastTime = performance.now();
           }
         },
-        setMuted() {},
+        setMuted(value) { window.__centerholdSfx?.setMuted?.(Boolean(value)); },
         getStatus() {
           if (state === 'start') return 'menu';
           if (state === 'paused') return 'paused';
