@@ -986,7 +986,7 @@ paused = false;
 last = performance.now();
 }
 },
-setMuted() {},
+setMuted(value) { muted = Boolean(value); if (!muted) initAudio(); },
 getStatus: () => status
 };
 state = freshState();
