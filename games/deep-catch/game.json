@@ -10,12 +10,13 @@
   ],
   "thumbnail": "thumbnail.svg",
   "desktopControls": [
-    "A/D",
-    "Arrow keys"
+    "A / D or Left / Right",
+    "P / Escape to pause"
   ],
   "mobileControls": [
     "Touch arrows",
-    "Drag on water"
+    "Drag on water",
+    "Pause button"
   ],
   "orientation": "any",
   "sessionMinutes": "1–2 min",

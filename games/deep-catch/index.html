@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#07131d">
+<title>Deep Catch</title>
+<link rel="stylesheet" href="/shared/universal-game.css">
+<script src="/shared/universal-game.js"></script>
+<script src="/shared/d1-scores.js"></script>
+<script src="/shared/score-input-lock.js"></script>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game" aria-label="Deep Catch fishing game"></canvas>
+
+  <header id="hud" class="hud" hidden>
+    <div class="pill"><span>Time</span><strong id="timeValue">1:30</strong></div>
+    <div class="pill"><span>Catch</span><strong id="scoreValue">0</strong></div>
+    <div class="pill depth"><span>Depth</span><strong id="depthValue">0 ft</strong></div>
+  </header>
+
+  <div id="touchControls" class="touch-controls" hidden>
+    <button id="leftBtn" type="button" aria-label="Move hook left">‹</button>
+    <button id="rightBtn" type="button" aria-label="Move hook right">›</button>
+  </div>
+
+  <button id="soundBtn" type="button" hidden aria-label="Toggle sound"></button>
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <section id="menuScreen" class="screen">
+    <div class="card menu-card">
+      <p class="eyebrow">Arcade fishing</p>
+      <h1>Deep<br>Catch</h1>
+      <p class="subtitle">Steer the hook while it drops and reels automatically. Catch fish, avoid junk, and build a rig that reaches the valuable dark water.</p>
+      <div class="stats">
+        <div><span>Bank</span><strong id="bankValue">0 ¢</strong></div>
+        <div><span>Rig Level</span><strong id="rigValue">0 / 25</strong></div>
+        <div><span>Max Depth</span><strong id="menuDepthValue">70 ft</strong></div>
+      </div>
+      <div id="upgradeList" class="upgrade-list"></div>
+      <button id="playBtn" class="primary" type="button">Cast Off</button>
+      <button id="menuScoresBtn" class="secondary" type="button">High Scores</button>
+      <p class="controls-copy">A / D or Left / Right · touch arrows or drag the water · P / Esc pauses</p>
+    </div>
+  </section>
+
+  <section id="summaryScreen" class="screen" hidden>
+    <div class="card">
+      <p class="eyebrow">Run complete</p>
+      <h2 id="summaryTitle">Good haul.</h2>
+      <p id="summaryText" class="subtitle"></p>
+      <div class="stats">
+        <div><span>Run Value</span><strong id="runValue">0 ¢</strong></div>
+        <div><span>Fish</span><strong id="fishValue">0</strong></div>
+        <div><span>Deepest</span><strong id="deepestValue">0 ft</strong></div>
+      </div>
+      <div id="summaryCatch" class="summary-catch"></div>
+      <button id="returnBtn" class="primary" type="button">Spend the Haul</button>
+      <button id="summaryScoresBtn" class="secondary" type="button">High Scores</button>
+    </div>
+  </section>
+</div>
+
+<!-- Legacy postbuild compatibility target. Deep Catch no longer executes this code; it only lets the older shared compatibility pass finish while Centerhold still uses that script.
+  function ensureAudio() {
+    if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended') audioCtx.resume();
+  }
+-->
+<script>
+try {
+  if (!localStorage.getItem('deepCatchRig_v2')) {
+    const legacy = JSON.parse(localStorage.getItem('deepCatchSave_v1') || 'null');
+    if (legacy && typeof legacy === 'object') {
+      localStorage.setItem('deepCatchRig_v2', JSON.stringify({ bank: legacy.bank || 0, upgrades: legacy.upgrades || {} }));
+    }
+  }
+} catch {}
+
+window.DeepCatchSubmitScore = score => window.EscapeeScores?.submit(score, {
+  label: 'Final catch',
+  display: `${score.toLocaleString()} coins`
+});
+
+addEventListener('keydown', event => {
+  const scoreOverlay = document.querySelector('.escapee-score-overlay');
+  const scoreOpen = scoreOverlay && !scoreOverlay.hidden;
+  if (!document.body.classList.contains('deep-catch-running') && !scoreOpen && (event.code === 'KeyP' || event.code === 'Escape')) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+}, true);
+</script>
+<script src="game.js"></script>
+</body>
+</html>
