@@ -108,8 +108,8 @@ centerhold = replaceOnce(
 
 centerhold = replaceOnce(
   centerhold,
-  "        els.upgrades.classList.add('hidden');
-        els.hud.classList.remove('hidden');",
+  `        els.upgrades.classList.add('hidden');
+        els.hud.classList.remove('hidden');`,
   `        els.upgrades.classList.add('hidden');
         els.endless.classList.add('hidden');
         els.hud.classList.remove('hidden');`,
