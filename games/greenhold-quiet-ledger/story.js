@@ -58,7 +58,7 @@ export const GREENHOLD_STORY = {
         "When you point out that the oil receipt bears the same faded mark as a wayhouse payment, Ashley's expression sharpens. Her delight in a pattern is sincere. So is her hope that someone will let her follow it."
       ],
       choices: [
-        { text: "Give Ashley the credit and ask what she sees", next: "ledgerReview", effects: { flags: ["scheduleClue", "ashleyInterest"], rel: { Ashley: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderMale"] } },
+        { text: "Give Ashley the credit and ask what she sees", next: "ledgerReview", effects: { flags: ["scheduleClue", "ashleyInterest"], rel: { Ashley: 2 }, vars: { clueCount: 1 } } },
         { text: "Ask Ashley to mark every matching receipt", next: "ledgerReview", effects: { flags: ["scheduleClue"], rel: { Ashley: 1 }, vars: { clueCount: 1 } } }
       ]
     },
@@ -85,7 +85,7 @@ export const GREENHOLD_STORY = {
       choices: [
         { text: "Ask for permission to inspect the old records", next: "inquiryPlan", effects: { flags: ["ryanPermission"], rel: { Ryan: 1 }, vars: { clueCount: 1 } } },
         { text: "Ask what the former baron's son knew of the eastern road", next: "inquiryPlan", effects: { flags: ["heirLead"], rel: { Ryan: 1 }, vars: { clueCount: 1 } } },
-        { text: "Tell Ryan you will find the practical failure before it becomes public", next: "inquiryPlan", effects: { flags: ["earnedRyanTrust"], rel: { Ryan: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderFemale"] } }
+        { text: "Tell Ryan you will find the practical failure before it becomes public", next: "inquiryPlan", effects: { flags: ["earnedRyanTrust"], rel: { Ryan: 2 }, vars: { clueCount: 1 } } }
       ]
     },
 
@@ -97,7 +97,7 @@ export const GREENHOLD_STORY = {
       ],
       choices: [
         { text: "Ask Kenly to help you identify who could be summoned without insult", next: "inquiryPlan", effects: { flags: ["courtLead"], rel: { Kenly: 1 }, vars: { clueCount: 1 } } },
-        { text: "Share a private joke about portraits and ask for her honest reading", next: "inquiryPlan", effects: { flags: ["courtLead", "kenlyInterest"], rel: { Kenly: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderMale"] } }
+        { text: "Share a private joke about portraits and ask for her honest reading", next: "inquiryPlan", effects: { flags: ["courtLead", "kenlyInterest"], rel: { Kenly: 2 }, vars: { clueCount: 1 } } }
       ]
     },
 
@@ -109,7 +109,7 @@ export const GREENHOLD_STORY = {
       ],
       choices: [
         { text: "Ask Cydney to compare the seal with Avarran trade marks", next: "inquiryPlan", effects: { flags: ["foreignLead"], rel: { Cydney: 1 }, vars: { clueCount: 1 } } },
-        { text: "Tell Cydney you would rather hear her judgment than flatter her expertise", next: "inquiryPlan", effects: { flags: ["foreignLead", "cydneyInterest"], rel: { Cydney: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderMale"] } }
+        { text: "Tell Cydney you would rather hear her judgment than flatter her expertise", next: "inquiryPlan", effects: { flags: ["foreignLead", "cydneyInterest"], rel: { Cydney: 2 }, vars: { clueCount: 1 } } }
       ]
     },
 
@@ -185,7 +185,7 @@ export const GREENHOLD_STORY = {
         "She is pleased until she realizes the pattern points toward an old road office established by the former baron's son. Then she becomes serious. 'If I am right, someone has been using a dead man's order as cover for a living arrangement.'"
       ],
       choices: [
-        { text: "Tell Ashley her pattern is the heart of the inquiry", next: "gatherFacts", effects: { flags: ["patternProof", "ashleyInterest"], rel: { Ashley: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderMale"] } },
+        { text: "Tell Ashley her pattern is the heart of the inquiry", next: "gatherFacts", effects: { flags: ["patternProof", "ashleyInterest"], rel: { Ashley: 2 }, vars: { clueCount: 2 } } },
         { text: "Ask Ashley to make a clean copy before anyone sees the original", next: "gatherFacts", effects: { flags: ["patternProof"], rel: { Ashley: 1 }, vars: { clueCount: 2 } } },
         { text: "Ask whether the pattern could still be innocent", next: "archiveUnauthorized", effects: { flags: ["patternProof"], rel: { Ashley: 1 }, vars: { clueCount: 1 } } }
       ]
@@ -198,7 +198,7 @@ export const GREENHOLD_STORY = {
         "'The safe explanation is that the watch was lazy,' Sterling says. 'The less safe explanation is that someone knew exactly when laziness would be useful.'"
       ],
       choices: [
-        { text: "Tell Sterling his caution has kept this from becoming a rumor", next: "gatherFacts", effects: { flags: ["watchProof", "sterlingInterest"], rel: { Sterling: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderFemale"] } },
+        { text: "Tell Sterling his caution has kept this from becoming a rumor", next: "gatherFacts", effects: { flags: ["watchProof", "sterlingInterest"], rel: { Sterling: 2 }, vars: { clueCount: 2 } } },
         { text: "Ask Sterling to mark the gaps on a road map", next: "gatherFacts", effects: { flags: ["watchProof"], rel: { Sterling: 1 }, vars: { clueCount: 2 } } },
         { text: "Insist that you can reach Ash Bridge before nightfall", next: "riverRoad", effects: { flags: ["watchProof", "rashPlan"], rel: { Sterling: -1 }, vars: { danger: 1 } } }
       ]
@@ -250,7 +250,7 @@ export const GREENHOLD_STORY = {
         "'It is not dangerous,' he says. Then, after considering the cliff, 'Dangerous? It is not dangerous in a memorable way.'"
       ],
       choices: [
-        { text: "Let Cooper lead, keep the rope ready, and follow the marked path", next: "wayhouseApproach", effects: { flags: ["ridgeArrival", "cooperInterest"], rel: { Cooper: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderFemale"] } },
+        { text: "Let Cooper lead, keep the rope ready, and follow the marked path", next: "wayhouseApproach", effects: { flags: ["ridgeArrival", "cooperInterest"], rel: { Cooper: 2 }, vars: { clueCount: 1 } } },
         { text: "Let Cooper lead without questioning his judgment", next: "wayhouseApproach", effects: { flags: ["ridgeArrival"], rel: { Cooper: 1 }, vars: { clueCount: 1 } } },
         { text: "Race ahead to reach the wayhouse before the others", next: "death", effects: { flags: ["ridgeCarelessness"] } }
       ]
@@ -263,7 +263,7 @@ export const GREENHOLD_STORY = {
         "Cydney learns that two eastern caravans were told to wait at Ash Bridge for a message that never came. One caravan changed course toward a neighboring lord's lands. The other paid an unfamiliar escort to continue."
       ],
       choices: [
-        { text: "Ask Cydney what kind of escort would charge for silence", next: "wayhouseApproach", effects: { flags: ["merchantLead", "cydneyInterest"], rel: { Cydney: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderMale"] } },
+        { text: "Ask Cydney what kind of escort would charge for silence", next: "wayhouseApproach", effects: { flags: ["merchantLead", "cydneyInterest"], rel: { Cydney: 2 }, vars: { clueCount: 2 } } },
         { text: "Record the convoy names and continue under cover", next: "wayhouseApproach", effects: { flags: ["merchantLead"], rel: { Cydney: 1 }, vars: { clueCount: 2 } } }
       ]
     },
@@ -413,7 +413,7 @@ export const GREENHOLD_STORY = {
       ],
       choices: [
         { text: "Ask Cydney to write the foreign connection in her own hand", next: "ashleySchedule", effects: { flags: ["outsideInterest", "cydneyEvidence"], rel: { Cydney: 2 }, vars: { clueCount: 2 } } },
-        { text: "Tell Cydney you trust her reading, even though it implicates a neighboring lord", next: "ashleySchedule", effects: { flags: ["outsideInterest", "cydneyEvidence", "cydneyInterest"], rel: { Cydney: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderMale"] } }
+        { text: "Tell Cydney you trust her reading, even though it implicates a neighboring lord", next: "ashleySchedule", effects: { flags: ["outsideInterest", "cydneyEvidence", "cydneyInterest"], rel: { Cydney: 2 }, vars: { clueCount: 2 } } }
       ]
     },
 
@@ -424,7 +424,7 @@ export const GREENHOLD_STORY = {
         "'The truth should survive the death of one paper,' Kenly says. 'Preferably it should also survive the impatience of one hero.' She looks at you when she says the last part, but not unkindly."
       ],
       choices: [
-        { text: "Ask Kenly to stay beside you through the final hearing", next: "ashleySchedule", effects: { flags: ["witnessChain", "kenlyInterest"], rel: { Kenly: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderMale"] } },
+        { text: "Ask Kenly to stay beside you through the final hearing", next: "ashleySchedule", effects: { flags: ["witnessChain", "kenlyInterest"], rel: { Kenly: 2 }, vars: { clueCount: 2 } } },
         { text: "Ask Kenly to make the copies impossible to dismiss as gossip", next: "ashleySchedule", effects: { flags: ["witnessChain"], rel: { Kenly: 1 }, vars: { clueCount: 2 } } }
       ]
     },
@@ -436,7 +436,7 @@ export const GREENHOLD_STORY = {
         "She is also the first to see the cost. If you close the eastern road without a replacement escort, honest merchants will suffer alongside the dishonest ones. A neat solution can still be a bad administration."
       ],
       choices: [
-        { text: "Put Ashley in charge of the convoy timing", next: "cooperChase", effects: { flags: ["scheduleProof", "ashleyInterest"], rel: { Ashley: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderMale"] } },
+        { text: "Put Ashley in charge of the convoy timing", next: "cooperChase", effects: { flags: ["scheduleProof", "ashleyInterest"], rel: { Ashley: 2 }, vars: { clueCount: 2 } } },
         { text: "Ask Ashley to revise the schedule with Gabi's household limits", next: "cooperChase", effects: { flags: ["scheduleProof"], rel: { Ashley: 1, Gabi: 1 }, vars: { clueCount: 2 } } },
         { text: "Hide the schedule from Sterling so the plan remains quick", next: "chaseDanger", effects: { flags: ["scheduleProof", "withheldPlan"], rel: { Sterling: -1 }, vars: { clueCount: 1, danger: 1 } } }
       ]
@@ -449,7 +449,7 @@ export const GREENHOLD_STORY = {
         "Vey's messenger breaks from the market road toward the quarry. Cooper sees him first."
       ],
       choices: [
-        { text: "Let Cooper lead the pursuit while you protect the evidence", next: "chaseSafe", effects: { flags: ["messengerCaught", "completeEvidence", "cooperInterest"], rel: { Cooper: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderFemale"] } },
+        { text: "Let Cooper lead the pursuit while you protect the evidence", next: "chaseSafe", effects: { flags: ["messengerCaught", "completeEvidence", "cooperInterest"], rel: { Cooper: 2 }, vars: { clueCount: 2 } } },
         { text: "Follow Cooper's route and keep the evidence together", next: "chaseSafe", effects: { flags: ["messengerCaught", "completeEvidence"], rel: { Cooper: 1 }, vars: { clueCount: 2 } } },
         { text: "Leave the evidence with the others and chase ahead alone", next: "chaseDanger", effects: { flags: ["messengerChase", "dangerousPursuit"], vars: { danger: 2 } } }
       ]
@@ -500,7 +500,7 @@ export const GREENHOLD_STORY = {
       ],
       choices: [
         { text: "Tell Ryan the lawful order should be honored and properly closed", next: "missingPacket", effects: { flags: ["formerOrder", "earnedRyanTrust"], rel: { Ryan: 2 }, vars: { clueCount: 2 } } },
-        { text: "Meet Ryan's eyes and say that Greenhold is his to govern now", next: "missingPacket", effects: { flags: ["formerOrder", "earnedRyanTrust", "ryanInterest"], rel: { Ryan: 3 }, vars: { clueCount: 2 } }, requires: { flags: ["genderFemale"] } },
+        { text: "Meet Ryan's eyes and say that Greenhold is his to govern now", next: "missingPacket", effects: { flags: ["formerOrder", "earnedRyanTrust", "ryanInterest"], rel: { Ryan: 3 }, vars: { clueCount: 2 } } },
         { text: "Ask whether he can bear being compared with the dead", next: "gabiReconcile", effects: { flags: ["formerOrder"], rel: { Ryan: 1 }, vars: { clueCount: 1 } } }
       ]
     },
@@ -513,7 +513,7 @@ export const GREENHOLD_STORY = {
       ],
       choices: [
         { text: "Ask Gabi to reconcile the old order with the current accounts", next: "missingPacket", effects: { flags: ["formerOrder", "correspondenceFound"], rel: { Gabi: 2 }, vars: { clueCount: 2 } } },
-        { text: "Thank Gabi for finding what everyone else overlooked", next: "missingPacket", effects: { flags: ["formerOrder", "correspondenceFound", "gabiInterest"], rel: { Gabi: 3 }, vars: { clueCount: 2 } }, requires: { flags: ["genderMale"] } }
+        { text: "Thank Gabi for finding what everyone else overlooked", next: "missingPacket", effects: { flags: ["formerOrder", "correspondenceFound", "gabiInterest"], rel: { Gabi: 3 }, vars: { clueCount: 2 } } }
       ]
     },
 
