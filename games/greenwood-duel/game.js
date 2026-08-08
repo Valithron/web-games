@@ -7,6 +7,8 @@ const lerp = (a, b, amount) => a + (b - a) * amount;
 const TAU = Math.PI * 2;
 const GRAVITY = 232;
 const WIND_ACCELERATION = 2.35;
+const AI_DRAW_DURATION = 0.62;
+const AI_RELEASE_DELAY = 0.76;
 const CHARACTER_ORDER = ['sterling', 'ryan', 'cooper'];
 const CHARACTERS = {
   sterling: { name: 'Sterling', skin: '#e7b37d', hair: '#33251f', hat: '#244f3c', shirt: '#1f5a46', trim: '#d4a64e', pants: '#273d3a', boots: '#573b2b' },
@@ -63,6 +65,7 @@ const state = {
   impactResult: null,
   aiElapsed: 0,
   aiPlan: null,
+  aiPlanPending: false,
   aiObservation: null,
   rng: Math.random,
   cameraX: 0,
@@ -233,13 +236,15 @@ function setupMatch() {
     opponent: { x: opponentX, facing: -1, health: 100, hitTimer: 0, releaseStartedAt: 0, releaseUntil: 0, idleGroup: 1 },
     arrows: [],
     turn: 'player',
-    drawProgress: 0
+    drawProgress: 0,
+    aiShotFired: false
   };
   state.cameraY = 0;
   state.cameraX = clamp((playerX + opponentX) / 2 - width / 2, 0, Math.max(0, worldWidth - width));
   state.playerShotsThisDuel = 0;
   state.aiObservation = null;
   state.aiPlan = null;
+  state.aiPlanPending = false;
   state.impactResult = null;
   state.status = 'playing';
   updateUi();
@@ -412,12 +417,25 @@ function createArrow(shooter, velocity, owner) {
 }
 
 function prepareAiTurn() {
+  if (!state.match || state.status === 'game-over' || state.runFinished) return;
   state.status = 'ai-aiming';
   state.aiElapsed = 0;
-  state.aiPlan = calculateAiPlan();
+  state.aiPlan = fallbackAiPlan();
+  state.aiPlanPending = true;
   state.match.turn = 'ai';
   state.match.drawProgress = 0;
   updateUi();
+}
+
+function fallbackAiPlan() {
+  const shooter = state.match?.opponent;
+  const target = state.match?.player;
+  if (!shooter || !target) return { angle: 45, power: 65 };
+  const distance = Math.abs(shooter.x - target.x);
+  return {
+    angle: clamp(40 + distance / 150, 25, 62),
+    power: clamp(38 + distance / 4.8, 30, 92)
+  };
 }
 
 function calculateAiPlan() {
@@ -430,15 +448,18 @@ function calculateAiPlan() {
   const powerError = 76 - Math.min(42, state.streak * 3.6);
   const angle = clamp(base.angle + verticalCorrection + (state.rng() - 0.5) * angleError, 15, 78);
   const power = clamp(base.power + correction + (state.rng() - 0.5) * powerError, 20, 100);
-  return { angle, power };
+  return Number.isFinite(angle) && Number.isFinite(power) ? { angle, power } : fallbackAiPlan();
 }
 
 function findBallisticSolution(shooter, target) {
   const direction = -1;
   const targetY = terrainYAt(target.x) - 40;
   let best = { angle: 45, power: 68, score: Infinity };
-  for (let angle = 20; angle <= 76; angle += 2) {
-    for (let power = 30; power <= 100; power += 3) {
+  // Keep the solve bounded so it cannot monopolize the only animation loop.
+  // AI error supplies the final variation, so this coarser search remains
+  // visually believable without delaying the start of the draw animation.
+  for (let angle = 20; angle <= 76; angle += 4) {
+    for (let power = 30; power <= 100; power += 5) {
       const velocity = getAimVelocity(shooter, angle, power, direction);
       let x = shooter.x - 20;
       let y = terrainYAt(shooter.x) - 39;
@@ -449,7 +470,7 @@ function findBallisticSolution(shooter, target) {
       let closest = Infinity;
       let targetCrossY = y;
       let blocked = false;
-      for (let step = 0; step < 150; step += 1) {
+      for (let step = 0; step < 110; step += 1) {
         previousX = x;
         previousY = y;
         vy += GRAVITY * 0.025;
@@ -598,7 +619,7 @@ function updateArrow(arrow, dt) {
 
 function beginImpactPause() {
   state.status = 'impact';
-  state.impactUntil = performance.now() + 430;
+  state.impactUntil = performance.now() + 320;
   updateUi();
 }
 
@@ -663,11 +684,23 @@ function update(dt, now) {
     match.drawProgress = Math.min(1, match.drawProgress + dt * 5);
   }
   if (state.status === 'ai-aiming') {
+    if (state.aiPlanPending) {
+      state.aiPlanPending = false;
+      try {
+        state.aiPlan = calculateAiPlan();
+      } catch (error) {
+        // A failed solve keeps the already-visible fallback shot. The AI
+        // should continue using the same physics rather than strand the duel.
+        console.error('Greenwood Duel AI planning failed; using fallback shot.', error);
+        state.aiPlan = fallbackAiPlan();
+      }
+    }
     state.aiElapsed += dt;
-    match.drawProgress = Math.min(1, state.aiElapsed / 0.9);
-    if (state.aiElapsed >= 1.08) {
-      const plan = state.aiPlan || { angle: 45, power: 65 };
+    match.drawProgress = Math.min(1, state.aiElapsed / AI_DRAW_DURATION);
+    if (state.aiElapsed >= AI_RELEASE_DELAY && !match.aiShotFired) {
+      const plan = state.aiPlan || fallbackAiPlan();
       createArrow(match.opponent, getAimVelocity(match.opponent, plan.angle, plan.power, -1), 'ai');
+      match.aiShotFired = true;
       tone(155, 0.12, 'sawtooth', 0.03, 85);
       tone(600, 0.2, 'triangle', 0.015, -250);
     }
@@ -1019,12 +1052,48 @@ function handleKeydown(event) {
   if (state.status === 'between-rounds' && event.code === 'Space') { event.preventDefault(); startNextDuel(); }
 }
 
+function recoverFromLoopError(error) {
+  console.error('Greenwood Duel recovered from a frame error.', error);
+  try {
+    if (!state.match) return;
+    if (state.status === 'ai-aiming') {
+      state.aiPlanPending = false;
+      state.aiPlan ||= fallbackAiPlan();
+      state.aiElapsed = Math.max(state.aiElapsed, AI_RELEASE_DELAY);
+      state.match.aiShotFired = false;
+      state.match.drawProgress = 1;
+      return;
+    }
+    if (state.status === 'flying') {
+      const flying = state.match.arrows.find(arrow => !arrow.embedded);
+      if (!flying) return;
+      flying.embedded = true;
+      flying.kind = 'ground';
+      flying.impactX = clamp(flying.x, 0, state.match.worldWidth);
+      flying.impactY = terrainYAt(flying.impactX);
+      state.impactResult = { label: 'MISS', owner: flying.owner, target: null, killed: false };
+      beginImpactPause();
+    }
+  } catch (recoveryError) {
+    console.error('Greenwood Duel could not recover the frame cleanly.', recoveryError);
+    state.status = state.match ? 'playing' : 'menu';
+    if (state.match) state.match.turn = 'player';
+  }
+}
+
 function loop(now) {
-  const dt = Math.min(Math.max(0, now - lastFrame) / 1000, 0.05);
-  lastFrame = now;
-  if (!state.paused) update(dt, now);
-  render();
-  requestAnimationFrame(loop);
+  try {
+    const dt = Math.min(Math.max(0, now - lastFrame) / 1000, 0.05);
+    lastFrame = now;
+    if (!state.paused) update(dt, now);
+    render();
+  } catch (error) {
+    recoverFromLoopError(error);
+  } finally {
+    // Always schedule the next frame. A single bad AI calculation or render
+    // edge case must not permanently stop the duel.
+    requestAnimationFrame(loop);
+  }
 }
 
 window.EscapeeGame = {
