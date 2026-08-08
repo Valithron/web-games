@@ -1,0 +1,134 @@
+{
+  "logicalSize": [
+    64,
+    80
+  ],
+  "facing": "right",
+  "mirrorForOppositeSide": true,
+  "baseline": 79,
+  "bodyOrigin": [
+    32,
+    0
+  ],
+  "anchors": {
+    "feet": [
+      32,
+      79
+    ],
+    "bowSideShoulder": [
+      25,
+      34
+    ],
+    "drawSideShoulder": [
+      39,
+      35
+    ],
+    "bowGrip": [
+      41,
+      24
+    ],
+    "arrowNock": [
+      35,
+      29
+    ],
+    "arrowReleaseOrigin": [
+      35,
+      29
+    ],
+    "headBounds": [
+      21,
+      8,
+      22,
+      21
+    ],
+    "torsoBounds": [
+      19,
+      28,
+      26,
+      26
+    ]
+  },
+  "layers": {
+    "body": "sterling-body.png",
+    "arms": {
+      "file": "sterling-arms.png",
+      "frames": 5,
+      "frameSize": [
+        64,
+        80
+      ]
+    },
+    "bow": {
+      "file": "sterling-bow.png",
+      "frames": 5,
+      "frameSize": [
+        64,
+        80
+      ]
+    },
+    "aimComposite": {
+      "file": "sterling-aim.png",
+      "frames": 5,
+      "frameSize": [
+        64,
+        80
+      ]
+    },
+    "release": {
+      "file": "sterling-release.png",
+      "frames": 3,
+      "frameSize": [
+        64,
+        80
+      ]
+    },
+    "idles": {
+      "file": "sterling-idles.png",
+      "frames": 9,
+      "frameSize": [
+        64,
+        80
+      ],
+      "groups": {
+        "idleA": [
+          0,
+          4
+        ],
+        "idleB": [
+          4,
+          9
+        ]
+      }
+    }
+  },
+  "drawStates": [
+    "rest",
+    "light",
+    "half",
+    "heavy",
+    "full"
+  ],
+  "rotationProof": [
+    {
+      "angle": 20,
+      "draw": "full"
+    },
+    {
+      "angle": 45,
+      "draw": "half"
+    },
+    {
+      "angle": 45,
+      "draw": "full"
+    },
+    {
+      "angle": 70,
+      "draw": "full"
+    }
+  ],
+  "idleAnimations": {
+    "idleA": "4-frame authored idle",
+    "idleB": "5-frame authored idle",
+    "note": "settled watch / gear adjustment"
+  }
+}
