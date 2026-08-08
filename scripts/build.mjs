@@ -110,7 +110,7 @@ async function build() {
   const urls = ['', ...games.map(game => game.slug)].map(slug => `<url><loc>${BASE_URL}/${slug ? `${slug}/` : ''}</loc></url>`).join('');
   await writeFile(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`);
   await writeFile(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${BASE_URL}/sitemap.xml\n`);
-  await writeFile(path.join(DIST, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), fullscreen=(self)\n\n/assets/*\n  Cache-Control: public, max-age=604800\n\n/*/thumbnail.*\n  Cache-Control: public, max-age=604800\n`);
+  await writeFile(path.join(DIST, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), fullscreen=(self)\n\n/greenhold-quiet-ledger/*.js\n  Cache-Control: public, max-age=14400, must-revalidate, no-transform\n\n/assets/*\n  Cache-Control: public, max-age=604800\n\n/*/thumbnail.*\n  Cache-Control: public, max-age=604800\n`);
   console.log(`Built Escapee Games with ${games.length} published game${games.length === 1 ? '' : 's'}.`);
 }
 
