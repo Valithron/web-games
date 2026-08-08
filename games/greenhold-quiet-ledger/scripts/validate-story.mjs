@@ -10,12 +10,12 @@ const visibleStoryText = Object.values(nodes).flatMap(node => [
   ...(node?.choices || []).map(choice => choice?.text || ''),
 ]);
 const forbiddenPhrases = [
-  /\\ba gender\\b/i,
+  /\ba gender\b/i,
   /temporary category of useful stranger/i,
   /sound pair of boots/i,
 ];
 for (const phrase of forbiddenPhrases) {
-  if (visibleStoryText.some(text => phrase.test(text))) errors.push('Artificial player-setup phrasing remains in story text: ' + phrase);
+  if (visibleStoryText.some(text => phrase.test(text))) errors.push(`Artificial player-setup phrasing remains in story text: ${phrase}`);
 }
 
 if (!start || !nodes[start]) errors.push(`Missing valid start node: ${start}`);
@@ -57,10 +57,22 @@ const romanceTargets = {
   commitCydney: 'genderMale', commitGabi: 'genderMale', commitAshley: 'genderMale', commitKenly: 'genderMale',
   commitSterling: 'genderFemale', commitRyan: 'genderFemale', commitCooper: 'genderFemale'
 };
+const romanceTargetSet = new Set(Object.keys(romanceTargets));
+for (const [id, node] of Object.entries(nodes)) {
+  for (const [index, choice] of (node.choices || []).entries()) {
+    const genderGates = (choice.requires?.flags || []).filter(flag => flag === 'genderMale' || flag === 'genderFemale');
+    const hasSexGate = choice.requires?.sex !== undefined;
+    if ((genderGates.length || hasSexGate) && !romanceTargetSet.has(choice.next)) {
+      errors.push(`${id}[${index}]: gender/sex gate is only allowed on a romance commitment choice (targets ${choice.next})`);
+    }
+    if (genderGates.length > 1) errors.push(`${id}[${index}]: choice has multiple gender gates`);
+  }
+}
 for (const [target, genderFlag] of Object.entries(romanceTargets)) {
   if (!nodes[target]) errors.push(`Missing romance scene: ${target}`);
   const incoming = Object.values(nodes).flatMap(node => node.choices || []).filter(choice => choice.next === target);
   if (!incoming.some(choice => choice.requires?.flags?.includes(genderFlag))) errors.push(`${target}: missing gender gate ${genderFlag}`);
+  if (incoming.some(choice => !(choice.requires?.flags || []).includes(genderFlag))) errors.push(`${target}: romance choice has incorrect or missing gender gate`);
 }
 
 function requirementPasses(requires = {}, state) {
