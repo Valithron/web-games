@@ -5,6 +5,19 @@ const nodes = GREENHOLD_STORY?.nodes || {};
 const start = GREENHOLD_STORY?.start;
 const errors = [];
 
+const visibleStoryText = Object.values(nodes).flatMap(node => [
+  ...(node?.text || []),
+  ...(node?.choices || []).map(choice => choice?.text || ''),
+]);
+const forbiddenPhrases = [
+  /\\ba gender\\b/i,
+  /temporary category of useful stranger/i,
+  /sound pair of boots/i,
+];
+for (const phrase of forbiddenPhrases) {
+  if (visibleStoryText.some(text => phrase.test(text))) errors.push('Artificial player-setup phrasing remains in story text: ' + phrase);
+}
+
 if (!start || !nodes[start]) errors.push(`Missing valid start node: ${start}`);
 if (Object.keys(nodes).length < 35) errors.push(`Story graph is too small: ${Object.keys(nodes).length} nodes`);
 
