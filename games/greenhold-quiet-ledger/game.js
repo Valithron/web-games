@@ -48,6 +48,9 @@ const journalEmpty = $('#journalEmpty');
 
 const SAVE_KEY = 'escapee:greenhold-quiet-ledger:save:v1';
 const STORY_VERSION = 1;
+// Keep the story request cache-busted when the story asset changes. This also
+// avoids reusing a malformed CDN-compressed response from an earlier deploy.
+const STORY_MODULE_URL = './story.js?release=2';
 const HISTORY_LIMIT = 80;
 const ROMANCE_BY_SEX = Object.freeze({
   male: ['Cydney', 'Gabi', 'Ashley', 'Kenly'],
@@ -504,7 +507,7 @@ function scanJournalUsage() {
 
 async function loadStoryModule() {
   try {
-    const module = await import('./story.js');
+    const module = await import(STORY_MODULE_URL);
     story = module.GREENHOLD_STORY;
     if (!story || typeof story.start !== 'string' || !story.nodes || typeof story.nodes !== 'object' || !story.nodes[story.start]) {
       throw new Error('GREENHOLD_STORY does not match the story contract.');
