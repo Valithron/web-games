@@ -296,7 +296,9 @@ function setAimMode(mode) {
   $('#aim-mode').textContent = sliders ? 'AIM MODE: SLIDERS' : 'AIM MODE: DRAG';
   $('#aim-mode').setAttribute('aria-pressed', String(sliders));
   $('#slider-controls').classList.toggle('is-disabled', !sliders);
-  $('#drag-hint').textContent = sliders ? 'Use Angle and Power, then press Fire. Arrow keys and Space also work.' : 'Drag back from your archer to draw. Release to fire.';
+  $('#drag-hint').textContent = sliders
+    ? 'Set Angle and Power, then press Fire. The dotted arc includes gravity and wind.'
+    : 'Drag back from your archer to draw. The dotted arc shows the exact flight path. Release to fire.';
   updateUi();
 }
 
@@ -304,6 +306,50 @@ function getAimVelocity(shooter, angle = state.playerAimAngle, power = state.pla
   const radians = angle * Math.PI / 180;
   const speed = 280 + power / 100 * 520;
   return { vx: Math.cos(radians) * speed * direction, vy: -Math.sin(radians) * speed };
+}
+
+// The preview intentionally uses the same fixed physics step as the live
+// projectile. This keeps the guide honest when wind or frame timing changes.
+function predictAimPath(shooter, angle, power, direction = 1) {
+  const origin = spriteAnchorWorld(shooter, SPRITE_META.anchors.arrowReleaseOrigin);
+  const velocity = getAimVelocity(shooter, angle, power, direction);
+  const points = [{ x: origin.x, y: origin.y }];
+  const target = direction === 1 ? state.match?.opponent : state.match?.player;
+  const step = 1 / 60;
+  let x = origin.x;
+  let y = origin.y;
+  let vx = velocity.vx;
+  let vy = velocity.vy;
+  let impact = null;
+
+  for (let index = 0; index < 360; index += 1) {
+    const previousX = x;
+    const previousY = y;
+    vy += GRAVITY * step;
+    vx += state.match.wind * WIND_ACCELERATION * step;
+    x += vx * step;
+    y += vy * step;
+
+    const terrainT = segmentTerrainT(previousX, previousY, x, y);
+    let bodyT = null;
+    if (target) {
+      for (const region of hitRegions(target)) {
+        const hitT = segmentRectT(previousX, previousY, x, y, region.rect);
+        if (hitT !== null && (bodyT === null || hitT < bodyT)) bodyT = hitT;
+      }
+    }
+
+    const collisionT = bodyT !== null && (terrainT === null || bodyT <= terrainT) ? bodyT : terrainT;
+    if (collisionT !== null) {
+      impact = { x: lerp(previousX, x, collisionT), y: lerp(previousY, y, collisionT) };
+      points.push(impact);
+      break;
+    }
+
+    points.push({ x, y });
+    if (y > state.match.baseY + 300 || x < -200 || x > state.match.worldWidth + 200) break;
+  }
+  return { points, impact };
 }
 
 function firePlayer() {
@@ -828,16 +874,49 @@ function drawArcher(key, archer, facing, drawProgress = 0) {
 }
 
 function drawAimGuide() {
-  if (state.status !== 'playing' || getAimMode() === 'sliders') return;
+  if (state.status !== 'playing') return;
   const player = state.match.player;
-  const origin = spriteAnchorWorld(player, SPRITE_META.anchors.arrowReleaseOrigin);
-  const x = origin.x - state.cameraX;
-  const y = origin.y - state.cameraY;
-  if (!state.drag) return;
+  const sliders = getAimMode() === 'sliders';
+  if (!state.drag && !sliders) return;
+  const path = predictAimPath(player, state.playerAimAngle, state.playerAimPower, 1);
+  if (path.points.length < 2) return;
   ctx.save();
-  ctx.strokeStyle = 'rgba(255,241,177,.78)'; ctx.lineWidth = 3; ctx.setLineDash([6, 5]);
-  ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(state.drag.currentX - state.cameraX, state.drag.currentY - state.cameraY); ctx.stroke();
-  ctx.setLineDash([]); ctx.fillStyle = 'rgba(255,241,177,.2)'; ctx.beginPath(); ctx.arc(x, y, 24 + state.playerAimPower * .2, 0, TAU); ctx.fill();
+  ctx.strokeStyle = 'rgba(255,241,177,.94)';
+  ctx.lineWidth = Math.max(2, Math.min(3.5, state.viewW / 240));
+  if (state.drag) {
+    const origin = path.points[0];
+    ctx.setLineDash([6, 5]);
+    ctx.beginPath();
+    ctx.moveTo(origin.x - state.cameraX, origin.y - state.cameraY);
+    ctx.lineTo(state.drag.currentX - state.cameraX, state.drag.currentY - state.cameraY);
+    ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  ctx.beginPath();
+  path.points.forEach((point, index) => {
+    const screenX = point.x - state.cameraX;
+    const screenY = point.y - state.cameraY;
+    if (index === 0) ctx.moveTo(screenX, screenY); else ctx.lineTo(screenX, screenY);
+  });
+  ctx.stroke();
+
+  // Small markers make the arc readable against bright sky and terrain while
+  // keeping the guide from looking like a solid second arrow.
+  ctx.fillStyle = 'rgba(255,241,177,.92)';
+  for (let index = 6; index < path.points.length; index += 8) {
+    const point = path.points[index];
+    ctx.beginPath(); ctx.arc(point.x - state.cameraX, point.y - state.cameraY, 2.1, 0, TAU); ctx.fill();
+  }
+  const origin = path.points[0];
+  ctx.fillStyle = 'rgba(255,241,177,.18)';
+  ctx.beginPath(); ctx.arc(origin.x - state.cameraX, origin.y - state.cameraY, 24 + state.playerAimPower * .2, 0, TAU); ctx.fill();
+  if (path.impact) {
+    const impactX = path.impact.x - state.cameraX;
+    const impactY = path.impact.y - state.cameraY;
+    ctx.strokeStyle = 'rgba(255,244,183,.98)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(impactX, impactY, 8, 0, TAU); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(impactX - 12, impactY); ctx.lineTo(impactX + 12, impactY); ctx.moveTo(impactX, impactY - 12); ctx.lineTo(impactX, impactY + 12); ctx.stroke();
+  }
   ctx.restore();
 }
 
@@ -854,10 +933,10 @@ function render() {
       : state.drag ? clamp((state.playerAimPower - 20) / 80, 0, 1) : 0
     : 0;
   const aiDraw = state.status === 'ai-aiming' ? state.match.drawProgress : 0;
+  drawAimGuide();
   drawArcher(state.playerKey, state.match.player, 1, playerDraw);
   drawArcher(state.opponentKey, state.match.opponent, -1, aiDraw);
   for (const arrow of state.match.arrows.filter(item => item.kind === 'body')) drawArrow(arrow, true);
-  drawAimGuide();
   if (state.status === 'flying') {
     const flying = state.match.arrows.find(arrow => !arrow.embedded);
     if (flying) drawArrow({ ...flying, impactX: flying.x, impactY: flying.y });
