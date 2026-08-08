@@ -12,3 +12,9 @@ canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-acti
 @media(orientation:portrait){.hud{align-items:flex-start}.hud-center{position:absolute;top:58px;left:0;right:0}.aim-panel{bottom:max(8px,env(safe-area-inset-bottom));width:calc(100% - 16px)}.drag-hint{font-size:10px}.panel h1{font-size:42px}}
 @media(max-height:570px) and (orientation:landscape){.hud{top:6px}.aim-panel{padding:5px 9px;bottom:6px}.mode-toggle{margin-bottom:2px;padding:5px}.drag-hint{display:none}.panel{padding:14px}.start-panel h2{margin:10px 0 6px}.character-choice{min-height:105px}.choice-sprite{transform:scale(.58);margin-top:-13px;margin-bottom:-16px}.controls-note{margin-top:8px}.panel h1{font-size:32px}}
 @media(prefers-reduced-motion:reduce){.game-overlay{backdrop-filter:none}}
+
+/* Approved Greenwood Duel art replaces the temporary CSS silhouettes. */
+.choice-sprite{width:64px;height:80px;background-repeat:no-repeat;background-size:320px 80px;background-position:0 0;border:0;border-radius:0;background-color:transparent}
+.sterling-sprite{background-image:url('./assets/archers/sterling-aim.png')}
+.ryan-sprite{height:80px;background-image:url('./assets/archers/ryan-aim.png')}
+.cooper-sprite{background-image:url('./assets/archers/cooper-aim.png')}

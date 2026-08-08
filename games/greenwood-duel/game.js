@@ -14,6 +14,33 @@ const CHARACTERS = {
   cooper: { name: 'Cooper', skin: '#dfa473', hair: '#d3b35d', hat: '#a06a36', shirt: '#8a6b35', trim: '#e4c66c', pants: '#315044', boots: '#503829' }
 };
 
+const SPRITE_DIR = './assets/archers/';
+const SPRITE_META = {
+  logicalWidth: 64,
+  logicalHeight: 80,
+  baseline: 79,
+  anchors: {
+    arrowReleaseOrigin: [35, 29],
+    headBounds: [21, 8, 22, 21],
+    torsoBounds: [19, 28, 26, 26]
+  }
+};
+
+const spriteSets = Object.fromEntries(CHARACTER_ORDER.map(key => {
+  const makeImage = file => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.src = `${SPRITE_DIR}${file}`;
+    return image;
+  };
+  return [key, {
+    body: makeImage(`${key}-body.png`),
+    aim: makeImage(`${key}-aim.png`),
+    release: makeImage(`${key}-release.png`),
+    idles: makeImage(`${key}-idles.png`)
+  }];
+}));
+
 const state = {
   status: 'menu',
   paused: false,
@@ -183,8 +210,8 @@ function setupMatch() {
     scenery,
     baseY: state.viewH * 0.76,
     wind,
-    player: { x: playerX, health: 100, hitTimer: 0 },
-    opponent: { x: opponentX, health: 100, hitTimer: 0 },
+    player: { x: playerX, facing: 1, health: 100, hitTimer: 0, releaseStartedAt: 0, releaseUntil: 0, idleGroup: 0 },
+    opponent: { x: opponentX, facing: -1, health: 100, hitTimer: 0, releaseStartedAt: 0, releaseUntil: 0, idleGroup: 1 },
     arrows: [],
     turn: 'player',
     drawProgress: 0
@@ -291,12 +318,15 @@ function firePlayer() {
 }
 
 function createArrow(shooter, velocity, owner) {
-  const feet = terrainYAt(shooter.x);
+  const origin = spriteAnchorWorld(shooter, SPRITE_META.anchors.arrowReleaseOrigin);
+  const now = performance.now();
+  shooter.releaseStartedAt = now;
+  shooter.releaseUntil = now + 260;
   const arrow = {
-    x: shooter.x + (owner === 'player' ? 20 : -20),
-    y: feet - 39,
-    prevX: shooter.x + (owner === 'player' ? 20 : -20),
-    prevY: feet - 39,
+    x: origin.x,
+    y: origin.y,
+    prevX: origin.x,
+    prevY: origin.y,
     vx: velocity.vx,
     vy: velocity.vy,
     angle: Math.atan2(velocity.vy, velocity.vx),
@@ -417,13 +447,23 @@ function segmentRectT(x1, y1, x2, y2, rect) {
 }
 
 function hitRegions(target) {
+  const scale = spriteScale();
   const feet = terrainYAt(target.x);
+  const armBoxes = [
+    [7, 32, 12, 21],
+    [45, 32, 12, 21]
+  ];
+  const toWorldRect = ([x, y, w, h]) => ({
+    x: target.x + (target.facing === 1 ? x - 32 : 32 - (x + w)) * scale,
+    y: feet + (y - SPRITE_META.baseline) * scale,
+    w: w * scale,
+    h: h * scale
+  });
   return [
-    { name: 'HEADSHOT', damage: 100, rect: { x: target.x - 11, y: feet - 68, w: 22, h: 18 } },
-    { name: 'TORSO', damage: 50, rect: { x: target.x - 13, y: feet - 48, w: 26, h: 28 } },
-    { name: 'ARM', damage: 34, rect: { x: target.x - 24, y: feet - 47, w: 11, h: 21 } },
-    { name: 'ARM', damage: 34, rect: { x: target.x + 13, y: feet - 47, w: 11, h: 21 } },
-    { name: 'LEG', damage: 34, rect: { x: target.x - 13, y: feet - 21, w: 26, h: 21 } }
+    { name: 'HEADSHOT', damage: 100, rect: toWorldRect(SPRITE_META.anchors.headBounds) },
+    { name: 'TORSO', damage: 50, rect: toWorldRect(SPRITE_META.anchors.torsoBounds) },
+    ...armBoxes.map(box => ({ name: 'ARM', damage: 34, rect: toWorldRect(box) })),
+    { name: 'LEG', damage: 34, rect: toWorldRect([19, 51, 26, 28]) }
   ];
 }
 
@@ -682,7 +722,7 @@ function drawArrow(arrow, attached = false) {
   ctx.restore();
 }
 
-function drawArcher(key, archer, facing, drawProgress = 0) {
+function drawArcherFallback(key, archer, facing, drawProgress = 0) {
   const character = CHARACTERS[key];
   const x = archer.x - state.cameraX;
   const feet = terrainYAt(archer.x) - state.cameraY;
@@ -720,11 +760,79 @@ function drawArcher(key, archer, facing, drawProgress = 0) {
   ctx.restore();
 }
 
+function spriteScale() {
+  return clamp(state.viewW / 760, .82, 1.45);
+}
+
+function spriteAnchorWorld(archer, [nativeX, nativeY]) {
+  const scale = spriteScale();
+  const feet = terrainYAt(archer.x);
+  return {
+    x: archer.x + (nativeX - SPRITE_META.logicalWidth / 2) * scale * archer.facing,
+    y: feet + (nativeY - SPRITE_META.baseline) * scale
+  };
+}
+
+function atlasFrame(image, frame, frameWidth = 64, frameHeight = 80) {
+  if (!image?.complete || !image.naturalWidth) return false;
+  ctx.drawImage(image, frame * frameWidth, 0, frameWidth, frameHeight, -32, -79, frameWidth, frameHeight);
+  return true;
+}
+
+function getAimFrame(angle, drawProgress) {
+  const angleFrame = clamp(Math.round((angle - 15) / 63 * 4), 0, 4);
+  const drawFrame = clamp(Math.round(clamp(drawProgress, 0, 1) * 4), 0, 4);
+  return clamp(Math.round(angleFrame * .35 + drawFrame * .65), 0, 4);
+}
+
+function drawArcher(key, archer, facing, drawProgress = 0) {
+  const sprites = spriteSets[key];
+  if (!sprites?.aim?.complete || !sprites.aim.naturalWidth) {
+    drawArcherFallback(key, archer, facing, drawProgress);
+    return;
+  }
+
+  const now = performance.now();
+  const scale = spriteScale();
+  const x = archer.x - state.cameraX;
+  const feet = terrainYAt(archer.x) - state.cameraY;
+  const shake = archer.hitTimer > 0 ? Math.sin(archer.hitTimer * 70) * 3 : 0;
+  const bob = archer.hitTimer > 0 ? 0 : Math.sin(now / 260 + archer.x) * 1.2;
+  const aim = archer === state.match?.player ? state.playerAimAngle : state.aiPlan?.angle ?? 45;
+  const isDrawing = archer === state.match?.opponent && state.status === 'ai-aiming'
+    ? true
+    : archer === state.match?.player && state.status === 'playing' && getAimMode() === 'sliders';
+
+  ctx.save();
+  ctx.translate(x + shake, feet + bob);
+  ctx.scale(facing * scale, scale);
+  ctx.imageSmoothingEnabled = false;
+  ctx.fillStyle = 'rgba(10,35,25,.38)';
+  ctx.fillRect(-18, -2, 36, 5);
+
+  let drawn = false;
+  if (archer.releaseUntil > now) {
+    const progress = clamp((now - archer.releaseStartedAt) / 260, 0, 0.999);
+    drawn = atlasFrame(sprites.release, Math.floor(progress * 3), 64, 80);
+  } else if (isDrawing) {
+    drawn = atlasFrame(sprites.aim, getAimFrame(aim, drawProgress), 64, 80);
+  } else {
+    const groupStart = archer.idleGroup ? 4 : 0;
+    const groupLength = archer.idleGroup ? 5 : 4;
+    const frame = groupStart + Math.floor(now / 180 + archer.x / 20) % groupLength;
+    drawn = atlasFrame(sprites.idles, frame, 64, 80);
+  }
+  ctx.restore();
+
+  if (!drawn) drawArcherFallback(key, archer, facing, drawProgress);
+}
+
 function drawAimGuide() {
   if (state.status !== 'playing' || getAimMode() === 'sliders') return;
   const player = state.match.player;
-  const x = player.x - state.cameraX;
-  const y = terrainYAt(player.x) - state.cameraY - 39;
+  const origin = spriteAnchorWorld(player, SPRITE_META.anchors.arrowReleaseOrigin);
+  const x = origin.x - state.cameraX;
+  const y = origin.y - state.cameraY;
   if (!state.drag) return;
   ctx.save();
   ctx.strokeStyle = 'rgba(255,241,177,.78)'; ctx.lineWidth = 3; ctx.setLineDash([6, 5]);
@@ -740,7 +848,11 @@ function render() {
   drawScenery();
   drawTerrain();
   for (const arrow of state.match.arrows.filter(item => item.kind === 'ground')) drawArrow(arrow);
-  const playerDraw = state.status === 'playing' ? state.match.drawProgress : state.status === 'ai-aiming' ? 0 : 0;
+  const playerDraw = state.status === 'playing'
+    ? getAimMode() === 'sliders'
+      ? clamp((state.playerAimPower - 20) / 80, 0, 1)
+      : state.drag ? clamp((state.playerAimPower - 20) / 80, 0, 1) : 0
+    : 0;
   const aiDraw = state.status === 'ai-aiming' ? state.match.drawProgress : 0;
   drawArcher(state.playerKey, state.match.player, 1, playerDraw);
   drawArcher(state.opponentKey, state.match.opponent, -1, aiDraw);
@@ -760,10 +872,11 @@ function pointerPosition(event) {
 function beginDrag(event) {
   if (state.status !== 'playing' || getAimMode() !== 'drag') return;
   const point = pointerPosition(event);
-  const playerScreenX = state.match.player.x - state.cameraX;
-  const playerScreenY = terrainYAt(state.match.player.x) - state.cameraY - 39;
+  const origin = spriteAnchorWorld(state.match.player, SPRITE_META.anchors.arrowReleaseOrigin);
+  const playerScreenX = origin.x - state.cameraX;
+  const playerScreenY = origin.y - state.cameraY;
   if (Math.hypot(point.x - playerScreenX, point.y - playerScreenY) > Math.max(115, state.viewW * .3)) return;
-  state.drag = { pointerId: event.pointerId, startX: state.match.player.x, startY: terrainYAt(state.match.player.x) - 39, currentX: point.x + state.cameraX, currentY: point.y + state.cameraY };
+  state.drag = { pointerId: event.pointerId, startX: origin.x, startY: origin.y, currentX: point.x + state.cameraX, currentY: point.y + state.cameraY };
   canvas.setPointerCapture?.(event.pointerId);
   updateDrag(point);
   event.preventDefault();
