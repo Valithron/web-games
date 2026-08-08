@@ -37,6 +37,15 @@ async function prepareGreenholdStoryAssets(targetDir, sourceDir) {
   const nodeMaps = chunks.map((_, index) => `STORY_NODES_${index}`).join(', ');
   const loader = `${imports}\n\nexport const GREENHOLD_STORY = {\n  start: ${JSON.stringify(sourceStory.GREENHOLD_STORY.start)},\n  nodes: Object.assign({}, ${nodeMaps})\n};\n`;
   await writeFile(path.join(targetDir, 'story.js'), loader);
+  await writeFile(path.join(targetDir, 'story-v5.js'), loader);
+
+  const gameSource = await readFile(path.join(targetDir, 'game.js'), 'utf8');
+  const versionedGameSource = gameSource.replace(
+    "const STORY_MODULE_URL = './story.js?release=4';",
+    "const STORY_MODULE_URL = './story-v5.js';"
+  );
+  if (versionedGameSource === gameSource) throw new Error('Greenhold game loader version marker was not found');
+  await writeFile(path.join(targetDir, 'game-v5.js'), versionedGameSource);
 
   await Promise.all(chunks.map((chunk, index) => writeFile(
     path.join(targetDir, `story-part-${index + 1}.js`),
