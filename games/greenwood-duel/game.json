@@ -1,0 +1,15 @@
+{
+  "slug": "greenwood-duel",
+  "title": "Greenwood Duel",
+  "description": "Read the wind, place your arrows, and build an archery win streak across changing woodland fields.",
+  "category": "Arcade",
+  "tags": ["archery", "physics", "duel", "streak"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["Drag to aim", "Arrow keys", "Space to fire"],
+  "mobileControls": ["Touch drag", "Aim sliders", "Fire button"],
+  "orientation": "any",
+  "sessionMinutes": "2–8 min",
+  "published": "2026-08-07",
+  "featured": true,
+  "status": "published"
+}

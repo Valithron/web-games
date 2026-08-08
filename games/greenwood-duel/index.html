@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Greenwood Duel | Escapee Games</title>
+</head>
+<body>
+  <main id="game-shell" class="game-shell" aria-label="Greenwood Duel archery game">
+    <canvas id="canvas" aria-label="Greenwood Duel battlefield"></canvas>
+
+    <section id="hud" class="hud" aria-live="polite">
+      <div class="hud-side">
+        <div class="hud-card"><span id="player-name">PLAYER</span><strong id="player-health">100</strong><small>HEALTH</small></div>
+        <div class="hud-card compact"><span>STREAK</span><strong id="streak">0</strong></div>
+      </div>
+      <div class="hud-center">
+        <div id="turn-label" class="turn-label">Choose your archer</div>
+        <div id="wind-label" class="wind-label">WIND --</div>
+      </div>
+      <div class="hud-side right">
+        <div class="hud-card"><span id="opponent-name">OPPONENT</span><strong id="opponent-health">100</strong><small>HEALTH</small></div>
+        <div class="hud-card compact"><span>SCORE</span><strong id="score">0</strong></div>
+      </div>
+    </section>
+
+    <section id="aim-panel" class="aim-panel" hidden>
+      <button id="aim-mode" class="mode-toggle" type="button" aria-pressed="false">AIM MODE: DRAG</button>
+      <div class="slider-controls" id="slider-controls">
+        <label>ANGLE <output id="angle-value">42°</output><input id="angle" type="range" min="15" max="78" value="42" step="1"></label>
+        <label>POWER <output id="power-value">68%</output><input id="power" type="range" min="20" max="100" value="68" step="1"></label>
+        <button id="fire" class="fire-button" type="button">FIRE <span>SPACE</span></button>
+      </div>
+      <p id="drag-hint" class="drag-hint">Drag back from your archer to draw. Release to fire.</p>
+    </section>
+
+    <section id="start-overlay" class="game-overlay">
+      <div class="panel start-panel">
+        <p class="eyebrow">ESCAPEE GAMES · ARCHERY DUEL</p>
+        <h1>Greenwood Duel</h1>
+        <p class="lead">Set your angle. Draw your bow. Read the wind. Build the longest win streak.</p>
+        <h2>Choose your archer</h2>
+        <div class="character-grid">
+          <button class="character-choice" type="button" data-character="sterling"><span class="choice-sprite sterling-sprite"></span><strong>Sterling</strong><small>Deep green · woodland archer</small></button>
+          <button class="character-choice" type="button" data-character="ryan"><span class="choice-sprite ryan-sprite"></span><strong>Ryan</strong><small>Russet · tall outlaw</small></button>
+          <button class="character-choice" type="button" data-character="cooper"><span class="choice-sprite cooper-sprite"></span><strong>Cooper</strong><small>Forest gold · scruffy ranger</small></button>
+        </div>
+        <p class="controls-note"><b>Drag mode:</b> pull back near your archer. <b>Slider mode:</b> use Angle, Power, and Fire. Arrow keys and Space work in slider mode.</p>
+      </div>
+    </section>
+
+    <section id="round-overlay" class="game-overlay hidden">
+      <div class="panel result-panel">
+        <p class="eyebrow">DUEL WON</p>
+        <h2 id="round-title">The next challenger approaches.</h2>
+        <p id="round-summary">Your health is restored.</p>
+        <button id="next-duel" class="primary-button" type="button">NEXT DUEL</button>
+      </div>
+    </section>
+
+    <section id="gameover-overlay" class="game-overlay hidden">
+      <div class="panel result-panel">
+        <p class="eyebrow" id="gameover-eyebrow">RUN ENDED</p>
+        <h2 id="gameover-title">The grove falls silent.</h2>
+        <p id="gameover-summary">You won 0 duels.</p>
+        <div class="final-score"><span>FINAL SCORE</span><strong id="final-score">0</strong></div>
+        <button id="play-again" class="primary-button" type="button">PLAY AGAIN</button>
+        <button id="change-archer" class="secondary-button" type="button">CHANGE ARCHER</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
