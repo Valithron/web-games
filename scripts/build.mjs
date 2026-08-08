@@ -1,5 +1,6 @@
 import { access, cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { gunzip, inflateRaw } from 'node:zlib';
 import { promisify } from 'node:util';
 import { loadGames } from './validate-games.mjs';
@@ -11,6 +12,37 @@ const SHARED = path.join(ROOT, 'shared');
 const BASE_URL = 'https://fun.skpfam.com';
 const unzip = promisify(gunzip);
 const inflate = promisify(inflateRaw);
+
+async function prepareGreenholdStoryAssets(targetDir, sourceDir) {
+  const sourceStory = await import(pathToFileURL(path.join(sourceDir, 'story.js')).href);
+  const entries = Object.entries(sourceStory.GREENHOLD_STORY?.nodes || {});
+  const chunks = [];
+  let current = {};
+  let currentSize = 0;
+  const maxChunkSize = 10000;
+
+  for (const [nodeId, node] of entries) {
+    const nodeSize = JSON.stringify({ [nodeId]: node }).length;
+    if (Object.keys(current).length && currentSize + nodeSize > maxChunkSize) {
+      chunks.push(current);
+      current = {};
+      currentSize = 0;
+    }
+    current[nodeId] = node;
+    currentSize += nodeSize;
+  }
+  if (Object.keys(current).length) chunks.push(current);
+
+  const imports = chunks.map((_, index) => `import { STORY_NODES_${index} } from './story-part-${index + 1}.js';`).join('\n');
+  const nodeMaps = chunks.map((_, index) => `STORY_NODES_${index}`).join(', ');
+  const loader = `${imports}\n\nexport const GREENHOLD_STORY = {\n  start: ${JSON.stringify(sourceStory.GREENHOLD_STORY.start)},\n  nodes: Object.assign({}, ${nodeMaps})\n};\n`;
+  await writeFile(path.join(targetDir, 'story.js'), loader);
+
+  await Promise.all(chunks.map((chunk, index) => writeFile(
+    path.join(targetDir, `story-part-${index + 1}.js`),
+    `export const STORY_NODES_${index} = ${JSON.stringify(chunk)};\n`
+  )));
+}
 
 function gzipPayloadOffset(buffer) {
   if (buffer.length < 18 || buffer[0] !== 0x1f || buffer[1] !== 0x8b || buffer[2] !== 8) {
@@ -98,6 +130,9 @@ async function build() {
   for (const game of games) {
     const targetDir = path.join(DIST, game.slug);
     await cp(game.sourceDir, targetDir, { recursive: true });
+    if (game.slug === 'greenhold-quiet-ledger') {
+      await prepareGreenholdStoryAssets(targetDir, game.sourceDir);
+    }
 
     const compressed = path.join(targetDir, 'index.html.gz');
     if (game.compressedEntry && await access(compressed).then(() => true).catch(() => false)) {
