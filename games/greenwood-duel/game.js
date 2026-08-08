@@ -124,22 +124,41 @@ function tone(frequency, duration = 0.08, type = 'square', volume = 0.035, slide
   } catch {}
 }
 
+function isPortraitViewport() {
+  return state.viewH > state.viewW;
+}
+
+function sceneBaseY(height) {
+  if (!state.match) return height * 0.76;
+  const aimPanel = $('#aim-panel');
+  const panelHeight = aimPanel && !aimPanel.hidden ? aimPanel.getBoundingClientRect().height : 0;
+  const lowerInset = isPortraitViewport()
+    ? Math.max(154, panelHeight + 14)
+    : Math.max(112, panelHeight + 14);
+  const preferred = height - lowerInset;
+  const minimum = isPortraitViewport() ? height * 0.54 : height * 0.58;
+  const maximum = isPortraitViewport() ? height * 0.76 : height * 0.84;
+  return clamp(preferred, minimum, maximum);
+}
+
 function resizeCanvas() {
   const rect = canvas.getBoundingClientRect();
   const width = Math.max(1, rect.width || window.innerWidth);
   const height = Math.max(1, rect.height || window.innerHeight);
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
   const oldBase = state.previousBaseY || height * 0.76;
-  const newBase = height * 0.76;
+  state.viewW = width;
+  state.viewH = height;
+  document.body.classList.toggle('portrait-mode', height > width);
+  const newBase = sceneBaseY(height);
   if (state.match && Math.abs(newBase - oldBase) > 0.1) {
     const shift = newBase - oldBase;
     for (const arrow of state.match.arrows) {
       arrow.y += shift;
       arrow.prevY += shift;
+      if (arrow.impactY !== null && arrow.impactY !== undefined) arrow.impactY += shift;
     }
   }
-  state.viewW = width;
-  state.viewH = height;
   state.previousBaseY = newBase;
   canvas.width = Math.round(width * ratio);
   canvas.height = Math.round(height * ratio);
@@ -224,6 +243,7 @@ function setupMatch() {
   state.impactResult = null;
   state.status = 'playing';
   updateUi();
+  resizeCanvas();
   tone(300, 0.08, 'triangle', 0.025, 70);
 }
 
@@ -299,6 +319,7 @@ function setAimMode(mode) {
   $('#drag-hint').textContent = sliders
     ? 'Set Angle and Power, then press Fire. The dotted arc includes gravity and wind.'
     : 'Drag back from your archer to draw. The dotted arc shows the exact flight path. Release to fire.';
+  if (state.match) resizeCanvas();
   updateUi();
 }
 
