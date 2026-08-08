@@ -4,8 +4,8 @@ export const GREENHOLD_STORY = {
     intro: {
       title: "A Place in the Margin",
       text: [
-        "You arrive at Greenhold with a name, a gender, a sound pair of boots, and no particular reason for anyone to remember you. This is generally a better beginning than being remembered for a debt.",
-        "The barony sits in a broad green basin beneath forested ridges. Its castle, market, orchards, mills, and road traffic all seem to be operating at once, which is how you know someone competent has arranged them. Lord Ryan is holding his first autumn accounts as Baron, and the household is short of hands."
+        "You come to Greenhold with sound boots, a light purse, and no one waiting for you. The barony is short of hands, which gives a stranger a fair chance.",
+        "The barony lies in a broad green basin beneath forested ridges. The castle, market, orchards, mills, and roads are all busy at once. Lord Ryan is keeping his first autumn accounts as Baron, and the household needs another pair of hands."
       ],
       choices: [
         { text: "Offer your help in the records room", next: "arrival", effects: { flags: ["metGabi"], rel: { Gabi: 1 } } },
@@ -17,8 +17,8 @@ export const GREENHOLD_STORY = {
     arrival: {
       title: "The First Small Duty",
       text: [
-        "By noon, you have been accepted into Greenhold's temporary category of useful stranger. It is not an official office, but it has the advantage of being more honest than several official offices you will later encounter.",
-        "Lady Gabi is sorting household tallies with the calm of a woman who has already solved three problems and is waiting for the fourth to confess. Sir Sterling is watching the eastern gate. Lady Ashley is attempting to improve the market schedule without being seen to improve it."
+        "By noon, you have no title and no proper place in the household, but you have already been given work. In Greenhold, that is close enough to an invitation.",
+        "Lady Gabi is sorting household tallies with the calm of a woman who has already solved three problems and is waiting for the fourth to confess. Sir Sterling is watching the eastern gate. Lady Ashley is quietly rearranging the market schedule while pretending she is only reading it."
       ],
       choices: [
         { text: "Sit with Gabi and compare the road accounts", next: "recordsWithGabi", effects: { flags: ["metGabi", "recordsInterest"], rel: { Gabi: 1 }, vars: { clueCount: 1 } } },
