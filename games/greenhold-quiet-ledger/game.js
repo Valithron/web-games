@@ -50,7 +50,7 @@ const SAVE_KEY = 'escapee:greenhold-quiet-ledger:save:v1';
 const STORY_VERSION = 1;
 // Keep the story request cache-busted when the story asset changes. This also
 // avoids reusing a malformed CDN-compressed response from an earlier deploy.
-const STORY_MODULE_URL = './story.js?release=3';
+const STORY_MODULE_URL = './story.js?release=4';
 const HISTORY_LIMIT = 80;
 const ROMANCE_BY_SEX = Object.freeze({
   male: ['Cydney', 'Gabi', 'Ashley', 'Kenly'],
