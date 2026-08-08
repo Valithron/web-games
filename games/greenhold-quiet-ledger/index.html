@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#102d25">
+  <meta name="description" content="A Greenhold text adventure about ledgers, loyalties, and the road east.">
+  <script src="/shared/universal-game.js"></script>
+  <link rel="stylesheet" href="/shared/universal-game.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>GREENHOLD: The Quiet Ledger | Escapee Games</title>
+</head>
+<body>
+  <main id="game" class="greenhold-game" aria-label="GREENHOLD: The Quiet Ledger text adventure">
+    <section id="homeScreen" class="screen home-screen" aria-labelledby="gameTitle">
+      <div class="home-art" aria-hidden="true">
+        <div class="seal-mark"><span>✦</span></div>
+        <div class="ledger-mark"><i></i><i></i><i></i><b></b></div>
+      </div>
+      <div class="home-copy">
+        <p class="eyebrow">A Greenhold story</p>
+        <h1 id="gameTitle">The Quiet<br><em>Ledger</em></h1>
+        <p class="motto">By root and labor.</p>
+        <p class="home-lead">A road account is wrong by a little. In Greenhold, little things have a way of becoming dangerous.</p>
+        <div class="home-actions">
+          <button id="beginButton" class="button button-primary" type="button">Begin a new story</button>
+          <button id="loadHomeButton" class="button button-secondary" type="button" hidden>Continue saved story</button>
+        </div>
+        <p id="homeStatus" class="form-status" role="status" aria-live="polite"></p>
+      </div>
+      <p class="home-footer">An interactive fiction RPG set in Greenhold</p>
+    </section>
+
+    <section id="creationScreen" class="screen creation-screen" aria-labelledby="creationTitle" hidden>
+      <div class="creation-panel panel-surface">
+        <p class="eyebrow">Before the road opens</p>
+        <h2 id="creationTitle">Who enters Greenhold?</h2>
+        <p class="intro-copy">Choose the name and manner by which the household will know you. Your choices will shape what becomes possible.</p>
+        <form id="playerForm" novalidate>
+          <label class="field-label" for="playerName">Your name</label>
+          <input id="playerName" name="playerName" type="text" maxlength="32" autocomplete="name" spellcheck="false" placeholder="Enter a name" required>
+
+          <fieldset class="sex-fieldset">
+            <legend class="field-label">Your gender</legend>
+            <div class="choice-toggle">
+              <label class="choice-option"><input type="radio" name="sex" value="male" checked><span>Male</span></label>
+              <label class="choice-option"><input type="radio" name="sex" value="female"><span>Female</span></label>
+            </div>
+          </fieldset>
+
+          <p id="formStatus" class="form-status" role="alert" aria-live="polite"></p>
+          <button class="button button-primary button-wide" type="submit">Enter Greenhold</button>
+        </form>
+        <button id="creationBackButton" class="text-button" type="button">Return to title</button>
+      </div>
+    </section>
+
+    <section id="storyScreen" class="screen story-screen" aria-labelledby="sceneTitle" hidden>
+      <header class="story-header">
+        <div class="story-brand"><span class="brand-tree" aria-hidden="true">✦</span><span>GREENHOLD</span></div>
+        <div class="story-status" aria-label="Story position">
+          <span id="chapterStatus">The Road East</span>
+          <span class="status-divider" aria-hidden="true">·</span>
+          <span id="sceneStatus">Scene 1</span>
+        </div>
+        <div class="story-tools" aria-label="Story tools">
+          <button id="rewindButton" class="icon-button" type="button" aria-label="Rewind one scene" title="Rewind one scene">↶</button>
+          <button id="saveButton" class="icon-button" type="button" aria-label="Save story" title="Save story">⌑</button>
+          <button id="loadButton" class="icon-button" type="button" aria-label="Load saved story" title="Load saved story">↥</button>
+          <button id="journalButton" class="icon-button journal-tool" type="button" aria-label="Open journal" title="Open journal" hidden>▤</button>
+          <button id="restartButton" class="icon-button" type="button" aria-label="Restart story" title="Restart story">↻</button>
+        </div>
+      </header>
+
+      <div class="story-layout">
+        <article class="scene-card" aria-live="polite">
+          <div class="scene-rule" aria-hidden="true"><span></span></div>
+          <p id="sceneKicker" class="scene-kicker">A Greenhold story</p>
+          <h2 id="sceneTitle">Loading the ledger…</h2>
+          <div id="sceneBody" class="scene-body"></div>
+          <div class="choice-heading"><span>What do you do?</span><i aria-hidden="true"></i></div>
+          <div id="choiceList" class="choice-list" role="group" aria-label="Story choices"></div>
+          <p id="storyStatus" class="story-status-message" role="status" aria-live="polite"></p>
+        </article>
+      </div>
+    </section>
+
+    <aside id="journalDrawer" class="journal-drawer" role="dialog" aria-modal="true" aria-labelledby="journalTitle" hidden>
+      <div class="journal-panel">
+        <div class="drawer-heading">
+          <div><p class="eyebrow">What you have learned</p><h2 id="journalTitle">The journal</h2></div>
+          <button id="closeJournalButton" class="icon-button" type="button" aria-label="Close journal">×</button>
+        </div>
+        <p id="journalEmpty" class="journal-empty" hidden>No facts have been recorded yet.</p>
+        <ul id="journalList" class="journal-list"></ul>
+      </div>
+    </aside>
+  </main>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>

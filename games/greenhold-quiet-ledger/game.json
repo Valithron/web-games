@@ -1,0 +1,16 @@
+{
+  "slug": "greenhold-quiet-ledger",
+  "title": "GREENHOLD: The Quiet Ledger",
+  "description": "Follow a quiet discrepancy through Greenhold's road accounts before an old secret becomes a present danger.",
+  "category": "Adventure",
+  "tags": ["story", "mystery", "rpg", "romance"],
+  "thumbnail": "thumbnail.svg",
+  "desktopControls": ["Mouse", "Keyboard"],
+  "mobileControls": ["Touch choices", "Tap buttons"],
+  "orientation": "any",
+  "sessionMinutes": "30–60 min",
+  "published": "2026-08-08",
+  "featured": false,
+  "scoreMode": "none",
+  "status": "published"
+}
