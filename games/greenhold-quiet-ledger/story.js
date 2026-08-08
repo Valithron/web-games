@@ -1,4 +1,381 @@
-YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíÛM´Ñ:-jZ.¶›­–)Ş³VW‡÷'B6öç7Bu$TTä„ôÄEõ5Dõ%’Ò°¢7F'C¢&–çG&ò"À¢æöFW3¢°¢–çG&ó¢°¢F—FÆS¢$Æ6R–âF†RÖ&v–â"À¢FW‡C¢°¢%–÷R'&—fRBw&VVæ†öÆBv—F‚æÖRÂvVæFW"Â6÷VæB—"öb&ö÷G2ÂæBæò'F–7VÆ"&V6öâf÷"ç–öæRFò&VÖVÖ&W"–÷RâF†—2—2vVæW&ÆÇ’&WGFW"&Vv–ææ–ærF†â&V–ær&VÖVÖ&W&VBf÷"FV'Bâ"À¢%F†R&&öç’6—G2–â'&öBw&VVâ&6–â&VæVF‚f÷&W7FVB&–FvW2â—G267FÆRÂÖ&¶WBÂ÷&6†&G2ÂÖ–ÆÇ2ÂæB&öBG&ff–2ÆÂ6VVÒFò&R÷W&F–ærBöæ6RÂv†–6‚—2†÷r–÷R¶æ÷r6öÖVöæR6ö×WFVçB†2'&ævVBF†VÒâÆ÷&B'–â—2†öÆF–ær†—2f—'7BWGVÖâ66÷VçG22&&öâÂæBF†R†÷W6V†öÆB—26†÷'Böb†æG2â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$öffW"–÷W"†VÇ–âF†R&V6÷&G2&ööÒ"ÂæW‡C¢&'&—fÂ"ÂVffV7G3¢²fÆw3¢²&ÖWDv&’%ÒÂ&VÃ¢²v&“¢ÒÒÒÀ¢²FW‡C¢$6²v†W&RF†RvF6‚æVVG2–÷R"ÂæW‡C¢&'&—fÂ"ÂVffV7G3¢²fÆw3¢²&ÖWE7FW&Æ–ær%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÒÒÀ¢²FW‡C¢$föÆÆ÷rF†RÆ—fVÇ’–÷VærÆG’F÷v&BF†RÖ&¶WB"ÂæW‡C¢&'&—fÂ"ÂVffV7G3¢²fÆw3¢²&ÖWD6†ÆW’%ÒÂ&VÃ¢²6†ÆW“¢ÒÒĞ¢Ğ¢ÒÀ ¢'&—fÃ¢°¢F—FÆS¢%F†Rf—'7B6ÖÆÂGWG’"À¢FW‡C¢°¢$'’æööâÂ–÷R†fR&VVâ66WFVB–çFòw&VVæ†öÆBw2FV×÷&'’6FVv÷'’öbW6VgVÂ7G&ævW"â—B—2æ÷Bâöff–6–Âöff–6RÂ'WB—B†2F†RGfçFvRöb&V–ærÖ÷&R†öæW7BF†â6WfW&Âöff–6–Âöff–6W2–÷Rv–ÆÂÆFW"Væ6÷VçFW"â"À¢$ÆG’v&’—26÷'F–ær†÷W6V†öÆBFÆÆ–W2v—F‚F†R6ÆÒöbvöÖâv†ò†2Ç&VG’6öÇfVBF‡&VR&ö&ÆV×2æB—2v—F–ærf÷"F†Rf÷W'F‚Fò6öæfW72â6—"7FW&Æ–ær—2vF6†–ærF†RV7FW&âvFRâÆG’6†ÆW’—2GFV×F–ærFò–×&÷fRF†RÖ&¶WB66†VGVÆRv—F†÷WB&V–ær6VVâFò–×&÷fR—Bâ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%6—Bv—F‚v&’æB6ö×&RF†R&öB66÷VçG2"ÂæW‡C¢'&V6÷&G5v—F„v&’"ÂVffV7G3¢²fÆw3¢²&ÖWDv&’"Â'&V6÷&G4–çFW&W7B%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢$¦ö–â7FW&Æ–ærBF†RvFRæB6²&÷WBF†R&öB"ÂæW‡C¢&vFUv—F…7FW&Æ–ær"ÂVffV7G3¢²fÆw3¢²&ÖWE7FW&Æ–ær"Â'&öD–çFW&W7B%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢$†VÇ6†ÆW’VçFævÆRF†RÖ&¶WB66†VGVÆR"ÂæW‡C¢&Ö&¶WEv—F„6†ÆW’"ÂVffV7G3¢²fÆw3¢²&ÖWD6†ÆW’"Â'66†VGVÆT–çFW&W7B%ÒÂ&VÃ¢²6†ÆW“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢&V6÷&G5v—F„v&“¢°¢F—FÆS¢%F†R¶VWW"öbF†R†÷W6V†öÆB"À¢FW‡C¢°¢$v&’v—fW2–÷R7F6²öb&öBÖÖ–çFVææ6RVçG&–W2æBæ'&÷vW"7F6²öb&V6V—G2âF†Rf—'7B7F6²—2GVÆÂ–âF†R&W7V7F&ÆRv’âF†R6V6öæB—2GVÆÂ–âF†R7W7–6–÷W2v’Âv—F‚F‡&VR–ÖVçG2FòF†R6‚'&–FvRv–†÷W6RFW7—FRF†Rv–†÷W6R&V–ærÆ—7FVB2&æFöæVBGvò–V'2vòâ"À¢$v&’FöW2æ÷BG&ÖF—¦RF†RF—67&Wæ7’â6†RÆ6W2öæRf–ævW"öâF†R&WVFVB6VÂæB6—2Ât–bF†—2—2âW'&÷"Â—B†2&VVâ&VÖ&¶&Ç’Væ7GVÂâr ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²v†ò&÷fVBF†R–ÖVçG2"ÂæW‡C¢&ÆVFvW%&Wf–Wr"ÂVffV7G3¢²fÆw3¢²'–ÖVçD6ÇVR%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢$6²v&’Fò6†÷r–÷RF†R7WÇ’&V6÷&G22vVÆÂ"ÂæW‡C¢&ÆVFvW%&Wf–Wr"ÂVffV7G3¢²fÆw3¢²'7WÇ”6ÇVR%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢vFUv—F…7FW&Æ–æs¢°¢F—FÆS¢%F†RV7FW&âvFR"À¢FW‡C¢°¢%6—"7FW&Æ–ærvF6†W2F†RV7B&öBv—F‚F†RF–Væ6RöbÖâv†ò†2Ç&VG’–Öv–æVBWfW'’&B÷WF6öÖRæB—2æ÷rv—F–ærFò6VRv†–6‚öæR†2F†R6÷W'FW7’Fò'&—fRâ†Rö–çG2÷WBF†BF†R&öB—2'W7’f÷"†'fW7B6V6öâÂ'WBF†R6ÖÆÂv–†÷W6R&W–öæB6‚'&–FvR†26VVâæò&Vv—7FW&VB¶VWW"6–æ6RF†R&ööbfVÆÂ–ââ"À¢"u&öBöff–6W2Fòæ÷BW7VÆÇ’7VæBÖöæW’öâV×G’&öög2Âr†R6—2âuW7VÆÇ’âr ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²v†Bv÷VÆBÖ¶RâV×G’v–†÷W6RW6VgVÂ"ÂæW‡C¢&ÆVFvW%&Wf–Wr"ÂVffV7G3¢²fÆw3¢²'&öD6ÇVR%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢$6²7FW&Æ–ærFò6†÷r–÷RF†R6fW7B&ö6‚Fò6‚'&–FvR"ÂæW‡C¢&ÆVFvW%&Wf–Wr"ÂVffV7G3¢²fÆw3¢²'6fU&÷WFR%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢Ö&¶WEv—F„6†ÆW“¢°¢F—FÆS¢$66†VGVÆRv—F‚FöòÖç’†æG2"À¢FW‡C¢°¢$ÆG’6†ÆW’†2F—66÷fW&VBF†BGvòw&–â6'G2ÂÆöBöbÆ×ö–ÂÂæBF÷W&æÖVçB§VFvR&RÆÂW‡V7FVBBF†R6ÖRvFRBF†R6ÖR†÷W"â6†R—2–÷VævW"F†âWfW'–öæR&WFVæF–æræ÷BFòæVVB†W"Âv†–6‚ÖVç26†R†2Ç&VG’æ÷F–6VBÖ÷&RF†âF†W’†fRâ"À¢%v†Vâ–÷Rö–çB÷WBF†BF†Rö–Â&V6V—B&V'2F†R6ÖRfFVBÖ&²2v–†÷W6R–ÖVçBÂ6†ÆW’w2W‡&W76–öâ6†'Vç2â†W"FVÆ–v‡B–âGFW&â—26–æ6W&Râ6ò—2†W"†÷RF†B6öÖVöæRv–ÆÂÆWB†W"föÆÆ÷r—Bâ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$v—fR6†ÆW’F†R7&VF—BæB6²v†B6†R6VW2"ÂæW‡C¢&ÆVFvW%&Wf–Wr"ÂVffV7G3¢²fÆw3¢²'66†VGVÆT6ÇVR"Â&6†ÆW”–çFW&W7B%ÒÂ&VÃ¢²6†ÆW“¢"ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÂ&WV—&W3¢²fÆw3¢²&vVæFW$ÖÆR%ÒÒÒÀ¢²FW‡C¢$6²6†ÆW’FòÖ&²WfW'’ÖF6†–ær&V6V—B"ÂæW‡C¢&ÆVFvW%&Wf–Wr"ÂVffV7G3¢²fÆw3¢²'66†VGVÆT6ÇVR%ÒÂ&VÃ¢²6†ÆW“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢ÆVFvW%&Wf–Ws¢°¢F—FÆS¢%F†RV–WBÆVFvW""À¢FW‡C¢°¢%F†R–ÖVçG2&RÖöFW7C¢æ–Ç2ÂÆ×ö–ÂÂöG2ÂæBfWrVæ6Rf÷"6'B&W—"âæöæR6÷VÆBgVæB&V&VÆÆ–öââFövWF†W"F†W’FW67&–&RÆ6RF†B6öÖVöæR†2W‡V7FVBFò&VÖ–âW6VgVÂÂæBâöff–6RF†B†26öçF–çVVBFò’f÷"—Bv†–ÆR&WFVæF–æræ÷BFò¶æ÷rv‡’â"À¢$v&’f–æG2GvòÖ—76–ærÆWGFW'2g&öÒF†R6ÖR6V6öââ7FW&Æ–ærf–æG2&öB6VÂ&W76VB–çFòv‚67&F†BFöW2æ÷B&VÆöærFòF†R7W'&VçB6ÆW&²â6†ÆW’f–æG2F†BF†RVçG&–W27F÷v†VæWfW"'F–7VÆ"†æBF¶W2ÆVfRâ6ÖÆÂÖGFW"†27V—&VBF†R6†RöbFVÆ–&W&FRv÷&²â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%F¶RF†RF—67&Wæ7’F—&V7FÇ’Fò'–â"ÂæW‡C¢''–ä'&–Vb"ÂVffV7G3¢²fÆw3¢²&&ö6†VE'–â%ÒÂ&VÃ¢²'–ã¢ÒÒÒÀ¢²FW‡C¢$6²¶VæÇ’†÷r6÷W'Bv÷VÆB&VBF†RÖ—76–ær6÷'&W7öæFVæ6R"ÂæW‡C¢&¶VæÇ”†ÆÂ"ÂVffV7G3¢²fÆw3¢²&&ö6†VD¶VæÇ’%ÒÂ&VÃ¢²¶VæÇ“¢ÒÒÒÀ¢²FW‡C¢$6²7–FæW’v†Bf÷&V–vâÖW&6†çBv÷VÆBæ÷F–6R†W&R"ÂæW‡C¢&7–FæW”6÷'&W7öæFVæ6R"ÂVffV7G3¢²fÆw3¢²&&ö6†VD7–FæW’%ÒÂ&VÃ¢²7–FæW“¢ÒÒĞ¢Ğ¢ÒÀ ¢'–ä'&–Vc¢°¢F—FÆS¢%F†R&&öâ&VG2F†RÖ&v–â"À¢FW‡C¢°¢%'–âÆ—7FVç2v—F†÷WB–çFW''WF–ærâ†R—2GvVçG’Öæ–æRÂ–â†—2f—'7B–V"2&&öâÂæB†2F†R7FVG’6öæ6VçG&F–öâöbf÷&ÖW"7FWv&Bv†ò¶æ÷w2F†B&ö&ÆVÒ&V6öÖW2Ö÷&RW‡Vç6—fRV6‚F–ÖR—B—2öÆ—FVÇ’÷7GöæVBâ"À¢"t×’F—FÆR—26V7W&RÂr†R6—2&Vf÷&R–÷R6â6²âuv—FæW76VBÂ&V6÷&FVBÂ6öæf—&ÖVBÂæB–Bf÷"–âÆÂF†RGVÆÂv—2F†R7&÷vâ&VfW'2âv†öWfW"—2Fö–ærF†—2æVVBæ÷BFVfVB×’7V66W76–öââF†W’æVVBöæÇ’Ö¶R×’f—'7B–V"Æöö²6&VÆW72âr ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²f÷"W&Ö—76–öâFò–ç7V7BF†RöÆB&V6÷&G2"ÂæW‡C¢&–çV—'•Æâ"ÂVffV7G3¢²fÆw3¢²''–åW&Ö—76–öâ%ÒÂ&VÃ¢²'–ã¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢$6²v†BF†Rf÷&ÖW"&&öâw26öâ¶æWröbF†RV7FW&â&öB"ÂæW‡C¢&–çV—'•Æâ"ÂVffV7G3¢²fÆw3¢²&†V—$ÆVB%ÒÂ&VÃ¢²'–ã¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%FVÆÂ'–â–÷Rv–ÆÂf–æBF†R&7F–6Âf–ÇW&R&Vf÷&R—B&V6öÖW2V&Æ–2"ÂæW‡C¢&–çV—'•Æâ"ÂVffV7G3¢²fÆw3¢²&V&æVE'–åG'W7B%ÒÂ&VÃ¢²'–ã¢"ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÂ&WV—&W3¢²fÆw3¢²&vVæFW$fVÖÆR%ÒÒĞ¢Ğ¢ÒÀ ¢¶VæÇ”†ÆÃ¢°¢F—FÆS¢%&V6VFVæ6RæB÷F†W"vVöç2"À¢FW‡C¢°¢$ÆG’¶VæÇ’&V6V—fW2F†RVW7F–öâ–â6–FR†ÆÂv†W&RF†R÷'G&—G2&RW‡Vç6—fRVæ÷Vv‚Fò†fR÷–æ–öç2â6†R—2w&6–÷W2v—F‚F†R'6VçBÆWGFW'2ÂF†Vâ&V6öÖW2fW'’&V6—6RâÖ—76–ærFö7VÖVçB—2æ÷B&ööböbwV–ÇBÂ'WBÖ—76–ærFö7VÖVçBg&öÒ6†–âöbö&Æ–vF–öç2—2â–çf—FF–öâf÷"6öÖVöæRVÇ6RFòw&—FRF†R7F÷'’â"À¢"t–b–÷R67W6RF†Rw&öærW'6öâ–âV&Æ–2Âr6†R6—2Âw–÷Rv–ÆÂÖ¶RF†RG'WF‚FVfVæB—G6VÆbv–ç7B–÷W"ÖææW'2â—B—2F—&–ær'&ævVÖVçBf÷"WfW'–öæRâr ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²¶VæÇ’Fò†VÇ–÷R–FVçF–g’v†ò6÷VÆB&R7VÖÖöæVBv—F†÷WB–ç7VÇB"ÂæW‡C¢&–çV—'•Æâ"ÂVffV7G3¢²fÆw3¢²&6÷W'DÆVB%ÒÂ&VÃ¢²¶VæÇ“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%6†&R&—fFR¦ö¶R&÷WB÷'G&—G2æB6²f÷"†W"†öæW7B&VF–ær"ÂæW‡C¢&–çV—'•Æâ"ÂVffV7G3¢²fÆw3¢²&6÷W'DÆVB"Â&¶VæÇ”–çFW&W7B%ÒÂ&VÃ¢²¶VæÇ“¢"ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÂ&WV—&W3¢²fÆw3¢²&vVæFW$ÖÆR%ÒÒĞ¢Ğ¢ÒÀ ¢7–FæW”6÷'&W7öæFVæ6S¢°¢F—FÆS¢$f÷&V–vâW–R"À¢FW‡C¢°¢$ÆG’7–FæW’&VG2F†R6÷’öbF†Rv–†÷W6RVçG'’Gv–6Râ6†R6öÖW2g&öÒf'&Âv†W&RÆ–æVvRÂf—F‚Â6öÖÖW&6RÂæBöff–6R&R'&–FVB6òF–v‡FÇ’F†BÖW&6†çBw26÷W'FW7’6â6''’F†RvV–v‡BöbÆWGFW"6VÆVB–âv‚â"À¢"tâ&æFöæVBv–†÷W6R—2æ÷BæV6W76&–Ç’V×G’Âr6†R6—2ât—BÖ’&RÆ6Rv†W&RV÷ÆR&VfW"æ÷BFò&R6VVâ'&—f–ærâF†BFöW2æ÷BÖ¶R—B6–æ—7FW"â—BÖ¶W2—Bv÷'F‚6÷VçF–ærv†ò&VæVf—G2g&öÒF†RV–WBâr ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²7–FæW’Fò6ö×&RF†R6VÂv—F‚f'&âG&FRÖ&·2"ÂæW‡C¢&–çV—'•Æâ"ÂVffV7G3¢²fÆw3¢²&f÷&V–väÆVB%ÒÂ&VÃ¢²7–FæW“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%FVÆÂ7–FæW’–÷Rv÷VÆB&F†W"†V"†W"§VFvÖVçBF†âfÆGFW"†W"W‡W'F—6R"ÂæW‡C¢&–çV—'•Æâ"ÂVffV7G3¢²fÆw3¢²&f÷&V–väÆVB"Â&7–FæW”–çFW&W7B%ÒÂ&VÃ¢²7–FæW“¢"ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÂ&WV—&W3¢²fÆw3¢²&vVæFW$ÖÆR%ÒÒĞ¢Ğ¢ÒÀ ¢–çV—'•Æã¢°¢F—FÆS¢$f÷W"v—2Fò&R6Vç6–&ÆR"À¢FW‡C¢°¢%F†Rf—'7B–×VÇ6R—2Fò6V&6‚WfW'—F†–ærâv&’ö&¦V7G2F†B6V&6†–ærWfW'—F†–ær—2†÷rW'6öâÆ÷6W2F†RöæRW"F†BÖGFW'2â'–âw&VW2Âv†–6‚—2†÷r–÷RÆV&âF†B†—2&&öç’—2v÷fW&æVB'’V÷ÆRF—6w&VV–ærW6VgVÆÇ’â"À¢%F†W&R&R6WfW&ÂÆ6W2Fò&Vv–ã¢F†R&6†—fRÂF†R7WÇ’7F÷&W2ÂF†R6ÆW&²w2GFW&âöb'6Væ6W2Â÷"F†R&öB—G6VÆbâF†R6†ö–6Rv–ÆÂæ÷BFV6–FRF†RG'WF‚Â'WB—Bv–ÆÂFV6–FRv†òf—'7BFV6–FW2v†WF†W"FòG'W7B–÷Râ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$föÆÆ÷rF†Rf÷&ÖÂ&6†—fRG&–Â"ÂæW‡C¢&&6†—fTÖV7W&VB"ÂVffV7G3¢²fÆw3¢²&f÷&ÖÅG&–Â%ÒÒÒÀ¢²FW‡C¢%6V&6‚F†R&W7G&–7FVB'VæFÆRv—F†÷WBv—F–ærf÷"6V6öæB÷&FW""ÂæW‡C¢&&6†—fUVæWF†÷&—¦VB"ÂVffV7G3¢²fÆw3¢²&–×F–VçEG&–Â%ÒÂf'3¢²FævW#¢ÒÒÒÀ¢²FW‡C¢%G&6R7WÆ–W2F‡&÷Vv‚v&’w27F÷&W2"ÂæW‡C¢&v&•7F÷&V†÷W6R"ÂVffV7G3¢²fÆw3¢²'7WÇ•G&–Â%ÒÒÒÀ¢²FW‡C¢$†fR6†ÆW’6†'BF†R&V7W'&–æræÖW2æBFFW2"ÂæW‡C¢&6†ÆW•GFW&â"ÂVffV7G3¢²fÆw3¢²'GFW&åG&–Â%ÒÒÒÀ¢²FW‡C¢$6²7FW&Æ–ærFòFW7BF†R&öB7F÷'’v–ç7BF†RvF6‚Æöw2"ÂæW‡C¢'7FW&Æ–æuVW7F–öâ"ÂVffV7G3¢²fÆw3¢²'vF6…G&–Â%ÒÒĞ¢Ğ¢ÒÀ ¢&6†—fTÖV7W&VC¢°¢F—FÆS¢$GW7B–â÷&FW""À¢FW‡C¢°¢%F†Rf÷&ÖÂ&6†—fR—2¶WB–â6†Ö&W"F†B6ÖVÆÇ2öbGW7BÂ&VW7v‚ÂæBâ&wVÖVçBæòöæR†2f–æ—6†VB†f–ærâv&’&÷f–FW2F†R¶W—2â'–â&÷f–FW2F†RWF†÷&—G’â6†ÆW’&÷f–FW2Æ—7BöbFFW26òW†7BF†BWfVâF†R&6†—fR6ÆW&²7F÷2&WFVæF–ærF†—2—2&÷WF–æRâ"À¢%F†R–ÖVçG26÷'&W7öæBFòF†Rf—'7B–V"gFW"F†Rf÷&ÖW"&&öâw26öâF–VBâ&öB÷&FW"v2—77VVBF†VâÂ'WBF†Rf–ÆR6öçF–æ–ær—G2W'÷6R†2&VVâ&VÖ÷fVBg&öÒF†R'VæFÆRâ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²6†ÆW’Fò6ö×&RF†R7W'f—f–ærVçG&–W2"ÂæW‡C¢&6†ÆW•GFW&â"ÂVffV7G3¢²fÆw3¢²&†V—$ÆVB"Â'GFW&åG&–Â%ÒÂ&VÃ¢²6†ÆW“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%&V6÷&BF†RvæB&WVW7BF†R&W7G&–7FVB'VæFÆR"ÂæW‡C¢&&6†—fUVæWF†÷&—¦VB"ÂVffV7G3¢²fÆw3¢²&†V—$ÆVB%ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%W6RæB6²v&’v†òÆ7B†æFÆVBF†Rf–ÆR"ÂæW‡C¢&v&•7F÷&V†÷W6R"ÂVffV7G3¢²fÆw3¢²&†V—$ÆVB%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢&6†—fUVæWF†÷&—¦VC¢°¢F—FÆS¢%F†RG&vW"v—F‚æòGW7B"À¢FW‡C¢°¢%F†R&W7G&–7FVB'VæFÆR—2–âG&vW"F†B†2&VVâ÷VæVB&V6VçFÇ’âF†RÆö6²—2öÆBâF†R67&R&W6–FR—B—2æWrâ–ç6–FRÂ–÷Rf–æB6÷–VB&öB÷&FW"ÂF÷&âÖVÖ÷&æGVÒÂæBF†R–×&W76–öâöb6VÂv†÷6Rf6R†2&VVâf–ÆVB§W7BVæ÷Vv‚Fò†–FRæÖRâ"À¢%6öÖVöæR†2æ÷BÖW&VÇ’öÖ—GFVBÆWGFW"â6öÖVöæR†2&VVâ7W&F–ærF†RöÖ—76–öç2â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$†æFÆRF†RW'26&VgVÆÇ’æB6VæBf÷"'–â"ÂæW‡C¢&&6†—fUG&"ÂVffV7G3¢²fÆw3¢²&f÷&vVE6VÂ"Â&6&VgVÄWf–FVæ6R%ÒÂ&VÃ¢²'–ã¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÒÀ¢²FW‡C¢%F¶RF†R6VÂ–×&W76–öâæBW'7VRF†R6ÆW&²–ÖÖVF–FVÇ’"ÂæW‡C¢&&6†—fUG&"ÂVffV7G3¢²fÆw3¢²&f÷&vVE6VÂ"Â&6ÆW&µ&W76VB%ÒÂf'3¢²6ÇVT6÷VçC¢ÂFævW#¢ÒÒÒÀ¢²FW‡C¢%WBWfW'—F†–ær&6²æB&WFVæB–÷R6ræ÷F†–ær"ÂæW‡C¢'6¶WDÆ–R"ÂVffV7G3¢²fÆw3¢²'v—F††VÆDWf–FVæ6R%ÒÒĞ¢Ğ¢ÒÀ ¢&6†—fUG&¢°¢F—FÆS¢$Fö÷"F†B6†÷VÆB†fR7F–VB÷Vâ"À¢FW‡C¢°¢%F†R&6†—fR6ÆW&²&WGW&ç2&Vf÷&R'–âFöW2â†R—2æ'&÷rÖâæÖVB÷&VâfÆRÂæB†R—26''––æræò&öö²Âæò¶W’ÂæBæò&V6öâFò&R–âF†R6†Ö&W"â†R6Ö–ÆW2v†Vâ†R6VW2F†RG&vW"÷Vââ"À¢"u–÷R&RæWrÂr†R6—2â—B—2æ÷BVW7F–öââ6öÖWv†W&R&W–öæBF†RvÆÂÂ&"G&÷2–çFòÆ6Râ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6ÆÂ÷WBf÷"F†RvF6‚æB¶VWF†RWf–FVæ6R–âf–Wr"ÂæW‡C¢&vF†W$f7G2"ÂVffV7G3¢²fÆw3¢²&6ÆW&´W‡÷6VB"Â&6&VgVÄWf–FVæ6R%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢$6öæg&öçB÷&VâÆöæRæB&Æö6²F†RFö÷""ÂæW‡C¢&FVF‚"ÂVffV7G3¢²fÆw3¢²&&6†—fT6&VÆW76æW72%ÒÒĞ¢Ğ¢ÒÀ ¢v&•7F÷&V†÷W6S¢°¢F—FÆS¢%v†BF†R7F÷&W2&VÖVÖ&W""À¢FW‡C¢°¢$v&’ÆVG2–÷RF‡&÷Vv‚F†R7F÷&W2Âv†W&RWfW'’66²Â&'&VÂÂæB'VæFÆR†2Æ6R&V6W6R6öÖVöæR†27VffW&VBF†R6öç6WVVæ6W2öbF†W&Ræ÷B&V–æröæRâF†Rv–†÷W6R&V6V—fVBÆ×ö–ÂæBöG2gFW"—Bv27W÷6VFÇ’&æFöæVBÂ'WBæWfW"Væ÷Vv‚f÷"W&ÖæVçBv'&—6öââ"À¢%F†RVçF—F–W2&R7V—FVBFò76–ærV÷ÆRÂæ÷B6WGFÆVBöæW2âv&’f–æG2F†R6ÖR6'&–W"w2Ö&²öâF‡&VRFVÆ—fW&–W2â6†RÇ6òf–æG2F†BF†R6'&–W"v2–B'’&öBFöÆÆÖâæÖVB†ö&"â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²v&’FòG&6RF†R6'&–W"w2FVÆ—fW'’F—2"ÂæW‡C¢&vF†W$f7G2"ÂVffV7G3¢²fÆw3¢²&†ö&$ÆVB"Â&6'&–W$ÆVB%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÒÀ¢²FW‡C¢$6²v†ò–âw&VVæ†öÆB&VÖVÖ&W'2F†Rv–†÷W6R&Vf÷&R—G26Æ÷7W&R"ÂæW‡C¢&Æö6Åv—FæW72"ÂVffV7G3¢²fÆw3¢²'v—FæW74ÆVB%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢6†ÆW•GFW&ã¢°¢F—FÆS¢$GFW&âv÷'F‚&÷FV7F–ær"À¢FW‡C¢°¢$6†ÆW’7&VG2F†RVçG&–W27&÷72F&ÆRæBGW&ç2F†VÒ–çFòF–ÖVÆ–æRâ†W"v÷&²&WfVÇ2F†BF†R–ÖVçG2&—6Rv†VæWfW"V7FW&âÖW&6†çG2W6RF†R&öB†Vf–Ç’ÂF†VâfÆÂv–â&Vf÷&Rç–öæR6÷VÆB6ÆÂF†VÒ7FæF–ærÆWg’â"À¢%6†R—2ÆV6VBVçF–Â6†R&VÆ—¦W2F†RGFW&âö–çG2F÷v&BâöÆB&öBöff–6RW7F&Æ—6†VB'’F†Rf÷&ÖW"&&öâw26öââF†Vâ6†R&V6öÖW26W&–÷W2ât–b’Ò&–v‡BÂ6öÖVöæR†2&VVâW6–ærFVBÖâw2÷&FW"26÷fW"f÷"Æ—f–ær'&ævVÖVçBâr ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%FVÆÂ6†ÆW’†W"GFW&â—2F†R†V'BöbF†R–çV—'’"ÂæW‡C¢&vF†W$f7G2"ÂVffV7G3¢²fÆw3¢²'GFW&å&ööb"Â&6†ÆW”–çFW&W7B%ÒÂ&VÃ¢²6†ÆW“¢"ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÂ&WV—&W3¢²fÆw3¢²&vVæFW$ÖÆR%ÒÒÒÀ¢²FW‡C¢$6²6†ÆW’FòÖ¶R6ÆVâ6÷’&Vf÷&Rç–öæR6VW2F†R÷&–v–æÂ"ÂæW‡C¢&vF†W$f7G2"ÂVffV7G3¢²fÆw3¢²'GFW&å&ööb%ÒÂ&VÃ¢²6†ÆW“¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÒÀ¢²FW‡C¢$6²v†WF†W"F†RGFW&â6÷VÆB7F–ÆÂ&R–ææö6VçB"ÂæW‡C¢&&6†—fUVæWF†÷&—¦VB"ÂVffV7G3¢²fÆw3¢²'GFW&å&ööb%ÒÂ&VÃ¢²6†ÆW“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢7FW&Æ–æuVW7F–öã¢°¢F—FÆS¢%F†RvF6‚†2ÖVÖ÷'’"À¢FW‡C¢°¢%7FW&Æ–ær6ö×&W2F†R&öBÆöw2v—F‚F†R–ÖVçBFFW2â†Rf–æG2&V7W'&–ærvBGW6²Âv†VâöæRvF6‚6†ævW2æBæ÷F†W"†2æ÷B–WB'&—fVBâæ÷F†–ær7&÷76VBF†RvFRVæFW"F†Rv–†÷W6Rw2æÖRÂ'WB6WfW&Â6'G2vW&RÆÆ÷vVBF‡&÷Vv‚VæFW"&—fFRW66÷'Bâ"À¢"uF†R6fRW‡ÆæF–öâ—2F†BF†RvF6‚v2Æ§’Âr7FW&Æ–ær6—2âuF†RÆW726fRW‡ÆæF–öâ—2F†B6öÖVöæR¶æWrW†7FÇ’v†VâÆ¦–æW72v÷VÆB&RW6VgVÂâr ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%FVÆÂ7FW&Æ–ær†—26WF–öâ†2¶WBF†—2g&öÒ&V6öÖ–ær'VÖ÷""ÂæW‡C¢&vF†W$f7G2"ÂVffV7G3¢²fÆw3¢²'vF6…&ööb"Â'7FW&Æ–æt–çFW&W7B%ÒÂ&VÃ¢²7FW&Æ–æs¢"ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÂ&WV—&W3¢²fÆw3¢²&vVæFW$fVÖÆR%ÒÒÒÀ¢²FW‡C¢$6²7FW&Æ–ærFòÖ&²F†Rv2öâ&öBÖ"ÂæW‡C¢&vF†W$f7G2"ÂVffV7G3¢²fÆw3¢²'vF6…&ööb%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÒÀ¢²FW‡C¢$–ç6—7BF†B–÷R6â&V6‚6‚'&–FvR&Vf÷&Ræ–v‡FfÆÂ"ÂæW‡C¢'&—fW%&öB"ÂVffV7G3¢²fÆw3¢²'vF6…&ööb"Â'&6…Æâ%ÒÂ&VÃ¢²7FW&Æ–æs¢ÓÒÂf'3¢²FævW#¢ÒÒĞ¢Ğ¢ÒÀ ¢vF†W$f7G3¢°¢F—FÆS¢%F†RÖGFW"v–ç2æÖR"À¢FW‡C¢°¢$'’ÆFRgFW&æööâÂF†R–çV—'’†27V—&VBF‡&VRæÖW3¢F†R6‚'&–FvR–ÖVçG2ÂF†RÖ—76–ær&öB÷&FW"ÂæB†ö&"w26'&–W"Ö&²âF†RæÖW2&Ræ÷B–WB66RÂ'WBF†W’&RVæ÷Vv‚FòÖ¶R6WfW&ÂV÷ÆR7F÷7V¶–ærv†Vâ–÷RVçFW"&ööÒâ"À¢%'–âvçG2f7G2&Vf÷&R67W6F–öç2âv&’vçG2F†R†÷W6V†öÆB&÷FV7FVBg&öÒVÖ&'&76ÖVçBâ7FW&Æ–ærvçG2Fò¶æ÷rv†ò6â&RG'W7FVBöâF†R&öBâF†R÷F†W'2†fR&VwVâöffW&–ær†VÇÂv†–6‚—2fÆGFW&–æræB÷FVçF–ÆÇ’FævW&÷W2â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$f–æBF†RÆö6ÂW'6öâv†ò&VÖVÖ&W'2F†RöÆBv–†÷W6R"ÂæW‡C¢&Æö6Åv—FæW72"ÂVffV7G3¢²fÆw3¢²'v—FæW74ÆVB%ÒÒÒÀ¢²FW‡C¢$vòV7Bv†–ÆRF†RvVF†W"7F–ÆÂ†öÆG2"ÂæW‡C¢'&—fW%&öB"ÂVffV7G3¢²fÆw3¢²'&öDÖ—76–öâ%ÒÒÒÀ¢²FW‡C¢$6²7–FæW’Fò–FVçF–g’F†RÖW&6†çB6öææV7F–öç2f—'7B"ÂæW‡C¢&7–FæW”ÖW&6†çB"ÂVffV7G3¢²fÆw3¢²&ÖW&6†çDÖ—76–öâ%ÒÒĞ¢Ğ¢ÒÀ ¢Æö6Åv—FæW73¢°¢F—FÆS¢%F†RvöÖâv†ò7F–VB"À¢FW‡C¢°¢$v&’Æö6FW2Ö&&VÆÂÂF†Rf÷&ÖW"¶VWW"öb6‚'&–FvRv–†÷W6RÂÆ—f–ær&÷fR6ö÷W"w2–&B–âF†RÖ&¶WBF÷vââÖ&ÆVgBF†Rv–†÷W6Rv†VâF†R&ööbv26öæFVÖæVBÂ'WB6†RF–Bæ÷BÆVfRF†R&öBw2ÖVÖ÷'’&V†–æBâ"À¢%6†Rv–ÆÂ7V²öæÇ’–b–÷R&öÖ—6Ræ÷BFòGW&â†W"–çFòV&Æ–267W6F–öâ&Vf÷&R6†R6âvWB†W"w&æF6†–ÆG&Vâ÷WBöbF†RV7FW&âf–ÆÆvW2âv&’6ÆÇ2F†—2&V6öæ&ÆR6öæF—F–öââ7FW&Æ–ær6ÆÇ2—B6V7W&—G’&ö&ÆVÒâ&÷F‚&R6÷'&V7Bâ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%&öÖ—6R&÷FV7F–öâæBF¶RÖ&w266÷VçBV–WFÇ’"ÂæW‡C¢'&—fW%&öB"ÂVffV7G3¢²fÆw3¢²&Æ—f–æuv—FæW72"Â'v—FæW75&÷FV7FVB%ÒÂ&VÃ¢²v&“¢Â7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÒÀ¢²FW‡C¢$6²¶VæÇ’Fò'&ævRF—67&VWBÆVvÂ7VÖÖöç2"ÂæW‡C¢&¶VæÇ”76VÖ&Ç’"ÂVffV7G3¢²fÆw3¢²&Æ—f–æuv—FæW72"Â'v—FæW757VÖÖöç2%ÒÂ&VÃ¢²¶VæÇ“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%FVÆÂÖ&6†R×W7B7V²V&Æ–6Ç’÷"æ÷BBÆÂ"ÂæW‡C¢'&—fW%&öB"ÂVffV7G3¢²fÆw3¢²&Æ—f–æuv—FæW72"Â'v—FæW746÷&æW&VB%ÒÂ&VÃ¢²v&“¢ÓÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢&—fW%&öC¢°¢F—FÆS¢$V7Gv&B&Vf÷&RF†R&–â"À¢FW‡C¢°¢%F†RV7FW&â&öB'Vç2&WGvVVâ†VFvW2æBvWBf–VÆG2&Vf÷&R6Æ–Ö&–ærF÷v&BF†Rf÷&W7FVB6†÷VÆFW"öbF†R&6–ââ&–â—2vF†W&–ær&÷fRF†R&–FvW2âw&VVæ†öÆBw2&öG2&Ræ÷BÖW&VÇ’Æ–æW2öâÖ²F†W’&Rw&VVÖVçG2&WGvVVâ'&–FvW2ÂÖ–ÆÇ2ÂvF6‚÷7G2ÂFVæçG2ÂæBF†RvVF†W"â"À¢%–÷R6âF¶RF†Röff–6–Â&öBv—F‚7FW&Æ–ærÂ7WB÷fW"F†RV''’&–FvRv—F‚6ö÷W"Â÷"G&fVÂVæFW"ÖW&6†çB6÷fW"'&ævVB'’7–FæW’âV6‚&÷WFR&V6†W26‚'&–FvRâF†W’v–ÆÂæ÷BÆÂ&V6‚—B–âF†R6ÖR6öæF—F–öââ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%F¶RF†Röff–6–Â&öBv—F‚7FW&Æ–ær"ÂæW‡C¢'v–†÷W6T&ö6‚"ÂVffV7G3¢²fÆw3¢²'6fU&÷WFR%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²FævW#¢ÒÒÒÀ¢²FW‡C¢%F¶R6ö÷W"w2F–ff–7VÇB&–FvR&÷WFR"ÂæW‡C¢&6ö÷W%&÷WFR"ÂVffV7G3¢²fÆw3¢²'&–FvU&÷WFR%ÒÂ&VÃ¢²6ö÷W#¢ÒÂf'3¢²FævW#¢ÒÒÒÀ¢²FW‡C¢%G&fVÂv—F‚F†RæW‡BÖW&6†çB6öçf÷’"ÂæW‡C¢&7–FæW”ÖW&6†çB"ÂVffV7G3¢²fÆw3¢²&ÖW&6†çD6÷fW"%ÒÂ&VÃ¢²7–FæW“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢6ö÷W%&÷WFS¢°¢F—FÆS¢%F†R&÷WFR6ö÷W"6ÆÇ2V7’"À¢FW‡C¢°¢%6—"6ö÷W"ÖVWG2–÷Rv—F‚†÷'6RÂ&÷RÂæBF†RW‡&W76–öâöbÖâv†ò†2&VVâv—F–ærf÷"6öÖVöæRFò&V6–FR&B–FVâ†R¶æ÷w2V''’F‚F†Bfö–G2F†Rv6†VB6V7F–öâöbF†RV7FW&â&öBæB&V6†W2F†R'&–FvRg&öÒ&÷fRâ"À¢"t—B—2æ÷BFævW&÷W2Âr†R6—2âF†VâÂgFW"6öç6–FW&–ærF†R6Æ–fbÂtFævW&÷W3ò—B—2æ÷BFævW&÷W2–âÖVÖ÷&&ÆRv’âr ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$ÆWB6ö÷W"ÆVBÂ¶VWF†R&÷R&VG’ÂæBföÆÆ÷rF†RÖ&¶VBF‚"ÂæW‡C¢'v–†÷W6T&ö6‚"ÂVffV7G3¢²fÆw3¢²'&–FvT'&—fÂ"Â&6ö÷W$–çFW&W7B%ÒÂ&VÃ¢²6ö÷W#¢"ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÂ&WV—&W3¢²fÆw3¢²&vVæFW$fVÖÆR%ÒÒÒÀ¢²FW‡C¢$ÆWB6ö÷W"ÆVBv—F†÷WBVW7F–öæ–ær†—2§VFvÖVçB"ÂæW‡C¢'v–†÷W6T&ö6‚"ÂVffV7G3¢²fÆw3¢²'&–FvT'&—fÂ%ÒÂ&VÃ¢²6ö÷W#¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%&6R†VBFò&V6‚F†Rv–†÷W6R&Vf÷&RF†R÷F†W'2"ÂæW‡C¢&FVF‚"ÂVffV7G3¢²fÆw3¢²'&–FvT6&VÆW76æW72%ÒÒĞ¢Ğ¢ÒÀ ¢7–FæW”ÖW&6†çC¢°¢F—FÆS¢$6öçf÷’v—F‚vööBÖææW'2"À¢FW‡C¢°¢$7–FæW’Æ6W2–÷R&W6–FRvööÂÖW&6†çBæB–çG&öGV6W2–÷R26ÆW&²v†ò†2&V6öÖR–æ6öçfVæ–VçFÇ’–çFW&W7FVB–â&öB&W—'2âF†RÖW&6†çBFöW2æ÷B6²VW7F–öç2â†R†2F†RW‡&W76–öâöbÖâv†ò†2&öf—FVBg&öÒ÷F†W"V÷ÆRw2F—67&WF–öââ"À¢$7–FæW’ÆV&ç2F†BGvòV7FW&â6&fç2vW&RFöÆBFòv—BB6‚'&–FvRf÷"ÖW76vRF†BæWfW"6ÖRâöæR6&fâ6†ævVB6÷W'6RF÷v&BæV–v†&÷&–ærÆ÷&Bw2ÆæG2âF†R÷F†W"–BâVæfÖ–Æ–"W66÷'BFò6öçF–çVRâ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²7–FæW’v†B¶–æBöbW66÷'Bv÷VÆB6†&vRf÷"6–ÆVæ6R"ÂæW‡C¢'v–†÷W6T&ö6‚"ÂVffV7G3¢²fÆw3¢²&ÖW&6†çDÆVB"Â&7–FæW”–çFW&W7B%ÒÂ&VÃ¢²7–FæW“¢"ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÂ&WV—&W3¢²fÆw3¢²&vVæFW$ÖÆR%ÒÒÒÀ¢²FW‡C¢%&V6÷&BF†R6öçf÷’æÖW2æB6öçF–çVRVæFW"6÷fW""ÂæW‡C¢'v–†÷W6T&ö6‚"ÂVffV7G3¢²fÆw3¢²&ÖW&6†çDÆVB%ÒÂ&VÃ¢²7–FæW“¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒĞ¢Ğ¢ÒÀ ¢v–†÷W6T&ö6ƒ¢°¢F—FÆS¢$6‚'&–FvR"À¢FW‡C¢°¢$6‚'&–FvR7&÷76W26öÆB&—fW"&VæVF‚7FVW&æ²âF†Rv–†÷W6R7FæG2&W–öæB—BÂ&ööfÆW72öâöæR6–FRæBö67W–VBöâF†R÷F†W"â6Öö¶R&—6W2g&öÒ&W—&VB6†–ÖæW’ââ&æFöæVBÆ6R†2æò'W6–æW72Ö¶–ærFVâ"À¢%–÷R6VRöæR6'B&V†–æBF†R'V–ÆF–ærÂ—G2v†VVÇ2×VFG’g&öÒF†RV7FW&âG&6²âF†W&R—2Ç6òg&W6‚&ö÷B&–çBv†W&RF†R&öBöff–6R6VÂ†2&VVâ–çFVB÷fW"â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$&ö6‚÷VæÇ’VæFW"'–âw2&öBWF†÷&—G’"ÂæW‡C¢'v–†÷W6TFö÷""ÂVffV7G3¢²fÆw3¢²&÷Vä&ö6‚%ÒÂ&VÃ¢²'–ã¢ÒÒÒÀ¢²FW‡C¢$6—&6ÆR&V†–æBF†Rv–†÷W6RæBVçFW"F‡&÷Vv‚F†R'&ö¶Vâ6–FR"ÂæW‡C¢'v–†÷W6U6–FR"ÂVffV7G3¢²fÆw3¢²&†–FFVä&ö6‚%ÒÂf'3¢²FævW#¢ÒÒĞ¢Ğ¢ÒÀ ¢v–†÷W6TFö÷#¢°¢F—FÆS¢$FVæçBv†òv2æ÷BF†W&R"À¢FW‡C¢°¢$Öâ÷Vç2F†RFö÷"Â6VW2F†R&öB6VÂÂæB&V6öÖW2'&–VfÇ’Ö÷&R†öæW7BF†â†R–çFVæFVBâ†—2æÖR—2W'&–ââ†R6Æ–×2Fò&VçBF†R'V–ÆF–ærg&öÒæòöæRÂ¶VWæò&V6÷&G2ÂæB&V6V—fRæòf—6—F÷'2â"À¢$&V†–æB†–ÒÂF&ÆR†öÆG2Gvò7W2Âg&W6‚ÆVFvW"ÂæB'VæFÆRöbÆWGFW'2F–VBv—F‚F†R6÷'Böb6&RV÷ÆRW6Rv†VâF†W’W‡V7BFò'W&â6öÖWF†–ærÆFW"â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²W'&–âFò7FW6–FRv†–ÆR–÷R–ç7V7BF†RF&ÆR"ÂæW‡C¢'v–†÷W6U6V&6‚"ÂVffV7G3¢²fÆw3¢²'W'&–äÆö6FVB%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÒÒÀ¢²FW‡C¢$öffW"W'&–â6†æ6RFòW‡Æ–â&Vf÷&RF†RvF6‚'&—fW2"ÂæW‡C¢'v–†÷W6Uv—FæW72"ÂVffV7G3¢²fÆw3¢²'W'&–å6ögFVæVB%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢v–†÷W6U6–FS¢°¢F—FÆS¢%F†RV–WBVçG&æ6R"À¢FW‡C¢°¢%F†R'&ö¶Vâ6–FR÷Vç2–çFò7F÷&R&ööÒâ–÷Rf–æBÆ×ö–ÂÂ7&÷vâ&öBÖ&¶W"ÂæBÆVFvW"†–FFVâ&VæVF‚66²öböG2â–÷RÇ6òf–æB7G&–ærF–VB7&÷72F†R–ææW"76vRB¶æVR†V–v‡BÂv†–6‚—2F†R6÷'Böb&7F–6Âv&æ–ærF†BÖ¶W2–÷RÖ—72F†RW'6öâv†òF–VB—Bâ"À¢$&ö&B7&V·2–âF†RæW‡B&ööÒâv†öWfW"—2F†W&R†2†V&B–÷Râ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%7FW&6²æB6ÆÂf÷"F†R÷F†W'2"ÂæW‡C¢'v–†÷W6U6V&6‚"ÂVffV7G3¢²fÆw3¢²&†–FFVäWf–FVæ6R"Â&6&VgVÄWf–FVæ6R%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÒÀ¢²FW‡C¢$7&÷72F†R76vR&Vf÷&RF†Rö67WçB6âfÆVR"ÂæW‡C¢'v–†÷W6U6V&6‚"ÂVffV7G3¢²fÆw3¢²&†–FFVäWf–FVæ6R"Â'&W76VDVçG'’%ÒÂf'3¢²6ÇVT6÷VçC¢"ÂFævW#¢ÒÒĞ¢Ğ¢ÒÀ ¢v–†÷W6U6V&6ƒ¢°¢F—FÆS¢%F†RÆVFvW"&VæVF‚F†RöG2"À¢FW‡C¢°¢%F†R†–FFVâÆVFvW"6öçF–ç2æÖW2ÂFFW2ÂæB6†÷'BÖ&·2&W6–FRF†R–æ—F–Ç2öbÖW&6†çG2Â6÷W&–W'2ÂæB†—&VBW66÷'G2â—BFöW2æ÷BFW67&–&Rw&æB6öç7—&7’â—BFW67&–&W26W'f–6S¢FVÆ’F†—26'BÂv&âF†B&–FW"Â¶VWF†—2ÆWGFW"VçF–ÂÖW76VævW"'&—fW2â"À¢$öæRvR6'&–W2F†Rf÷&ÖW"†V—"w2&öB6VÂâF†R÷&FW"—2&VÂâF†RVçG&–W2&VæVF‚—B&Ræ÷Bâ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%&VBF†RÆVFvW"–âÆ6RæB&W6W'fRWfW'’vR"ÂæW‡C¢'v–†÷W6Uv—FæW72"ÂVffV7G3¢²fÆw3¢²&†–FFVäÆVFvW""Â&6&VgVÄWf–FVæ6R%ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÒÀ¢²FW‡C¢$÷VâF†RÆö6¶VB6†W7B&W6–FRF†R†V'F‚"ÂæW‡C¢'v—FæW75F‡&VB"ÂVffV7G3¢²fÆw3¢²&†–FFVäÆVFvW""Â&6†W7D÷VæVB%ÒÂf'3¢²6ÇVT6÷VçC¢"ÂFævW#¢ÒÒÒÀ¢²FW‡C¢%F¶RöæÇ’F†RvR&V&–ærF†R†V—"w26VÂ"ÂæW‡C¢'v–†÷W6Uv—FæW72"ÂVffV7G3¢²fÆw3¢²&†–FFVäÆVFvW""Â''F–ÄWf–FVæ6R%ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢v–†÷W6Uv—FæW73¢°¢F—FÆS¢$Ö&w2Ö—76–æræÖR"À¢FW‡C¢°¢$Ö&&VÆÂ—2æ÷BBF†Rv–†÷W6RÂ'WB†W"æÖRV'2–âF†RÖ&v–â&W6–FRF†Rf—'7BF‡&VR–ÖVçG2âW'&–âFÖ—G26†R¶WBF†RÆ6RgFW"F†Rf÷&ÖW"†V—"w2FVF‚ÂF†÷Vv‚†R–ç6—7G26†RÆVgBæò–ç7G'V7F–öç2&V†–æBâ"À¢$†R—2Ç––ær&÷WBöæRF†–ærâ†R¶æ÷w2v†W&RÖ&vVçBÂæB†R—2g&–v‡FVæVBöbF†RW'6öâv†òv÷VÆBÆV&âF†B–÷R¶æ÷râ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢%&÷FV7BW'&–âÆöærVæ÷Vv‚FòÆV&âv†òF‡&VFVæVB†–Ò"ÂæW‡C¢'v—FæW7466÷VçB"ÂVffV7G3¢²fÆw3¢²'W'&–å&÷FV7FVB"Â&Æ—f–æuv—FæW72%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%FVÆÂW'&–âF†RG'WF‚v–ÆÂ&÷FV7B†–Ò&WGFW"F†â6–ÆVæ6R"ÂæW‡C¢'v—FæW7466÷VçB"ÂVffV7G3¢²fÆw3¢²'W'&–å&W76VB"Â&Æ—f–æuv—FæW72%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒĞ¢Ğ¢ÒÀ ¢v—FæW7466÷VçC¢°¢F—FÆS¢%v†BF†Rv–†÷W6Rv2f÷""À¢FW‡C¢°¢$Ö&—2f÷VæB–â6†W†W&Bw2‡WB&÷fRF†R&—fW"Âv†W&R6†R†2&VVâ†–F–ærg&öÒF†R&öBâ†W"66÷VçB—2Æ–ââF†Rf÷&ÖW"&&öâw26öâW7F&Æ—6†VB6‚'&–FvR2âVÖW&vVæ7’&VÆ’GW&–ærv'F–ÖRÂ6ò6÷W&–W'2æBÖW&6†çG26÷VÆB&RÖ÷fVB6fVÇ’F‡&÷Vv‚F—7G&–7Bv†W&R&æF—G'’æB&÷&FW"&W77W&RvW&R6öÖÖöââ"À¢$gFW"†—2FVF‚ÂF†Röff–6R6†÷VÆB†fR&VVâ&Wf–WvVBæB6Æ÷6VBâ–ç7FVBÂ6ÆW&²÷&VâfÆR6÷–VBF†RöÆB÷&FW"Â6öçF–çVVBF†R–ÖVçG2ÂæB6öÆB–æf÷&ÖF–öâ&÷WB&öBG&ff–2Fò†÷7F–ÆRæV–v†&÷&–ær–çFW&W7Bâ†ö&"ÂF†RFöÆÆÖâÂ6'&–VBF†RÖW76vW2â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$¶VWÖ&6öæ6VÆVBVçF–Â'–â6â6V7W&RF†R&öB"ÂæW‡C¢'v—FæW75F‡&VB"ÂVffV7G3¢²fÆw3¢²'v—FæW7466÷VçB"Â'v—FæW75&÷FV7FVB"Â&f÷&ÖW$÷&FW"%ÒÂ&VÃ¢²Ö&¢Â'–ã¢ÒÂf'3¢²6ÇVT6÷VçC¢2ÒÒÒÀ¢²FW‡C¢$6²Ö&FòæÖRF†RW'6öâv†òf—'7B&V7'V—FVB÷&Vâ"ÂæW‡C¢&6ö×&öÖ—6VEFöÆÂ"ÂVffV7G3¢²fÆw3¢²'v—FæW7466÷VçB"Â&f÷&ÖW$÷&FW""Â&†ö&$ÆVB%ÒÂ&VÃ¢²Ö&¢ÒÂf'3¢²6ÇVT6÷VçC¢2ÒÒÒÀ¢²FW‡C¢%&öÖ—6RÖ&F†B†W"FW7F–Ööç’v–ÆÂ&RV&Æ–2–ÖÖVF–FVÇ’"ÂæW‡C¢'v—FæW75F‡&VB"ÂVffV7G3¢²fÆw3¢²'v—FæW7466÷VçB"Â'v—FæW74W‡÷6VB"Â&f÷&ÖW$÷&FW"%ÒÂ&VÃ¢²'–ã¢ÒÂf'3¢²6ÇVT6÷VçC¢2ÂFævW#¢ÒÒĞ¢Ğ¢ÒÀ ¢v—FæW75F‡&VC¢°¢F—FÆS¢%F†R6÷7Böb&V–ær6VVâ"À¢FW‡C¢°¢$&Vf÷&RF†R–çFW'f–Wr—2f–æ—6†VBÂ&–FW"V'2öâF†R&öB&VÆ÷râ†RFöW2æ÷B&ö6‚F†R‡WBâ†RÆöö·2F÷v&B—BÂv—G2f÷"F†R&–âFò6÷fW"†—2GW&âÂæB&–FW2v’â"À¢$Ö&&V6övæ—¦W2F†R†÷'6Râ6öÖVöæR†2&VVâvF6†–ærF†RV÷ÆRv†ò&VÖVÖ&W"F†Rv–†÷W6RâF†RöÆB'&ævVÖVçB—2æòÆöævW"ÖW&VÇ’6÷''WBâ—B—2&V–ærFVfVæFVBâ ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$Ö÷fRÖ&VæFW"7FW&Æ–ærw2&÷FV7F–öâ"ÂæW‡C¢'v—FæW74W66R"ÂVffV7G3¢²fÆw3¢²'v—FæW75&÷FV7FVB%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢%6VæBÖW76vRFò¶VæÇ’æB6V7W&RÆVvÂv—FæW726†–â"ÂæW‡C¢&6ö×&öÖ—6VEFöÆÂ"ÂVffV7G3¢²fÆw3¢²'v—FæW75&÷FV7FVB"Â'v—FæW757VÖÖöç2%ÒÂ&VÃ¢²¶VæÇ“¢ÒÂf'3¢²6ÇVT6÷VçC¢ÒÒÒÀ¢²FW‡C¢$föÆÆ÷rF†R&–FW"&Vf÷&R†R&V6†W2F†R'&–FvR"ÂæW‡C¢&FVF‚"ÂVffV7G3¢²fÆw3¢²'v—FæW746&VÆW76æW72%ÒÒĞ¢Ğ¢ÒÀ ¢v—FæW74W66S¢°¢F—FÆS¢$V–WB6†ævRöb&öB"À¢FW‡C¢°¢%7FW&Æ–ærÖ÷fW2Ö&'’f&ÒÆæRv†–ÆRv&’'&ævW2&ööÒ–âFVæçBw2†÷W6RF†B†2æò&V6öâFòGG&7BGFVçF–öââ—B—2æ÷BG&ÖF–2â—B—26–×Ç’6ö×WFVçBÂv†–6‚¶VW2F†Rv—FæW72Æ—fRâ"À¢$Ö&v—fW2–÷RöæRgW'F†W"FWF–Ââ†ö&"†2&VVâ–B–â6Æ—VBf÷&V–vâ6ö–âÂ'WBF†R–ÖVçB—G6VÆb6ÖRF‡&÷Vv‚Æö6ÂÖW&6†çBv†ò7F–ÆÂ†266W72Fòw&VVæ†öÆBw2FöÆÂ&V6÷&G2â ¢ÒÀ¢6†ö–6W3¢°¢²FW‡C¢$6²7FW&Æ–ærFòvF6‚†ö&"v—F†÷WBÆ&Ö–ær†–Ò"ÂæW‡C¢&6ö×&öÖ—6VEFöÆÂ"ÂVffV7G3¢²fÆw3¢²'v—FæW756fR"Â&†ö&$ÆVB%ÒÂ&VÃ¢²7FW&Æ–æs¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒÒÀ¢²FW‡C¢$6²v&’Fò6ö×&R†ö&"w2–ÖVçG2v—F‚7F÷&RFVÆ—fW&–W2"ÂæW‡C¢&6ö×&öÖ—6VEFöÆÂ"ÂVffV7G3¢²fÆw3¢²'v—FæW756fR"Â&†ö&$ÆVB%ÒÂ&VÃ¢²v&“¢ÒÂf'3¢²6ÇVT6÷VçC¢"ÒÒĞ¢Ğ¢ÒÀ ¢6ö×&öÖ—6VEFöÆÃ¢°¢F—FÆS¢%F†R†öæW7BÔÆöö¶–ærFöÆÆÖâ"À¢FW‡C¢°¢$†ö&"—2v–F÷vW"v—F‚6ÆVâ&ö÷G2Â6ÆVâÆVFvW"ÂæBF†R'F–7VÆ"ÖææW"öbÖâv†ò†2&7F–6VB&V–ærf÷&vWGM´ÒÚ$z{-®éÜj×["hobbWatched", "witnessChain"], rel: { Kenly: 1 }, vars: { clueCount: 1 } } },
+export const GREENHOLD_STORY = {
+  start: "intro",
+  nodes: {
+    intro: {
+      title: "A Place in the Margin",
+      text: [
+        "You come to Greenhold with sound boots, a light purse, and no one waiting for you. The barony is short of hands, which gives a stranger a fair chance.",
+        "The barony lies in a broad green basin beneath forested ridges. The castle, market, orchards, mills, and roads are all busy at once. Lord Ryan is keeping his first autumn accounts as Baron, and the household needs another pair of hands."
+      ],
+      choices: [
+        { text: "Offer your help in the records room", next: "arrival", effects: { flags: ["metGabi"], rel: { Gabi: 1 } } },
+        { text: "Ask where the watch needs you", next: "arrival", effects: { flags: ["metSterling"], rel: { Sterling: 1 } } },
+        { text: "Follow the lively young lady toward the market", next: "arrival", effects: { flags: ["metAshley"], rel: { Ashley: 1 } } }
+      ]
+    },
+
+    arrival: {
+      title: "The First Small Duty",
+      text: [
+        "By noon, you have no title and no proper place in the household, but you have already been given work. In Greenhold, that is close enough to an invitation.",
+        "Lady Gabi is sorting household tallies with the calm of a woman who has already solved three problems and is waiting for the fourth to confess. Sir Sterling is watching the eastern gate. Lady Ashley is quietly rearranging the market schedule while pretending she is only reading it."
+      ],
+      choices: [
+        { text: "Sit with Gabi and compare the road accounts", next: "recordsWithGabi", effects: { flags: ["metGabi", "recordsInterest"], rel: { Gabi: 1 }, vars: { clueCount: 1 } } },
+        { text: "Join Sterling at the gate and ask about the road", next: "gateWithSterling", effects: { flags: ["metSterling", "roadInterest"], rel: { Sterling: 1 }, vars: { clueCount: 1 } } },
+        { text: "Help Ashley untangle the market schedule", next: "marketWithAshley", effects: { flags: ["metAshley", "scheduleInterest"], rel: { Ashley: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    recordsWithGabi: {
+      title: "The Keeper of the Household",
+      text: [
+        "Gabi gives you a stack of road-maintenance entries and a narrower stack of receipts. The first stack is dull in the respectable way. The second is dull in the suspicious way, with three payments to the Ash Bridge Wayhouse despite the wayhouse being listed as abandoned two years ago.",
+        "Gabi does not dramatize the discrepancy. She places one finger on the repeated seal and says, 'If this is an error, it has been remarkably punctual.'"
+      ],
+      choices: [
+        { text: "Ask who approved the payments", next: "ledgerReview", effects: { flags: ["paymentClue"], rel: { Gabi: 1 }, vars: { clueCount: 1 } } },
+        { text: "Ask Gabi to show you the supply records as well", next: "ledgerReview", effects: { flags: ["supplyClue"], rel: { Gabi: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    gateWithSterling: {
+      title: "The Eastern Gate",
+      text: [
+        "Sir Sterling watches the east road with the patience of a man who has already imagined every bad outcome and is now waiting to see which one has the courtesy to arrive. He points out that the road is busy for harvest season, but the small wayhouse beyond Ash Bridge has seen no registered keeper since the roof fell in.",
+        "'Road offices do not usually spend money on empty roofs,' he says. 'Usually.'"
+      ],
+      choices: [
+        { text: "Ask what would make an empty wayhouse useful", next: "ledgerReview", effects: { flags: ["roadClue"], rel: { Sterling: 1 }, vars: { clueCount: 1 } } },
+        { text: "Ask Sterling to show you the safest approach to Ash Bridge", next: "ledgerReview", effects: { flags: ["safeRoute"], rel: { Sterling: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    marketWithAshley: {
+      title: "A Schedule with Too Many Hands",
+      text: [
+        "Lady Ashley has discovered that two grain carts, a load of lamp oil, and a tournament judge are all expected at the same gate at the same hour. She is younger than everyone pretending not to need her, which means she has already noticed more than they have.",
+        "When you point out that the oil receipt bears the same faded mark as a wayhouse payment, Ashley's expression sharpens. Her delight in a pattern is sincere. So is her hope that someone will let her follow it."
+      ],
+      choices: [
+        { text: "Give Ashley the credit and ask what she sees", next: "ledgerReview", effects: { flags: ["scheduleClue", "ashleyInterest"], rel: { Ashley: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderMale"] } },
+        { text: "Ask Ashley to mark every matching receipt", next: "ledgerReview", effects: { flags: ["scheduleClue"], rel: { Ashley: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    ledgerReview: {
+      title: "The Quiet Ledger",
+      text: [
+        "The payments are modest: nails, lamp oil, oats, and a few pence for cart repair. None could fund a rebellion. Together they describe a place that someone has expected to remain useful, and an office that has continued to pay for it while pretending not to know why.",
+        "Gabi finds two missing letters from the same season. Sterling finds a road seal pressed into a wax scrap that does not belong to the current clerk. Ashley finds that the entries stop whenever a particular hand takes leave. A small matter has acquired the shape of deliberate work."
+      ],
+      choices: [
+        { text: "Take the discrepancy directly to Ryan", next: "ryanBrief", effects: { flags: ["approachedRyan"], rel: { Ryan: 1 } } },
+        { text: "Ask Kenly how a court would read the missing correspondence", next: "kenlyHall", effects: { flags: ["approachedKenly"], rel: { Kenly: 1 } } },
+        { text: "Ask Cydney what a foreign merchant would notice here", next: "cydneyCorrespondence", effects: { flags: ["approachedCydney"], rel: { Cydney: 1 } } }
+      ]
+    },
+
+    ryanBrief: {
+      title: "The Baron Reads the Margin",
+      text: [
+        "Ryan listens without interrupting. He is twenty-nine, in his first year as Baron, and has the steady concentration of a former steward who knows that a problem becomes more expensive each time it is politely postponed.",
+        "'My title is secure,' he says before you can ask. 'Witnessed, recorded, confirmed, and paid for in all the dull ways the Crown prefers. Whoever is doing this need not defeat my succession. They need only make my first year look careless.'"
+      ],
+      choices: [
+        { text: "Ask for permission to inspect the old records", next: "inquiryPlan", effects: { flags: ["ryanPermission"], rel: { Ryan: 1 }, vars: { clueCount: 1 } } },
+        { text: "Ask what the former baron's son knew of the eastern road", next: "inquiryPlan", effects: { flags: ["heirLead"], rel: { Ryan: 1 }, vars: { clueCount: 1 } } },
+        { text: "Tell Ryan you will find the practical failure before it becomes public", next: "inquiryPlan", effects: { flags: ["earnedRyanTrust"], rel: { Ryan: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderFemale"] } }
+      ]
+    },
+
+    kenlyHall: {
+      title: "Precedence and Other Weapons",
+      text: [
+        "Lady Kenly receives the question in a side hall where the portraits are expensive enough to have opinions. She is gracious with the absent letters, then becomes very precise. A missing document is not proof of guilt, but a missing document from a chain of obligations is an invitation for someone else to write the story.",
+        "'If you accuse the wrong person in public,' she says, 'you will make the truth defend itself against your manners. It is a tiring arrangement for everyone.'"
+      ],
+      choices: [
+        { text: "Ask Kenly to help you identify who could be summoned without insult", next: "inquiryPlan", effects: { flags: ["courtLead"], rel: { Kenly: 1 }, vars: { clueCount: 1 } } },
+        { text: "Share a private joke about portraits and ask for her honest reading", next: "inquiryPlan", effects: { flags: ["courtLead", "kenlyInterest"], rel: { Kenly: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderMale"] } }
+      ]
+    },
+
+    cydneyCorrespondence: {
+      title: "A Foreign Eye",
+      text: [
+        "Lady Cydney reads the copy of the wayhouse entry twice. She comes from Avarra, where lineage, faith, commerce, and office are braided so tightly that a merchant's courtesy can carry the weight of a letter sealed in wax.",
+        "'An abandoned wayhouse is not necessarily empty,' she says. 'It may be a place where people prefer not to be seen arriving. That does not make it sinister. It makes it worth counting who benefits from the quiet.'"
+      ],
+      choices: [
+        { text: "Ask Cydney to compare the seal with Avarran trade marks", next: "inquiryPlan", effects: { flags: ["foreignLead"], rel: { Cydney: 1 }, vars: { clueCount: 1 } } },
+        { text: "Tell Cydney you would rather hear her judgment than flatter her expertise", next: "inquiryPlan", effects: { flags: ["foreignLead", "cydneyInterest"], rel: { Cydney: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderMale"] } }
+      ]
+    },
+
+    inquiryPlan: {
+      title: "Four Ways to Be Sensible",
+      text: [
+        "The first impulse is to search everything. Gabi objects that searching everything is how a person loses the one paper that matters. Ryan agrees, which is how you learn that his barony is governed by people disagreeing usefully.",
+        "There are several places to begin: the archive, the supply stores, the clerk's pattern of absences, or the road itself. The choice will not decide the truth, but it will decide who first decides whether to trust you."
+      ],
+      choices: [
+        { text: "Follow the formal archive trail", next: "archiveMeasured", effects: { flags: ["formalTrail"] } },
+        { text: "Search the restricted bundle without waiting for a second order", next: "archiveUnauthorized", effects: { flags: ["impatientTrail"], vars: { danger: 1 } } },
+        { text: "Trace supplies through Gabi's stores", next: "gabiStorehouse", effects: { flags: ["supplyTrail"] } },
+        { text: "Have Ashley chart the recurring names and dates", next: "ashleyPattern", effects: { flags: ["patternTrail"] } },
+        { text: "Ask Sterling to test the road story against the watch logs", next: "sterlingQuestion", effects: { flags: ["watchTrail"] } }
+      ]
+    },
+
+    archiveMeasured: {
+      title: "Dust in Order",
+      text: [
+        "The formal archive is kept in a chamber that smells of dust, beeswax, and an argument no one has finished having. Gabi provides the keys. Ryan provides the authority. Ashley provides a list of dates so exact that even the archive clerk stops pretending this is routine.",
+        "The payments correspond to the first year after the former baron's son died. A road order was issued then, but the file containing its purpose has been removed from the bundle."
+      ],
+      choices: [
+        { text: "Ask Ashley to compare the surviving entries", next: "ashleyPattern", effects: { flags: ["heirLead", "patternTrail"], rel: { Ashley: 1 }, vars: { clueCount: 1 } } },
+        { text: "Record the gap and request the restricted bundle", next: "archiveUnauthorized", effects: { flags: ["heirLead"], vars: { clueCount: 1 } } },
+        { text: "Pause and ask Gabi who last handled the file", next: "gabiStorehouse", effects: { flags: ["heirLead"], rel: { Gabi: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    archiveUnauthorized: {
+      title: "The Drawer with No Dust",
+      text: [
+        "The restricted bundle is in a drawer that has been opened recently. The lock is old. The scrape beside it is new. Inside, you find a copied road order, a torn memorandum, and the impression of a seal whose face has been filed just enough to hide a name.",
+        "Someone has not merely omitted a letter. Someone has been curating the omissions."
+      ],
+      choices: [
+        { text: "Handle the papers carefully and send for Ryan", next: "archiveTrap", effects: { flags: ["forgedSeal", "carefulEvidence"], rel: { Ryan: 1 }, vars: { clueCount: 2 } } },
+        { text: "Take the seal impression and pursue the clerk immediately", next: "archiveTrap", effects: { flags: ["forgedSeal", "clerkPressed"], vars: { clueCount: 1, danger: 1 } } },
+        { text: "Put everything back and pretend you saw nothing", next: "packetLie", effects: { flags: ["withheldEvidence"] } }
+      ]
+    },
+
+    archiveTrap: {
+      title: "A Door That Should Have Stayed Open",
+      text: [
+        "The archive clerk returns before Ryan does. He is a narrow man named Oren Vale, and he is carrying no book, no key, and no reason to be in the chamber. He smiles when he sees the drawer open.",
+        "'You are new,' he says. It is not a question. Somewhere beyond the wall, a bar drops into place."
+      ],
+      choices: [
+        { text: "Call out for the watch and keep the evidence in view", next: "gatherFacts", effects: { flags: ["clerkExposed", "carefulEvidence"], rel: { Sterling: 1 }, vars: { clueCount: 1 } } },
+        { text: "Confront Oren alone and block the door", next: "death", effects: { flags: ["archiveCarelessness"] } }
+      ]
+    },
+
+    gabiStorehouse: {
+      title: "What the Stores Remember",
+      text: [
+        "Gabi leads you through the stores, where every sack, barrel, and bundle has a place because someone has suffered the consequences of there not being one. The wayhouse received lamp oil and oats after it was supposedly abandoned, but never enough for a permanent garrison.",
+        "The quantities are suited to passing people, not settled ones. Gabi finds the same carrier's mark on three deliveries. She also finds that the carrier was paid by a road tollman named Hobb."
+      ],
+      choices: [
+        { text: "Ask Gabi to trace the carrier's delivery days", next: "gatherFacts", effects: { flags: ["hobbLead", "carrierLead"], rel: { Gabi: 1 }, vars: { clueCount: 2 } } },
+        { text: "Ask who in Greenhold remembers the wayhouse before its closure", next: "localWitness", effects: { flags: ["witnessLead"], rel: { Gabi: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    ashleyPattern: {
+      title: "A Pattern Worth Protecting",
+      text: [
+        "Ashley spreads the entries across a table and turns them into a timeline. Her work reveals that the payments rise whenever eastern merchants use the road heavily, then fall again before anyone could call them a standing levy.",
+        "She is pleased until she realizes the pattern points toward an old road office established by the former baron's son. Then she becomes serious. 'If I am right, someone has been using a dead man's order as cover for a living arrangement.'"
+      ],
+      choices: [
+        { text: "Tell Ashley her pattern is the heart of the inquiry", next: "gatherFacts", effects: { flags: ["patternProof", "ashleyInterest"], rel: { Ashley: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderMale"] } },
+        { text: "Ask Ashley to make a clean copy before anyone sees the original", next: "gatherFacts", effects: { flags: ["patternProof"], rel: { Ashley: 1 }, vars: { clueCount: 2 } } },
+        { text: "Ask whether the pattern could still be innocent", next: "archiveUnauthorized", effects: { flags: ["patternProof"], rel: { Ashley: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    sterlingQuestion: {
+      title: "The Watch Has a Memory",
+      text: [
+        "Sterling compares the road logs with the payment dates. He finds a recurring gap at dusk, when one watch changes and another has not yet arrived. Nothing crossed the gate under the wayhouse's name, but several carts were allowed through under private escort.",
+        "'The safe explanation is that the watch was lazy,' Sterling says. 'The less safe explanation is that someone knew exactly when laziness would be useful.'"
+      ],
+      choices: [
+        { text: "Tell Sterling his caution has kept this from becoming a rumor", next: "gatherFacts", effects: { flags: ["watchProof", "sterlingInterest"], rel: { Sterling: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderFemale"] } },
+        { text: "Ask Sterling to mark the gaps on a road map", next: "gatherFacts", effects: { flags: ["watchProof"], rel: { Sterling: 1 }, vars: { clueCount: 2 } } },
+        { text: "Insist that you can reach Ash Bridge before nightfall", next: "riverRoad", effects: { flags: ["watchProof", "rashPlan"], rel: { Sterling: -1 }, vars: { danger: 1 } } }
+      ]
+    },
+
+    gatherFacts: {
+      title: "The Matter Gains a Name",
+      text: [
+        "By late afternoon, the inquiry has acquired three names: the Ash Bridge payments, the missing road order, and Hobb's carrier mark. The names are not yet a case, but they are enough to make several people stop speaking when you enter a room.",
+        "Ryan wants facts before accusations. Gabi wants the household protected from embarrassment. Sterling wants to know who can be trusted on the road. The others have begun offering help, which is flattering and potentially dangerous."
+      ],
+      choices: [
+        { text: "Find the local person who remembers the old wayhouse", next: "localWitness", effects: { flags: ["witnessLead"] } },
+        { text: "Go east while the weather still holds", next: "riverRoad", effects: { flags: ["roadMission"] } },
+        { text: "Ask Cydney to identify the merchant connections first", next: "cydneyMerchant", effects: { flags: ["merchantMission"] } }
+      ]
+    },
+
+    localWitness: {
+      title: "The Woman Who Stayed",
+      text: [
+        "Gabi locates Mara Bell, the former keeper of Ash Bridge Wayhouse, living above a cooper's yard in the market town. Mara left the wayhouse when the roof was condemned, but she did not leave the road's memory behind.",
+        "She will speak only if you promise not to turn her into a public accusation before she can get her grandchildren out of the eastern villages. Gabi calls this a reasonable condition. Sterling calls it a security problem. Both are correct."
+      ],
+      choices: [
+        { text: "Promise protection and take Mara's account quietly", next: "riverRoad", effects: { flags: ["livingWitness", "witnessProtected"], rel: { Gabi: 1, Sterling: 1 }, vars: { clueCount: 2 } } },
+        { text: "Ask Kenly to arrange a discreet legal summons", next: "kenlyAssembly", effects: { flags: ["livingWitness", "witnessSummons"], rel: { Kenly: 1 }, vars: { clueCount: 1 } } },
+        { text: "Tell Mara she must speak publicly or not at all", next: "riverRoad", effects: { flags: ["livingWitness", "witnessCornered"], rel: { Gabi: -1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    riverRoad: {
+      title: "Eastward before the Rain",
+      text: [
+        "The eastern road runs between hedges and wet fields before climbing toward the forested shoulder of the basin. Rain is gathering above the ridges. Greenhold's roads are not merely lines on a map; they are agreements between bridges, mills, watch posts, tenants, and the weather.",
+        "You can take the official road with Sterling, cut over the quarry ridge with Cooper, or travel under merchant cover arranged by Cydney. Each route reaches Ash Bridge. They will not all reach it in the same condition."
+      ],
+      choices: [
+        { text: "Take the official road with Sterling", next: "wayhouseApproach", effects: { flags: ["safeRoute"], rel: { Sterling: 1 }, vars: { danger: 0 } } },
+        { text: "Take Cooper's difficult ridge route", next: "cooperRoute", effects: { flags: ["ridgeRoute"], rel: { Cooper: 1 }, vars: { danger: 1 } } },
+        { text: "Travel with the next merchant convoy", next: "cydneyMerchant", effects: { flags: ["merchantCover"], rel: { Cydney: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    cooperRoute: {
+      title: "The Route Cooper Calls Easy",
+      text: [
+        "Sir Cooper meets you with a horse, a rope, and the expression of a man who has been waiting for someone to appreciate a bad idea. He knows a quarry path that avoids the washed section of the eastern road and reaches the bridge from above.",
+        "'It is not dangerous,' he says. Then, after considering the cliff, 'Dangerous? It is not dangerous in a memorable way.'"
+      ],
+      choices: [
+        { text: "Let Cooper lead, keep the rope ready, and follow the marked path", next: "wayhouseApproach", effects: { flags: ["ridgeArrival", "cooperInterest"], rel: { Cooper: 2 }, vars: { clueCount: 1 } }, requires: { flags: ["genderFemale"] } },
+        { text: "Let Cooper lead without questioning his judgment", next: "wayhouseApproach", effects: { flags: ["ridgeArrival"], rel: { Cooper: 1 }, vars: { clueCount: 1 } } },
+        { text: "Race ahead to reach the wayhouse before the others", next: "death", effects: { flags: ["ridgeCarelessness"] } }
+      ]
+    },
+
+    cydneyMerchant: {
+      title: "A Convoy with Good Manners",
+      text: [
+        "Cydney places you beside a wool merchant and introduces you as a clerk who has become inconveniently interested in road repairs. The merchant does not ask questions. He has the expression of a man who has profited from other people's discretion.",
+        "Cydney learns that two eastern caravans were told to wait at Ash Bridge for a message that never came. One caravan changed course toward a neighboring lord's lands. The other paid an unfamiliar escort to continue."
+      ],
+      choices: [
+        { text: "Ask Cydney what kind of escort would charge for silence", next: "wayhouseApproach", effects: { flags: ["merchantLead", "cydneyInterest"], rel: { Cydney: 2 }, vars: { clueCount: 2 } }, requires: { flags: ["genderMale"] } },
+        { text: "Record the convoy names and continue under cover", next: "wayhouseApproach", effects: { flags: ["merchantLead"], rel: { Cydney: 1 }, vars: { clueCount: 2 } } }
+      ]
+    },
+
+    wayhouseApproach: {
+      title: "Ash Bridge",
+      text: [
+        "Ash Bridge crosses a cold river beneath a steep bank. The wayhouse stands beyond it, roofless on one side and occupied on the other. Smoke rises from a repaired chimney. An abandoned place has no business making tea.",
+        "You see one cart behind the building, its wheels muddy from the eastern track. There is also a fresh boot print where the road office seal has been painted over."
+      ],
+      choices: [
+        { text: "Approach openly under Ryan's road authority", next: "wayhouseDoor", effects: { flags: ["openApproach"], rel: { Ryan: 1 } } },
+        { text: "Circle behind the wayhouse and enter through the broken side", next: "wayhouseSide", effects: { flags: ["hiddenApproach"], vars: { danger: 1 } } }
+      ]
+    },
+
+    wayhouseDoor: {
+      title: "A Tenant Who Was Not There",
+      text: [
+        "A man opens the door, sees the road seal, and becomes briefly more honest than he intended. His name is Perrin. He claims to rent the building from no one, keep no records, and receive no visitors.",
+        "Behind him, a table holds two cups, a fresh ledger, and a bundle of letters tied with the sort of care people use when they expect to burn something later."
+      ],
+      choices: [
+        { text: "Ask Perrin to step aside while you inspect the table", next: "wayhouseSearch", effects: { flags: ["perrinLocated"], rel: { Sterling: 1 } } },
+        { text: "Offer Perrin a chance to explain before the watch arrives", next: "wayhouseWitness", effects: { flags: ["perrinSoftened"], rel: { Gabi: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    wayhouseSide: {
+      title: "The Quiet Entrance",
+      text: [
+        "The broken side opens into a store room. You find lamp oil, a Crown road marker, and a ledger hidden beneath a sack of oats. You also find a string tied across the inner passage at knee height, which is the sort of practical warning that makes you miss the person who tied it.",
+        "A board creaks in the next room. Whoever is there has heard you."
+      ],
+      choices: [
+        { text: "Step back and call for the others", next: "wayhouseSearch", effects: { flags: ["hiddenEvidence", "carefulEvidence"], rel: { Sterling: 1 }, vars: { clueCount: 2 } } },
+        { text: "Cross the passage before the occupant can flee", next: "wayhouseSearch", effects: { flags: ["hiddenEvidence", "pressedEntry"], vars: { clueCount: 2, danger: 1 } } }
+      ]
+    },
+
+    wayhouseSearch: {
+      title: "The Ledger Beneath the Oats",
+      text: [
+        "The hidden ledger contains names, dates, and short marks beside the initials of merchants, couriers, and hired escorts. It does not describe a grand conspiracy. It describes a service: delay this cart, warn that rider, keep this letter until a messenger arrives.",
+        "One page carries the former heir's road seal. The order is real. The entries beneath it are not."
+      ],
+      choices: [
+        { text: "Read the ledger in place and preserve every page", next: "wayhouseWitness", effects: { flags: ["hiddenLedger", "carefulEvidence"], vars: { clueCount: 2 } } },
+        { text: "Open the locked chest beside the hearth", next: "witnessThreat", effects: { flags: ["hiddenLedger", "chestOpened"], vars: { clueCount: 2, danger: 1 } } },
+        { text: "Take only the page bearing the heir's seal", next: "wayhouseWitness", effects: { flags: ["hiddenLedger", "partialEvidence"], vars: { clueCount: 1 } } }
+      ]
+    },
+
+    wayhouseWitness: {
+      title: "Mara's Missing Name",
+      text: [
+        "Mara Bell is not at the wayhouse, but her name appears in the margin beside the first three payments. Perrin admits she kept the place after the former heir's death, though he insists she left no instructions behind.",
+        "He is lying about one thing. He knows where Mara went, and he is frightened of the person who would learn that you know."
+      ],
+      choices: [
+        { text: "Protect Perrin long enough to learn who threatened him", next: "witnessAccount", effects: { flags: ["perrinProtected", "livingWitness"], rel: { Sterling: 1 }, vars: { clueCount: 1 } } },
+        { text: "Tell Perrin the truth will protect him better than silence", next: "witnessAccount", effects: { flags: ["perrinPressed", "livingWitness"], rel: { Gabi: 1 }, vars: { clueCount: 1 } } }
+      ]
+    },
+
+    witnessAccount: {
+      title: "What the Wayhouse Was For",
+      text: [
+        "Mara is found in a shepherd's hut above the river, where she has been hiding from the road. Her account is plain. The former baron's son established Ash Bridge as an emergency relay during wartime, so couriers and merchants could be moved safely through a district where banditry and border pressure were common.",
+        "After his death, the office should have been reviewed and closed. Instead, clerk Oren Vale copied the old order, continued the payments, and sold information about road traffic to a hostile neighboring interest. Hobb, the tollman, carried the messages."
+      ],
+      choices: [
+        { text: "Keep Mara concealed until Ryan can secure the road", next: "witnessThreat", effects: { flags: ["witnessAccount", "witnessProtected", "formerOrder"], rel: { Mara: 1, Ryan: 1 }, vars: { clueCount: 3 } } },
+        { text: "Ask Mara to name the person who first recruited Oren", next: "compromisedToll", effects: { flags: ["witnessAccount", "formerOrder", "hobbLead"], rel: { Mara: 1 }, vars: { clueCount: 3 } } },
+        { text: "Promise Mara that her testimony will be public immediately", next: "witnessThreat", effects: { flags: ["witnessAccount", "witnessExposed", "formerOrder"], rel: { Ryan: 1 }, vars: { clueCount: 3, danger: 1 } } }
+      ]
+    },
+
+    witnessThreat: {
+      title: "The Cost of Being Seen",
+      text: [
+        "Before the interview is finished, a rider appears on the road below. He does not approach the hut. He looks toward it, waits for the rain to cover his turn, and rides away.",
+        "Mara recognizes the horse. Someone has been watching the people who remember the wayhouse. The old arrangement is no longer merely corrupt. It is being defended."
+      ],
+      choices: [
+        { text: "Move Mara under Sterling's protection", next: "witnessEscape", effects: { flags: ["witnessProtected"], rel: { Sterling: 1 }, vars: { clueCount: 1 } } },
+        { text: "Send a message to Kenly and secure a legal witness chain", next: "compromisedToll", effects: { flags: ["witnessProtected", "witnessSummons"], rel: { Kenly: 1 }, vars: { clueCount: 1 } } },
+        { text: "Follow the rider before he reaches the bridge", next: "death", effects: { flags: ["witnessCarelessness"] } }
+      ]
+    },
+
+    witnessEscape: {
+      title: "A Quiet Change of Road",
+      text: [
+        "Sterling moves Mara by a farm lane while Gabi arranges a room in a tenant's house that has no reason to attract attention. It is not dramatic. It is simply competent, which keeps the witness alive.",
+        "Mara gives you one further detail. Hobb has been paid in clipped foreign coin, but the payment itself came through a local merchant who still has access to Greenhold's toll records."
+      ],
+      choices: [
+        { text: "Ask Sterling to watch Hobb without alarming him", next: "compromisedToll", effects: { flags: ["witnessSafe", "hobbLead"], rel: { Sterling: 1 }, vars: { clueCount: 2 } } },
+        { text: "Ask Gabi to compare Hobb's payments with store deliveries", next: "compromisedToll", effects: { flags: ["witnessSafe", "hobbLead"], rel: { Gabi: 1 }, vars: { clueCount: 2 } } }
+      ]
+    },
+
+    compromisedToll: {
+      title: "The Honest-Looking Tollman",
+      text: [
+        "Hobb is a widower with clean boots, a clean ledger, and the particular manner of a man who has practiced being forgettable. He has indeed passed messages east. He claims he believed the payments were authorized road business.",
+        "He is not the architect. He is the compromised secondary informant, useful because he knows the rhythm of the road and frightened because he knows who has been buying it."
+      ],
+      choices: [
+        { text: "Watch Hobb until he leads you to the merchant", next: "tollConfront", effects: { flags: ["hobbWatched"], rel: { Sterling: 1 }, vars: { clueCount: 1 } } },
+        { text: "Ask Kenly to make Hobb's testimony safe to receive", next: "kenlyAssembly", effects: { flags: ["hobbWatched", "witnessChain"], rel: { Kenly: 1 }, vars: { clueCount: 1 } } },
         { text: "Accuse Hobb at the tollhouse in front of travelers", next: "tollConfront", effects: { flags: ["hobbCornered"], rel: { Sterling: -1 }, vars: { clueCount: 1, danger: 1 } } }
       ]
     },
