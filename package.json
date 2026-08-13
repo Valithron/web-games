@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/postbuild-compat.mjs && node scripts/postbuild-centerhold-audio.mjs && node scripts/postbuild-centerhold-pause-failsafe.mjs && node scripts/postbuild-universal.mjs",
+    "build": "node scripts/build.mjs && node scripts/postbuild-compat.mjs && node scripts/postbuild-centerhold-audio.mjs && node scripts/postbuild-centerhold-pause-failsafe.mjs && node scripts/postbuild-universal.mjs && node scripts/postbuild-centerhold-pause-hardfix.mjs",
     "validate": "node scripts/validate-games.mjs",
     "dev": "node scripts/dev-server.mjs"
   },
