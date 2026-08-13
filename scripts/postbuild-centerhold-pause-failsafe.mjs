@@ -73,13 +73,29 @@ replaceRequired(
         try { clearInputState(); } catch {}
         flash = 0;
         screenShake = 0;
-        lastTime = performance.now();
+        // requestAnimationFrame is virtualized by the universal runtime. Do not
+        // seed lastTime from raw performance.now(), which is a different clock
+        // after a pause. Recalibrate from the next RAF timestamp instead.
+        lastTime = null;
         try { window.__centerholdSfx?.setPaused?.(false); } catch (error) {
           console.warn('Centerhold audio resume failed; gameplay resume continues.', error);
         }
         try { draw(); } catch {}
       }`,
   'pause and resume functions'
+);
+
+replaceRequired(
+  /      function gameLoop\(now\) \{\n        const dt = Math\.min\(0\.033, \(now - lastTime\) \/ 1000\);\n        lastTime = now;\n        update\(dt\);\n        draw\(\);\n        requestAnimationFrame\(gameLoop\);\n      \}/,
+`      function gameLoop(now) {
+        const rawDt = lastTime == null ? 0 : (now - lastTime) / 1000;
+        const dt = Number.isFinite(rawDt) ? Math.max(0, Math.min(0.033, rawDt)) : 0;
+        lastTime = now;
+        update(dt);
+        draw();
+        requestAnimationFrame(gameLoop);
+      }`,
+  'non-negative animation delta'
 );
 
 if (!html.includes('data-centerhold-pause-guard')) {
@@ -91,6 +107,12 @@ if (!html.includes("console.warn('Centerhold audio pause failed; gameplay pause 
 if (!html.includes('try { draw(); } catch {}')) {
   throw new Error('Centerhold pause failsafe invariant failed: clean redraw missing');
 }
+if (!html.includes('lastTime = null;')) {
+  throw new Error('Centerhold pause failsafe invariant failed: RAF clock recalibration missing');
+}
+if (!html.includes('Math.max(0, Math.min(0.033, rawDt))')) {
+  throw new Error('Centerhold pause failsafe invariant failed: non-negative frame delta clamp missing');
+}
 
 await writeFile(file, html);
-console.log('Applied Centerhold pause lifecycle failsafe.');
+console.log('Applied Centerhold pause lifecycle failsafe and resume clock recalibration.');
